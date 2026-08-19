@@ -1,0 +1,6 @@
+field,allowed_values,definition
+metadata_status,citation_ready|doi_only_pending,Whether DOI and a readable title are present.
+item_type,endpoint|representation,Layer-2 registry object type.
+mechanism_lane,Type-I|Type-II|SET/PET_or_optical|boundary variants,Mechanism-aware routing category retained from the curated source asset.
+evidence_value_lane,text_exact|origin_digitized|model_inferred,Confidence/provenance class for numerical evidence; inferred values remain explicitly derived.
+qm_result_status,pending|completed|failed|not_consolidated_in_unique_manuscript_facing_manifest,Candidate-level QM result consolidation state.

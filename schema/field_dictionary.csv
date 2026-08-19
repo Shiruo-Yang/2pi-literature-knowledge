@@ -1,0 +1,8 @@
+field,registry,required,human_meaning
+source_id,source/domain/mechanism,yes,Stable identifier connecting a rule to its literature source.
+evidence_summary,domain/endpoint/mechanism,yes,Plain-language statement of what the evidence supports.
+normalized_rule,domain/endpoint/mechanism,yes,Machine-actionable or decision-actionable formalisation.
+computational_use,domain/endpoint/mechanism,yes,"The modelling, filtering, or routing step that consumes the formalised knowledge."
+downstream_asset,domain/endpoint/mechanism,yes,"The concrete model, screening, portfolio, or QM asset affected."
+status,all,yes,"Traceability, implementation, or review state; missing evidence is never inferred."
+provenance_path,domain/endpoint/mechanism/candidate,yes,Repository-relative path to the originating project asset.

@@ -1,0 +1,6 @@
+layer,registry,total_items,with_doi,linked_to_computational_use,pending_metadata,summary
+Sources,source_registry.csv,45,45,n/a,16,29 citation-ready; 16 DOI-only rows pending title metadata.
+Layer 1,domain_knowledge_registry.csv,44,44,44,18,Domain/family criteria with explicit claim limits and downstream roles.
+Layer 2,endpoint_representation_registry.csv,37,5,37,9,29 items implemented in frozen D06/F06 assets; 8 sparse descriptors are in active training and await final result freeze.
+Layer 3,mechanism_knowledge_registry.csv,44,44,44,18,Mechanism/family rules linked to candidate routing and lane-specific QM questions.
+Candidate/QM map,candidate_qm_mapping.csv,16,n/a,16,16,Routing is present; a unique manuscript-facing numerical QM result manifest remains separate.

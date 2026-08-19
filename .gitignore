@@ -1,0 +1,7 @@
+# Do not commit copyrighted source PDFs, credentials, or local caches.
+*.pdf
+*.zip
+*.tmp
+*.log
+__pycache__/
+.DS_Store

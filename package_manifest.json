@@ -1,0 +1,38 @@
+{
+  "package": "literature_knowledge",
+  "release": "v1.0",
+  "release_date": "2026-08-19",
+  "frozen": true,
+  "principle": "evidence_unit_plus_computational_role",
+  "builder": "tools/build_literature_knowledge_package.py",
+  "builder_version": "1.0.0",
+  "builder_sha256": "514e54c2f654a4616671e9ed527f34718c217fef107fe3d84313d49ad91de6ad",
+  "source_assets": [
+    "outputs/round1_24_literature_scaffold_consensus/round1_24_rule_source_literature_doi_detail.csv",
+    "outputs/literature_evidence_formalization_20260629/lane_rule_evidence_table.csv",
+    "outputs/descriptor_v2_feature_manifest.csv",
+    "outputs/final_three_lane_research_package_20260608/final_three_lane_candidate_package.csv",
+    "outputs/final_outer_test_strict_clean_231_mask_20260726/assets/D06_dense_final/outer_trainval_features.csv",
+    "outputs/final_outer_test_strict_clean_231_mask_20260726/assets/F06_dense_plus_pi_family_final/outer_trainval_features.csv",
+    "outputs/final_outer_test_strict_clean_231_mask_20260726/D06_dense_final/training_run_spec.json",
+    "outputs/final_outer_test_strict_clean_231_mask_20260726/F06_dense_plus_pi_family_final/training_run_spec.json",
+    "outputs/final_outer_test_strict_clean_231_mask_20260726/strict_clean_231_asset_audit.json"
+  ],
+  "file_sha256": {
+    ".gitignore": "5d94bc3946fed7ec3c5346c0caf2cf678935938fae0318c47aae467fda4941bb",
+    "AUDIT_REPORT.md": "13eb7752aff1c8acb57d45d76f93ccb25c38b0bad67365f5b4c226afec8ab681",
+    "candidate_qm_mapping.csv": "ed53e229b18a0fa2309f970fc87d85d02c3cd617312e978edd55b8b40ad401b4",
+    "completeness_summary.csv": "aed77153615e113434fa0a3a1bcecb4f3f4828a3790351a475354248d0ee3cd6",
+    "domain_knowledge_registry.csv": "699ade42308db35dd75b37ebaf7297ddc365f8efd657020e570af213ca9b9d27",
+    "endpoint_representation_registry.csv": "ca96f5d4e647eb46dc59df47031b579355ff70fd2f3f19a76373cbf13c66653d",
+    "examples/evidence_to_computational_use_examples.csv": "19921d9e8d05ec7ce40e59dc88818c962bf34e1900e6543e969ac00201ffee9e",
+    "mechanism_knowledge_registry.csv": "584682dbf45099f8b760a9db83375dd19b3ee6a299f8f3f9876c1226aede6e2e",
+    "methods_c1_crosswalk.csv": "2c32f71bec0e28c6eea36cd170e606b9bf8585bf182d3a38b4ea0f489257112b",
+    "README.md": "a691dafbe54cdd38e600bd819ce7406fa283062266f6549f7a16df945945a350",
+    "schema/controlled_vocabulary.csv": "0726a860d8dcee1a65478cc8caba357229a2e38eacd65f83eb50e6954b9dc524",
+    "schema/field_dictionary.csv": "5911261112f948aed5afd9f6ff727cbb5087922c1b5a4d0c96f4cc2b10a4ad91",
+    "source_registry.csv": "7a65ef5cadeed03f6ec339e0d839d6ae7331b8b841b8c6b269514e68ba93b57f",
+    "SUPPLEMENTARY_REGISTRY_SUMMARY.md": "10cfa36f8bac14b7f29f6ad9ee3f63ec7e11b322f88bc98b9f71c76a5a5f7317",
+    "VERSION": "f72484884faae8b33a69f5598135e9bf6da9bddf7ddded3a60662c69ca560801"
+  }
+}
