@@ -1,7 +1,0 @@
-methods_concept,registry_file,registry_keys,paper_step,statement_boundary
-literature provenance and evidence sourcing,source_registry.csv,source_id;doi;evidence_location,C1 literature knowledge formalisation,Sources support criteria/rules; missing metadata are not inferred.
-domain evaluation requirements,domain_knowledge_registry.csv,knowledge_id;normalized_rule;computational_use,definition of what a 2PI candidate should be evaluated on,"Rules define evaluation scope, not experimental validation of every endpoint."
-six predictive endpoints,endpoint_representation_registry.csv,EP001-EP006,multitask target definition,"Endpoints form predictive proxies, not direct polymerisation outcomes."
-D06 and F06 molecular representations,endpoint_representation_registry.csv,REP000;representation rows,model input construction,D06 is primary; F06 adds family-sensitive descriptors and acts diagnostically.
-mechanism-specific candidate routing,mechanism_knowledge_registry.csv,mechanism_rule_id;mechanism_lane;routing_rule,Type-I/Type-II/SET-PET assignment,Routing encodes admissibility and claim limits; it is not mechanism proof.
-representative selection and QM route,candidate_qm_mapping.csv,candidate_id;mechanism_lane;qm_route,mechanism-matched physicochemical assessment,Candidate-level numerical results require a separate consolidated result manifest.

@@ -1,0 +1,9 @@
+manuscript_concept,repository_file,keys,research_step,statement_boundary
+literature provenance and evidence sourcing,source_registry.csv,source_id;doi,knowledge-source traceability,A source supports only its recorded evidence unit.
+domain evaluation requirements,domain_knowledge_registry.csv,knowledge_id;normalized_rule;computational_use,definition of what a 2PI candidate is evaluated on,Evaluation criteria are not experimental validation of every endpoint.
+six predictive endpoints and molecular representation,endpoint_representation_registry.csv,EP001–EP006;REP rows,multitask target and model-input construction,D06 is primary; F06 is family-sensitive and diagnostic.
+model evaluation and descriptor ablation,model_evaluation_registry.csv,record_id;status,scaffold-disjoint evaluation and representation analysis,Running ablations have no final comparative conclusion.
+mechanism-specific candidate routing,mechanism_decision_registry.csv,mechanism_rule_id;mechanism_lane,Type-I/Type-II/SET-PET assignment,"Routing encodes admissibility, not mechanism proof."
+route plausibility,synthesis_route_evidence_registry.csv,route_evidence_id;route_family,family-level materialisation review,Literature route precedent is not candidate-specific synthesis validation.
+ZINC22 application and portfolio compression,screening_workflow_summary.csv,stage_id;scope,"9,939 candidates to 2,583 families to 21 representatives","Large-library deployment is an application of the framework, not an independent methodological innovation."
+representative selection and QM evidence tier,representative_qm_evidence_registry.csv,representative_id;zinc_id;evidence_tier,mechanism-matched physicochemical assessment,"The output is a QM-assessed candidate portfolio, not experimentally validated leads."

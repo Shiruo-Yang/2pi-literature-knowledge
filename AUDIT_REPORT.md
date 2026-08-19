@@ -1,20 +1,23 @@
-# Registry completeness and traceability audit
+# Completeness, traceability and claim audit
 
-Release: **v1.0** (2026-08-19)
+Release: **v2.0** (2026-08-19)
 
-| Registry | Rows | DOI/source coverage | Computational-use coverage | Pending |
-|---|---:|---:|---:|---:|
-| Sources | 45 | 45/45 DOI | n/a | 16 DOI-only title records |
-| Layer 1 domain knowledge | 44 | 44/44 | 44/44 | 18 source titles |
-| Layer 2 endpoint/representation | 37 | explicit where available | 37/37 | 9 literature mappings |
-| Layer 3 mechanism knowledge | 44 | 44/44 | 44/44 | 18 source titles |
-| Candidate/QM map | 16 | n/a | 16/16 routed | 16 unconsolidated result rows |
+## Audit result
 
-## Reproducibility checks
+- 44 unique DOI sources; title, year and journal metadata complete.
+- 25 domain-evaluation evidence units, 25 mechanism-decision rules and 19 route-evidence units resolve to a source.
+- Six targets, one graph representation and 30 trained descriptor definitions have explicit implementation/evaluation states.
+- D06 and F06 have 12 frozen task-level outer-test records; 14 strict-clean comparison rows and 6 independent sigma_max evaluation rows are also retained.
+- Strict-clean outer-test comparison is complete, but model replacement remains gated by pending external-validation and top-k-stability checks.
+- Descriptor ablation: 6/7 scheduled experiments complete; `dense_plus_pi_family` remains running and has no final comparative claim.
+- ZINC22 deployment is recorded as 9,939 candidates → 2,583 families → 21 representatives.
+- Candidate-level QM evidence is recorded for all 21 decisions: 20 neutral minima passed and one SET/PET representative was excluded after geometry failure.
 
-- Every Layer 1 and Layer 3 row resolves to a valid `source_id`.
-- Every Layer 1, Layer 2, Layer 3, and candidate/QM row records its computational use or route.
-- D06/F06 descriptor scope is checked against final feature-table headers.
-- Missing source titles and endpoint-level literature mappings remain explicit pending states.
-- Numerical evidence retains `text_exact`, `origin_digitized`, or `model_inferred` provenance.
-- Mechanism rules and candidate-level QM results remain separate evidence objects.
+## Automated release checks
+
+- No duplicate DOI records.
+- No internal absolute paths or internal working labels in the public data package.
+- Every scientific rule resolves to an existing source identifier.
+- Every candidate has a public representative identifier, a ZINC identifier, a decision status and a claim limit.
+- Running computations are reported as running, never promoted to completed results.
+- Mechanism assignment, QM support and experimental validation remain separate evidence levels.
