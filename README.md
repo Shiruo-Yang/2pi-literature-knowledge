@@ -1,54 +1,135 @@
-# Knowledge-informed prioritisation of two-photon radical photoinitiators
+# Evidence-to-decision framework for two-photon radical photoinitiator prioritisation
 
-This repository records how heterogeneous photoinitiator literature was converted into traceable evaluation criteria, molecular representations, mechanism-specific decisions and validation routes for a six-task molecular-learning and ZINC22 screening workflow.
+This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v2.0** · Snapshot: **2026-08-19**
+Release: **v2.1** · Snapshot: **2026-08-19**
+
+## At a glance
+
+| Question | What this study did |
+|---|---|
+| What is the scientific bottleneck? | High predicted two-photon response does not by itself establish radical-generation competence, formulation suitability or reliable extrapolation to a new scaffold. |
+| What is the design principle? | Prediction, reliability assessment, mechanism admissibility, portfolio construction and physicochemical assessment are treated as separate evidence layers and connected only at the candidate-decision stage. |
+| What was built? | Three traceable knowledge layers, two six-task molecular models with distinct roles, reliability/risk controls, a lane-specific ZINC22 deployment and mechanism-matched QM evidence tiers. |
+| What is the final output? | A 21-representative, QM-assessed candidate portfolio spanning Type-I, Type-II and SET/PET hypotheses. |
+| What is not claimed? | The portfolio is not a set of experimentally validated photoinitiators, and the mechanism assignments are not experimental mechanism proofs. |
 
 ```mermaid
 flowchart LR
-    A[Literature sources] --> B[Structured domain and representation knowledge]
-    B --> C[D06 primary prediction and F06 diagnostic view]
-    C --> D[Reliability and mechanism controls]
-    D --> E[ZINC22: 9,939 candidates]
-    E --> F[2,583 lane-specific families]
-    F --> G[21 representatives]
-    G --> H[Type-I, Type-II and SET/PET QM evidence tiers]
+    S[44 DOI-linked sources] --> L1[Layer 1: domain evaluation knowledge]
+    L1 --> L2[Layer 2: endpoints and molecular representations]
+    L2 --> M[D06 primary model and F06 diagnostic model]
+    M --> R[Reliability and risk controls]
+    R --> Z[ZINC22: 9,939 candidates]
+    Z --> F[2,583 lane-specific families]
+    F --> L3[Layer 3: mechanism decisions]
+    L3 --> P[21 representatives]
+    P --> Q[Lane-matched QM evidence tiers]
 ```
 
-## Five-minute review path
+## The three knowledge layers
 
-1. Read the workflow above and the status table below.
-2. Inspect five end-to-end examples in [`examples/evidence_to_computational_use_examples.csv`](examples/evidence_to_computational_use_examples.csv).
-3. Follow each manuscript concept through [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
-4. Check completeness and claim boundaries in [`AUDIT_REPORT.md`](AUDIT_REPORT.md).
+The layer labels describe scientific functions, not internal project stages.
+
+### Layer 1 — Domain evaluation knowledge: what should be evaluated?
+
+Literature evidence is represented as individual evidence units rather than merged into a sparse, all-purpose molecular database. Each unit records its source, supported statement, normalized criterion, downstream computational use and claim limit.
+
+- Covers optical response, photochemical role, initiating family, coinitiator dependence, formulation-related considerations and explicit boundary cases.
+- Connects 44 unique DOI sources to 25 domain-evaluation criteria.
+- Keeps 19 synthesis-route precedents in a separate registry so route plausibility is not confused with mechanistic evidence or experimental synthesis validation.
+- Determines which quantities enter the six-task profile and which chemical roles require admission, exclusion or further review.
+
+Primary records: [`source_registry.csv`](source_registry.csv), [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv), and [`synthesis_route_evidence_registry.csv`](synthesis_route_evidence_registry.csv).
+
+### Layer 2 — Endpoint and representation knowledge: what is predicted and how is a molecule represented?
+
+The project defines a six-task predictive profile comprising `sigma_780`, `sigma_max`, toxicity, solubility, synthetic accessibility and an intersystem-crossing-related energy proxy. These outputs are candidate-profile proxies; they are not direct measurements of photopolymerisation performance.
+
+- Both final models use the molecular graph and 11 dense RDKit descriptors.
+- D06 is the primary predictive model.
+- F06 adds 11 photoinitiator-family/topology descriptors and is used as a family-sensitive diagnostic view; D06/F06 disagreement is a reliability signal, not an equal-weight ensemble vote.
+- Eight sparse PI-core descriptors are retained in the controlled ablation study but are not inputs to the frozen D06/F06 deployment models.
+- The registry distinguishes implementation status from ablation status so a descriptor can be present in a frozen model while its independent five-fold comparison is still running.
+
+Primary records: [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) and [`model_evaluation_registry.csv`](model_evaluation_registry.csv).
+
+### Layer 3 — Mechanistic decision knowledge: how is a candidate routed and assessed?
+
+Literature-derived rules separate candidates into Type-I, Type-II and SET/PET lanes before higher-cost calculations are interpreted.
+
+- Type-I asks whether a chemically meaningful initiating bond supports a cleavage hypothesis.
+- Type-II requires an explicit coinitiator or hydrogen-donor/electron-transfer context.
+- SET/PET requires donor/acceptor assignment, redox inputs and excited-state localization review.
+- Positive, boundary and excluded cases retain different claim ceilings rather than being forced into one global score.
+- The final QM registry records candidate-specific evidence, decision status and the strongest allowed interpretation.
+
+Primary records: [`mechanism_decision_registry.csv`](mechanism_decision_registry.csv) and [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv).
+
+## What the full study completed
+
+1. Formalised literature evidence into source-linked domain, representation, mechanism and route objects.
+2. Constructed D06 and F06 six-task models and evaluated them on scaffold-disjoint outer tests.
+3. Audited reliability through simpler comparisons, strict-clean retraining analysis, independent `sigma_max` evidence, applicability-domain tiers and D06/F06 disagreement.
+4. Applied the frozen decision framework to a role-aware ZINC22 candidate space instead of treating the database as a single optical leaderboard.
+5. Compressed 9,939 candidates into 2,583 lane-specific families and then 21 representatives: seven per mechanism lane, including primary, novelty and boundary/control roles.
+6. Assigned mechanism-matched QM evidence tiers: 20 representatives reached normal neutral minima, one SET/PET representative was excluded after geometry failure, and the surviving cases retained lane-specific claim ceilings.
+
+## Distinct contributions
+
+### 1. Literature knowledge made computationally actionable
+
+The contribution is not the collection of papers itself. It is the traceable conversion of heterogeneous evidence into evaluation criteria, endpoint/descriptor definitions, mechanism rules, boundary cases and route-specific downstream uses.
+
+### 2. Reliability and mechanism jointly control candidate decisions
+
+Predicted scores are not treated as sufficient evidence. Scaffold-disjoint evaluation, independent optical evidence, applicability-domain status, D06/F06 disagreement, family diversity and mechanism admissibility are preserved as separate decision signals.
+
+### 3. Mechanism-matched routing connects screening to QM assessment
+
+Candidates are not sent through one generic QM checklist. Type-I, Type-II and SET/PET hypotheses receive different physicochemical questions, and their outcomes are reported as evidence tiers that can support, retain as exploratory or exclude a candidate.
+
+### What supports the contributions but is not claimed as a standalone innovation
+
+- Use of ZINC22 and the number of screened molecules.
+- Use of Chemprop, graph neural networks, RDKit descriptors or QM calculations by themselves.
+- A single global multi-property score.
+- Experimentally validated photopolymerisation performance.
+
+## Evidence and current status
+
+| Component | Evidence available | Current interpretation |
+|---|---|---|
+| Literature evidence | 44 unique DOI sources with complete title/year/journal metadata | Existing knowledge organised by evidence unit and computational role |
+| Frozen models | D06/F06 task-level outer tests and independent `sigma_max` evaluation | D06 is primary; F06 disagreement is diagnostic |
+| Strict-clean re-evaluation | Six-task outer-test comparison complete; replacement gate remains open | Sensitivity/retraining audit, not a replacement deployment model |
+| Descriptor ablation | 6 of 7 scheduled five-fold experiments complete | `dense_plus_pi_family` remains running; no final representation winner is claimed |
+| ZINC22 application | 9,939 candidates → 2,583 families → 21 representatives | Lane-specific portfolio construction, not a cross-lane leaderboard |
+| QM assessment | 20 neutral minima passed; one geometry-failed exclusion; lane-specific evidence tiers assigned | Minimal computational closure with conservative claim ceilings |
+
+## Five-minute verification path
+
+1. Read the three layers and contributions above.
+2. Inspect five complete source-to-use chains in [`examples/evidence_to_computational_use_examples.csv`](examples/evidence_to_computational_use_examples.csv).
+3. Map manuscript concepts to repository evidence using [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
+4. Check row counts, pending items and claim boundaries in [`AUDIT_REPORT.md`](AUDIT_REPORT.md) and [`completeness_summary.csv`](completeness_summary.csv).
 
 ## Repository map
 
-| File | What a reviewer can verify |
+| File | What can be verified |
 |---|---|
-| [`source_registry.csv`](source_registry.csv) | unique DOI, title, year, journal and evidence use |
+| [`source_registry.csv`](source_registry.csv) | DOI, title, year, journal and evidence use |
 | [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv) | source → evidence → normalized evaluation criterion → downstream use |
-| [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) | six targets; graph; D06/F06 and ablation descriptor status |
+| [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) | six endpoints, graph representation and descriptor implementation/evaluation status |
 | [`mechanism_decision_registry.csv`](mechanism_decision_registry.csv) | Type-I/Type-II/SET-PET routing, context and claim limits |
 | [`synthesis_route_evidence_registry.csv`](synthesis_route_evidence_registry.csv) | route precedent kept separate from mechanism evidence |
-| [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer-test metrics and live descriptor-ablation status |
-| [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 application, family compression, representative selection and novelty QC |
+| [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
+| [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
 | [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
-
-## Research status at this snapshot
-
-| Component | Status | Public interpretation |
-|---|---|---|
-| Literature evidence | 44 unique DOI sources; metadata complete | existing evidence organised by computational role |
-| Frozen models | D06/F06 outer-test audit and independent sigma_max evaluation available | D06 is primary; F06 disagreement is diagnostic |
-| Strict-clean re-evaluation | six-task outer-test comparison complete; replacement gate still open | reported as a sensitivity/retraining audit, not promoted to the deployment backbone |
-| Descriptor ablation | 6 of 7 scheduled five-fold experiments complete | dense-plus-PI-family remains running; no final winner claimed |
-| ZINC22 application | 9,939 candidates → 2,583 families → 21 representatives | lane-specific portfolio, not global leaderboard |
-| QM assessment | 20 neutral minima passed; one geometry-failed exclusion; lane-specific evidence tiers assigned | minimal computational closure with conservative claim ceilings |
 
 ## Interpretation boundary
 
-The six tasks are predictive proxies, not six experimentally validated properties. Mechanism rules define admissibility; they do not prove mechanism. The final output is a **computationally prioritised, QM-assessed and mechanism-admissible candidate portfolio**, not a set of experimentally validated photoinitiator leads.
+The supported repository-level claim is a **literature-grounded, reliability-audited and mechanism-constrained computational prioritisation workflow** that produces a **QM-assessed candidate portfolio**. Experimental polymerisation, printing and formulation validation remain a separate evidence layer.
 
 ## Versioning and validation
 

@@ -1,6 +1,6 @@
 # Completeness, traceability and claim audit
 
-Release: **v2.0** (2026-08-19)
+Release: **v2.1** (2026-08-19)
 
 ## Audit result
 

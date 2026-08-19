@@ -1,11 +1,11 @@
 {
   "package": "two_photon_photoinitiator_knowledge_and_decision_evidence",
-  "release": "v2.0",
+  "release": "v2.1",
   "release_date": "2026-08-19",
   "snapshot": true,
   "principle": "evidence unit plus computational role",
   "builder_version": "2.0.0",
-  "builder_sha256": "42da3fdba5828226c87d87e8240fbc2813e2079ea150b8b79c748157356d2238",
+  "builder_sha256": "70c70432fc6a49be426a86409f3f94c0d39d258f11e52325cb06b5338cf59177",
   "source_asset_sha256": {
     "literature_evidence_extraction": "d82ad27485a039c6bc0a2ed5079eb5bd08b8efca2abb1740c4f3c5f22624b512",
     "formalised_lane_and_route_evidence": "9b3490323aa35e967efcbdc545363e789540f0ef1bffbfa2faddc006742d1e4c",
@@ -15,7 +15,7 @@
     "strict_clean_model_comparison": "98ee0378bd8ad10c970e5139a53929c281da4c88aad86d951beca6c6f043f790",
     "strict_clean_replacement_gate": "46ea89a1e37c0f040f42c9ac66b42e1a6a4d0d8f819b02be2a46536d209506e1",
     "independent_sigma_max_metrics": "7411e48a809fcf38b11aa835d86f83d56cac62ba3016a2ac01529fd61f892b22",
-    "descriptor_ablation_status": "0ed4dae66e4e2e937f22d79f88d15b67a67bcf23f85da1b22ecbc05396be7dfa",
+    "descriptor_ablation_status": "da7ea55beb4dc23e63890b958e0f374d3a230ab07a5f47f8862b962ddfab820c",
     "strict_clean_asset_audit": "7f4d83fbb4ac57b28c6c6a0f8a47218c0bca0c0bae241a7bb7563409cbc74fa7",
     "zinc22_forward_audit": "2aebacf70415476e675d6ccd975ee5a88ee5e930218cd3abf85a37c6334db849",
     "final_representative_slate": "cc1a9fd6866eacadbc0892bdd9a8204e06e83e3979b5260bde686dacfe740162",
@@ -28,7 +28,7 @@
   },
   "file_sha256": {
     ".gitignore": "5d94bc3946fed7ec3c5346c0caf2cf678935938fae0318c47aae467fda4941bb",
-    "AUDIT_REPORT.md": "01e3d5faecd39edb17b99abd638b7d80dd479699f488034dffc5b879b773b1f0",
+    "AUDIT_REPORT.md": "151d2a192d218f9b4781ab00d9599f58de8e3b0c15a9a7345fabed0a4e8675cb",
     "completeness_summary.csv": "c9354c199e995ac1669126b643994ddbf729d5a4b74bad3145d00f1879e17a93",
     "domain_knowledge_registry.csv": "0415c99a4e7bb5418490c9dc6102c7a2a52f97eeeaa10ff65d7963c3524067f8",
     "endpoint_representation_registry.csv": "2e75b3e27eb3d79d4488219e409489dc38dd12e5484915efbbca413ce263e445",
@@ -36,15 +36,15 @@
     "manuscript_repository_crosswalk.csv": "469188bde8b0288e27204a80ee134c0d9d58d647e7a497af1e8eb611eec574c5",
     "mechanism_decision_registry.csv": "8c72d46f05005c1addfc0abe5d35b0114aa9def9735f6034cff5d953c37141d0",
     "model_evaluation_registry.csv": "2bea154ab5605d293a8c7bd040b4790a646aaa97b0c96037b0ae49d7b3c067f3",
-    "README.md": "a63685d5ac1a7d6be7ff35f4b1f29ef0539b2b2c5445fefc97ec208d6f81e8d4",
+    "README.md": "d473cb49f09799793fb69ac7757d6c7793cd6486c080667cccabe55ce0971174",
     "representative_qm_evidence_registry.csv": "f59bccaf62eabf4cbe53d4c964e1eec1bfcc7b94bc25e544e20b5d1598b4b1a8",
     "schema/controlled_vocabulary.csv": "fb07c0e041d1a1d5516212e4ff32968bfaba1cc19253802101cdf82fb2443678",
     "schema/field_dictionary.csv": "88cb8bbaa0029c26d470df9ac21f6c13a36e651d61f68d843bee870b09ff7f78",
     "screening_workflow_summary.csv": "5e185f7d9d9b435a7f12367c32d3b1e2a2c2bef872d60e9cb3ce08a0a5542f7c",
     "scripts/validate_release.py": "67040e847cef21cd511bfdedb84da6c1966b9d1ea3cfca7d8fb352a55ae54f55",
     "source_registry.csv": "618f9ca0828c9642b3b7c9f870e5b7652a58c63c66d8d559c27f639da7e047e1",
-    "SUPPLEMENTARY_REGISTRY_SUMMARY.md": "bb30929c5d974e00c0abb88d8a00428d0e87d84e780593fd6de92e9cd7bada8f",
+    "SUPPLEMENTARY_REGISTRY_SUMMARY.md": "79dd6f72e9a70e4eeb980aea60ba4e12853396dd0090081985e8bb43bea78f50",
     "synthesis_route_evidence_registry.csv": "7f56a345f9306fa3fa58e619029263d6f99cc6a95949c6bd374f73dd949ecfdd",
-    "VERSION": "d059207c0cf79af213aec9ac78ae77656b9480877ae89331eabde8af714d416f"
+    "VERSION": "8a80d30649b3964f83c41dc7fc8bbcd5d7916395a4a8c32248fa038b6cfe6127"
   }
 }
