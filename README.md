@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v2.1** · Snapshot: **2026-08-19**
+Release: **v3.0** · Snapshot: **2026-08-19**
 
 ## At a glance
 
@@ -16,7 +16,8 @@ Release: **v2.1** · Snapshot: **2026-08-19**
 
 ```mermaid
 flowchart LR
-    S[44 DOI-linked sources] --> L1[Layer 1: domain evaluation knowledge]
+    S[44-DOI source pool] --> E[Evidence units with complete citation clusters]
+    E --> L1[Layer 1: domain evaluation knowledge]
     L1 --> L2[Layer 2: endpoints and molecular representations]
     L2 --> M[D06 primary model and F06 diagnostic model]
     M --> R[Reliability and risk controls]
@@ -36,7 +37,8 @@ The layer labels describe scientific functions, not internal project stages.
 Literature evidence is represented as individual evidence units rather than merged into a sparse, all-purpose molecular database. Each unit records its source, supported statement, normalized criterion, downstream computational use and claim limit.
 
 - Covers optical response, photochemical role, initiating family, coinitiator dependence, formulation-related considerations and explicit boundary cases.
-- Connects 44 unique DOI sources to 25 domain-evaluation criteria.
+- The source pool contains 44 unique DOIs; the formalised rule registries use the source subsets and citation clusters recorded for each evidence unit rather than implying that every source generated every rule.
+- Each rule exposes a primary source for readability and a complete, deduplicated citation cluster for verification.
 - Keeps 19 synthesis-route precedents in a separate registry so route plausibility is not confused with mechanistic evidence or experimental synthesis validation.
 - Determines which quantities enter the six-task profile and which chemical roles require admission, exclusion or further review.
 
@@ -45,6 +47,17 @@ Primary records: [`source_registry.csv`](source_registry.csv), [`domain_knowledg
 ### Layer 2 — Endpoint and representation knowledge: what is predicted and how is a molecule represented?
 
 The project defines a six-task predictive profile comprising `sigma_780`, `sigma_max`, toxicity, solubility, synthetic accessibility and an intersystem-crossing-related energy proxy. These outputs are candidate-profile proxies; they are not direct measurements of photopolymerisation performance.
+
+| Endpoint | Raw unit/scale | Valid labels | Frozen target transform |
+|---|---|---:|---|
+| `sigma_780` | GM | 209,162 | affine-standardised `log10(1 + y)` |
+| `sigma_max` | GM | 209,162 | affine-standardised `log10(1 + y)` |
+| toxicity | dimensionless dataset score | 209,162 | affine-standardised identity |
+| solubility | µg mL−1 | 127,943 | affine-standardised `log10(1 + y)` |
+| synthetic accessibility | dimensionless local 0–1 score | 209,162 | affine-standardised identity |
+| `isc_energy` | eV | 129,671 | affine-standardised identity |
+
+Exact forward/inverse formulae, invalid-value handling and source-field mappings are provided in [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv). These definitions describe the frozen deployment assets; strict-clean retraining is reported separately as a sensitivity audit.
 
 - Both final models use the molecular graph and 11 dense RDKit descriptors.
 - D06 is the primary predictive model.
@@ -65,6 +78,8 @@ Literature-derived rules separate candidates into Type-I, Type-II and SET/PET la
 - The final QM registry records candidate-specific evidence, decision status and the strongest allowed interpretation.
 
 Primary records: [`mechanism_decision_registry.csv`](mechanism_decision_registry.csv) and [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv).
+
+Route evidence uses three defined provenance classes: `direct_route_precedent`, `qualified_close_analogue` and `contextual_or_analogous_support`. The classes support route-plausibility review only and are never used as model inputs or ranking weights.
 
 ## What the full study completed
 
@@ -126,6 +141,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 | [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
 | [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
 | [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
+| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen closure criteria and the boundary between completed knowledge curation and ongoing model evaluation |
 
 ## Interpretation boundary
 

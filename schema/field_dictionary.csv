@@ -1,8 +1,19 @@
 field,registry,required,human_meaning
-source_id,source/domain/mechanism/synthesis,yes,Stable identifier joining a formalised evidence unit to one unique DOI source.
+source_id,source/domain/mechanism/synthesis,yes,"Stable identifier for the primary source, defined as the first source in the preserved supporting-source order."
+supporting_source_ids,domain/mechanism/synthesis,yes,"Complete, deduplicated semicolon-separated cluster of stable source identifiers supporting the evidence unit."
+supporting_dois,domain/mechanism/synthesis,yes,"Complete, deduplicated semicolon-separated DOI citation cluster supporting the evidence unit."
+supporting_source_count,domain/mechanism/synthesis,yes,Number of unique sources in the evidence unit's citation cluster.
 evidence_summary,domain/endpoint/mechanism/synthesis,yes,Plain-language statement of what the source or project asset supports.
 normalized_rule,domain/endpoint/mechanism,yes,Decision-actionable formalisation of the evidence.
+definition,endpoint,yes for endpoints,Submission-ready scientific definition of the predictive endpoint.
+original_unit,endpoint,yes for endpoints,Unit or scale of the raw target before the frozen task transform.
+training_unit,endpoint,yes for endpoints,Unit/scale of the target supplied to the frozen D06/F06 assets.
+valid_label_count,endpoint,yes for endpoints,Number of finite task labels across the frozen deployment corpus.
+transformation,endpoint,yes for endpoints,Exact raw-to-training-scale formula used by the frozen deployment assets.
+inverse_transformation,endpoint,yes for endpoints,Exact training-to-raw-scale formula used for physical-unit reporting.
+invalid_value_handling,endpoint,yes for endpoints,"Missing, non-finite, physically invalid and inverse-domain handling policy."
 computational_use,domain/endpoint/mechanism/synthesis,yes,"The model, filter, or routing step that consumes the formalised object."
 status,all,yes,"Implementation, evaluation, traceability, or decision state."
 claim_limit,model/screening/QM,yes,Highest interpretation supported by the recorded evidence.
 evidence_tier,representative QM,yes,Conservative candidate-level physicochemical support category.
+route_evidence_class,synthesis,yes,"Descriptive route-provenance class; never used as a score, ranking weight or model input."

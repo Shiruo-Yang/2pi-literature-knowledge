@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import hashlib
 import re
 from pathlib import Path
@@ -26,6 +27,46 @@ for path in ROOT.rglob("*"):
     for pattern in (r"[A-Z]:\\", r"/share/home/", r"(?i)round\s*29", r"(?i)methods_c1|#\s*C1\b|\bC1 formalises"):
         if re.search(pattern, text):
             failures.append(f"sensitive/internal token in {path.relative_to(ROOT)}: {pattern}")
+
+def rows(name):
+    with (ROOT / name).open("r", encoding="utf-8-sig", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+source_ids = {row["source_id"] for row in rows("source_registry.csv")}
+for registry in ("domain_knowledge_registry.csv", "mechanism_decision_registry.csv", "synthesis_route_evidence_registry.csv"):
+    for row in rows(registry):
+        dois = [value for value in row["supporting_dois"].split(";") if value]
+        ids = [value for value in row["supporting_source_ids"].split(";") if value]
+        if not dois or not ids:
+            failures.append(f"empty citation cluster: {registry} {next(iter(row.values()))}")
+        if len(dois) != len(set(dois)) or len(ids) != len(set(ids)):
+            failures.append(f"duplicate citation-cluster member: {registry} {next(iter(row.values()))}")
+        if len(dois) != len(ids) or len(dois) != int(row["supporting_source_count"]):
+            failures.append(f"citation-cluster count mismatch: {registry} {next(iter(row.values()))}")
+        if not set(ids).issubset(source_ids):
+            failures.append(f"unresolved supporting source: {registry} {next(iter(row.values()))}")
+
+required_endpoint_fields = (
+    "definition", "original_unit", "training_unit", "valid_label_count", "transformation",
+    "inverse_transformation", "invalid_value_handling", "source",
+)
+endpoints = [row for row in rows("endpoint_representation_registry.csv") if row["item_type"] == "endpoint"]
+if len(endpoints) != 6:
+    failures.append(f"expected 6 endpoints, found {len(endpoints)}")
+for row in endpoints:
+    for field in required_endpoint_fields:
+        if not row[field].strip():
+            failures.append(f"missing endpoint field {field}: {row['item_id']}")
+    try:
+        if int(row["valid_label_count"]) <= 0:
+            failures.append(f"invalid endpoint label count: {row['item_id']}")
+    except ValueError:
+        failures.append(f"non-integer endpoint label count: {row['item_id']}")
+
+route_levels = {row["route_evidence_class"] for row in rows("synthesis_route_evidence_registry.csv")}
+allowed_route_levels = {"direct_route_precedent", "qualified_close_analogue", "contextual_or_analogous_support"}
+if not route_levels.issubset(allowed_route_levels):
+    failures.append(f"undefined route evidence class(es): {sorted(route_levels - allowed_route_levels)}")
 if failures:
     raise SystemExit("\n".join(failures))
 print("Release validation passed.")

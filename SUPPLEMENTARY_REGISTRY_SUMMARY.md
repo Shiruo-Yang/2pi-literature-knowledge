@@ -1,4 +1,4 @@
-# Supplementary registry summary (v2.1)
+# Supplementary registry summary (v3.0)
 
 This compact summary makes the knowledge-to-decision logic understandable without requiring inspection of the full repository.
 
