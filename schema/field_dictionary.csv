@@ -15,5 +15,9 @@ invalid_value_handling,endpoint,yes for endpoints,"Missing, non-finite, physical
 computational_use,domain/endpoint/mechanism/synthesis,yes,"The model, filter, or routing step that consumes the formalised object."
 status,all,yes,"Implementation, evaluation, traceability, or decision state."
 claim_limit,model/screening/QM,yes,Highest interpretation supported by the recorded evidence.
+rmse_std,model descriptor ablation,yes for completed ablations,Standard deviation of the five fold-level six-task macro RMSE values.
+oof_rmse,model descriptor ablation,yes for completed ablations,Six-task macro RMSE calculated from pooled out-of-fold predictions.
+fold_consistency,model descriptor ablation,yes for completed ablations,Hash-based confirmation that all configurations used the same validation membership in each fold.
+completed_at,model descriptor ablation,yes for completed ablations,Queue completion timestamp recorded in the training log.
 evidence_tier,representative QM,yes,Conservative candidate-level physicochemical support category.
 route_evidence_class,synthesis,yes,"Descriptive route-provenance class; never used as a score, ranking weight or model input."

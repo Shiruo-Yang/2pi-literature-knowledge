@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.0** · Snapshot: **2026-08-19**
+Release: **v3.1** · Snapshot: **2026-08-20**
 
 ## At a glance
 
@@ -63,7 +63,7 @@ Exact forward/inverse formulae, invalid-value handling and source-field mappings
 - D06 is the primary predictive model.
 - F06 adds 11 photoinitiator-family/topology descriptors and is used as a family-sensitive diagnostic view; D06/F06 disagreement is a reliability signal, not an equal-weight ensemble vote.
 - Eight sparse PI-core descriptors are retained in the controlled ablation study but are not inputs to the frozen D06/F06 deployment models.
-- The registry distinguishes implementation status from ablation status so a descriptor can be present in a frozen model while its independent five-fold comparison is still running.
+- The registry distinguishes implementation status from ablation status: all seven five-fold comparisons are complete, but the frozen D06/F06 deployment roles remain unchanged.
 
 Primary records: [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) and [`model_evaluation_registry.csv`](model_evaluation_registry.csv).
 
@@ -118,7 +118,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 | Literature evidence | 44 unique DOI sources with complete title/year/journal metadata | Existing knowledge organised by evidence unit and computational role |
 | Frozen models | D06/F06 task-level outer tests and independent `sigma_max` evaluation | D06 is primary; F06 disagreement is diagnostic |
 | Strict-clean re-evaluation | Six-task outer-test comparison complete; replacement gate remains open | Sensitivity/retraining audit, not a replacement deployment model |
-| Descriptor ablation | 6 of 7 scheduled five-fold experiments complete | `dense_plus_pi_family` remains running; no final representation winner is claimed |
+| Descriptor ablation | 7 of 7 scheduled five-fold experiments complete; validation-set hashes matched in all 35 fold/configuration checks | `dense_plus_pi_core` had the lowest observed macro RMSE (0.284826 ± 0.055743); this does not replace D06/F06 or establish statistical superiority |
 | ZINC22 application | 9,939 candidates → 2,583 families → 21 representatives | Lane-specific portfolio construction, not a cross-lane leaderboard |
 | QM assessment | 20 neutral minima passed; one geometry-failed exclusion; lane-specific evidence tiers assigned | Minimal computational closure with conservative claim ceilings |
 
@@ -141,7 +141,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 | [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
 | [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
 | [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
-| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen closure criteria and the boundary between completed knowledge curation and ongoing model evaluation |
+| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the v3.1 model-evidence maintenance boundary |
 
 ## Interpretation boundary
 

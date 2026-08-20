@@ -1,8 +1,8 @@
 # Literature-integration closure record
 
-Release: **v3.0** (2026-08-19)
+Release: **v3.1** (2026-08-20)
 
-The literature-integration package is frozen for manuscript use. Further expansion of the source corpus or large-scale evidence extraction is outside this release scope.
+The literature-integration layer was frozen in v3.0. This v3.1 maintenance snapshot updates the completed descriptor-ablation evidence without reopening or expanding the literature corpus.
 
 ## Closure criteria
 
@@ -13,4 +13,4 @@ The literature-integration package is frozen for manuscript use. Further expansi
 
 ## Scope boundary
 
-The running `dense_plus_pi_family` descriptor-ablation experiment belongs to model-representation evaluation, not to unfinished literature curation. Its eventual result may update the model-results registry, but it does not reopen this literature-integration release. Strict-clean retraining remains a separate sensitivity audit and does not replace the frozen D06/F06 endpoint definitions in this snapshot.
+All seven strict-clean descriptor-ablation configurations completed on 20 August 2026. `dense_plus_pi_core` produced the lowest observed mean macro RMSE, but this sensitivity result neither establishes statistical superiority nor replaces the frozen D06/F06 deployment roles. Strict-clean retraining remains a separate sensitivity audit and does not replace the frozen endpoint definitions. The literature-integration layer remains closed.

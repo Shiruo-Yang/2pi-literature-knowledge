@@ -1,9 +1,9 @@
 component,registry,total_items,doi_complete,computational_link_complete,pending_items,summary
 Sources,source_registry.csv,44,44,n/a,0,"Unique DOI records with frozen title, year and journal metadata."
 Domain evaluation knowledge,domain_knowledge_registry.csv,25,25,25,0,All rules expose complete deduplicated citation clusters; 19 rules have more than one supporting source.
-Endpoint and representation knowledge,endpoint_representation_registry.csv,37,endpoint-dependent,37,0,"Six submission-ready endpoint definitions plus molecular graph and 30 descriptor definitions. Ongoing representation ablation is tracked separately as model evaluation, not as unfinished knowledge curation."
+Endpoint and representation knowledge,endpoint_representation_registry.csv,37,endpoint-dependent,37,0,Six submission-ready endpoint definitions plus molecular graph and 30 descriptor definitions; the seven scheduled representation ablations are complete.
 Mechanism decision knowledge,mechanism_decision_registry.csv,25,25,25,0,All rules expose complete deduplicated citation clusters; 19 rules have more than one supporting source.
 Synthesis-route evidence,synthesis_route_evidence_registry.csv,19,19,19,0,All records expose complete citation clusters (0 multi-source records) and use defined descriptive provenance classes; route classes are not ranking weights.
-Model evidence,model_evaluation_registry.csv,40,n/a,40,2,"Frozen outer-test, strict-clean comparison, independent sigma_max and ablation evidence; 6/7 ablations complete and strict-clean replacement remains gated."
+Model evidence,model_evaluation_registry.csv,40,n/a,40,1,"Frozen outer-test, strict-clean comparison, independent sigma_max and completed ablation evidence; 7/7 ablations complete. Strict-clean replacement remains the only open model-level decision gate."
 Screening workflow,screening_workflow_summary.csv,6,n/a,6,0,"Completed 9,939 → 2,583 → 21 portfolio compression and novelty QC."
 Representative/QM evidence,representative_qm_evidence_registry.csv,21,n/a,21,0,"21 final-slate records, including conservative evidence tiers and one failed-geometry exclusion."

@@ -67,6 +67,20 @@ route_levels = {row["route_evidence_class"] for row in rows("synthesis_route_evi
 allowed_route_levels = {"direct_route_precedent", "qualified_close_analogue", "contextual_or_analogous_support"}
 if not route_levels.issubset(allowed_route_levels):
     failures.append(f"undefined route evidence class(es): {sorted(route_levels - allowed_route_levels)}")
+
+ablations = [row for row in rows("model_evaluation_registry.csv") if row["evidence_class"] == "descriptor_ablation"]
+if len(ablations) != 7:
+    failures.append(f"expected 7 descriptor ablations, found {len(ablations)}")
+if any(row["status"] != "completed" for row in ablations):
+    failures.append("descriptor-ablation registry contains a non-completed row")
+if any(row["n_folds"] != "5" for row in ablations):
+    failures.append("descriptor-ablation registry contains an incomplete fold count")
+if any(row["fold_consistency"] != "all validation-set hashes matched graph_only" for row in ablations):
+    failures.append("descriptor-ablation fold-consistency check failed")
+if ablations:
+    best = min(ablations, key=lambda row: float(row["rmse"]))
+    if best["model_or_experiment"] != "dense_plus_pi_core":
+        failures.append(f"unexpected lowest-RMSE ablation: {best['model_or_experiment']}")
 if failures:
     raise SystemExit("\n".join(failures))
 print("Release validation passed.")
