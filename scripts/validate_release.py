@@ -63,6 +63,52 @@ for row in endpoints:
     except ValueError:
         failures.append(f"non-integer endpoint label count: {row['item_id']}")
 
+derivation = rows("task_weight_derivation_registry.csv")
+if len(derivation) != 10 or [int(row["stage_order"]) for row in derivation] != list(range(1, 11)):
+    failures.append("task-weight derivation chain is incomplete or out of order")
+
+task_order = ["sigma_780", "sigma_max", "toxicity", "solubility", "synthetic_accessibility", "isc_energy"]
+task_weights = rows("task_weight_policy_registry.csv")
+if len(task_weights) != 6 or [row["task"] for row in task_weights] != task_order:
+    failures.append("task-weight policy does not contain the ordered six-task vector")
+else:
+    unit_sum = sum(float(row["normalized_mt6_weight"]) for row in task_weights)
+    scaled_sum = sum(float(row["chemprop_scaled_weight"]) for row in task_weights)
+    if abs(unit_sum - 1.0) > 2e-6:
+        failures.append(f"normalised task weights do not sum to one: {unit_sum}")
+    if abs(scaled_sum - 6.0) > 2e-5:
+        failures.append(f"Chemprop-scaled task weights do not sum to six: {scaled_sum}")
+    if any(row["D06_exact_match"] != "true" or row["F06_exact_match"] != "true" for row in task_weights):
+        failures.append("task-weight policy does not match both final model specifications")
+
+implementations = rows("task_weight_model_implementation_registry.csv")
+if len(implementations) != 12:
+    failures.append(f"expected 12 task-weight implementation rows, found {len(implementations)}")
+if any(row["exact_match"] != "true" for row in implementations):
+    failures.append("final model task-weight implementation mismatch")
+if any(row["validation_used"] != "false" or row["outer_test_used_for_training"] != "false" or row["outer_test_used_for_scaler_fitting"] != "false" for row in implementations):
+    failures.append("task-weight implementation leakage-control field failed")
+if any(row["checkpoint_selection"] != "final_epoch_only" for row in implementations):
+    failures.append("unexpected task-weight implementation checkpoint policy")
+
+sensitivities = rows("task_weight_sensitivity_registry.csv")
+if len(sensitivities) != 5:
+    failures.append(f"expected 5 task-weight sensitivity schemes, found {len(sensitivities)}")
+if any(row["status"] != "completed" or row["n_folds"] != "5" for row in sensitivities):
+    failures.append("task-weight sensitivity registry contains an incomplete scheme")
+if sensitivities:
+    best_weight_scheme = min(sensitivities, key=lambda row: float(row["macro_rmse_mean"]))["scheme_label"]
+    if best_weight_scheme != "D06_equal":
+        failures.append(f"unexpected lowest-RMSE task-weight scheme: {best_weight_scheme}")
+
+node_disclosures = rows("task_weight_node_disclosure_registry.csv")
+if len(node_disclosures) != 5:
+    failures.append(f"expected 5 task-weight node disclosures, found {len(node_disclosures)}")
+if any(row["response_status"] != "fallback" or row["status"] != "deterministic_fallback_disclosed" for row in node_disclosures):
+    failures.append("task-weight node disclosure does not record deterministic fallback for every node")
+if any("no external LLM output used" not in row["effective_model_and_version"] for row in node_disclosures):
+    failures.append("task-weight node disclosure incorrectly implies an external LLM output")
+
 route_levels = {row["route_evidence_class"] for row in rows("synthesis_route_evidence_registry.csv")}
 allowed_route_levels = {"direct_route_precedent", "qualified_close_analogue", "contextual_or_analogous_support"}
 if not route_levels.issubset(allowed_route_levels):

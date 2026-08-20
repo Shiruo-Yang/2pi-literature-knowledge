@@ -19,5 +19,13 @@ rmse_std,model descriptor ablation,yes for completed ablations,Standard deviatio
 oof_rmse,model descriptor ablation,yes for completed ablations,Six-task macro RMSE calculated from pooled out-of-fold predictions.
 fold_consistency,model descriptor ablation,yes for completed ablations,Hash-based confirmation that all configurations used the same validation membership in each fold.
 completed_at,model descriptor ablation,yes for completed ablations,Queue completion timestamp recorded in the training log.
+formula_or_rule,task-weight derivation,yes,Auditable mathematical or procedural transformation connecting one task-prior stage to the next.
+normalized_mt6_weight,task-weight policy,yes,Six-task utility weight after removal of absorption_range and renormalisation to a unit sum.
+chemprop_scaled_weight,task-weight policy,yes,Equivalent mean-one task weight saved by Chemprop; equal to six times the unit-sum weight.
+exact_match,task-weight model implementation,yes,Whether the archived final training specification matches the frozen task-prior value.
+normalized_weight_vector,task-weight sensitivity,yes,Ordered six-task vector used in the controlled D06 sensitivity scheme.
+delta_macro_rmse_vs_equal,task-weight sensitivity,yes,Five-fold macro-RMSE difference from the equal-weight control; positive values are worse.
+response_status,task-weight node disclosure,yes,Archived provider response state; all five task-prior nodes record deterministic fallback.
+effective_model_and_version,task-weight node disclosure,yes,Configured external model used by the node; blank/not configured means no external LLM output was used.
 evidence_tier,representative QM,yes,Conservative candidate-level physicochemical support category.
 route_evidence_class,synthesis,yes,"Descriptive route-provenance class; never used as a score, ranking weight or model input."

@@ -2,5 +2,7 @@ field,allowed_values,definition
 mechanism_lane,Type-I|Type-II|SET/PET|boundary variants,Mechanism-aware routing category.
 model_role,D06 primary|F06 family-sensitive diagnostic,The two frozen models are not treated as equal-weight voters.
 ablation_status,completed|pending_or_running,Only completed five-fold experiments receive comparative results.
+task_weight_interpretation,deployment-utility prior|controlled sensitivity alternative,The deployed literature-prior vector encodes study priorities; sensitivity vectors test dependence and are not outer-test-selected models.
+task_weight_node_status,deterministic_fallback_disclosed,No external model was configured and no external LLM-generated role score was used.
 route_evidence_class,direct_route_precedent|qualified_close_analogue|contextual_or_analogous_support,"Direct precedent reports the stated transformation on a PI/chromophore-relevant substrate; qualified close analogue differs in substrate, target family or exact route; contextual/analogous support provides reaction or motif context only. These classes describe provenance and are not numerical scores."
 evidence_tier,QM-supported cleavage hypothesis|coinitiator-compatible exploratory with ET-proxy support|redox-input plus manual D/A-adjudication exploratory|mechanism-route assessed|excluded,Candidate-specific claim ceiling after mechanism-matched QM assessment.

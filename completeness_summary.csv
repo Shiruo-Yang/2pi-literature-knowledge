@@ -2,6 +2,11 @@ component,registry,total_items,doi_complete,computational_link_complete,pending_
 Sources,source_registry.csv,44,44,n/a,0,"Unique DOI records with frozen title, year and journal metadata."
 Domain evaluation knowledge,domain_knowledge_registry.csv,25,25,25,0,All rules expose complete deduplicated citation clusters; 19 rules have more than one supporting source.
 Endpoint and representation knowledge,endpoint_representation_registry.csv,37,endpoint-dependent,37,0,Six submission-ready endpoint definitions plus molecular graph and 30 descriptor definitions; the seven scheduled representation ablations are complete.
+Task-weight derivation,task_weight_derivation_registry.csv,10,upstream targeted corpus,10,0,Complete 34-paper evidence-to-11-field-to-seven-indicator-to-six-task derivation chain with deterministic-fallback and claim boundaries.
+Task-weight policy,task_weight_policy_registry.csv,6,endpoint-linked,6,0,Six exact normalised and Chemprop-scaled weights; every task matches both final D06 and F06 training specifications.
+Task-weight model implementation,task_weight_model_implementation_registry.csv,12,n/a,12,0,"Twelve model-task rows verify the frozen vector in D06 and F06, with training-spec hashes and leakage-control fields."
+Task-weight sensitivity,task_weight_sensitivity_registry.csv,5,n/a,5,0,Five completed five-fold schemes; D06_equal had the lowest observed macro RMSE. The deployed literature prior is not performance optimal.
+Task-weight node disclosure,task_weight_node_disclosure_registry.csv,5,n/a,5,0,"Four role nodes and one adjudicator fully disclose blank model configuration, deterministic fallback, prompt hashes and the no-external-LLM boundary."
 Mechanism decision knowledge,mechanism_decision_registry.csv,25,25,25,0,All rules expose complete deduplicated citation clusters; 19 rules have more than one supporting source.
 Synthesis-route evidence,synthesis_route_evidence_registry.csv,19,19,19,0,All records expose complete citation clusters (0 multi-source records) and use defined descriptive provenance classes; route classes are not ranking weights.
 Model evidence,model_evaluation_registry.csv,40,n/a,40,1,"Frozen outer-test, strict-clean comparison, independent sigma_max and completed ablation evidence; 7/7 ablations complete. Strict-clean replacement remains the only open model-level decision gate."
