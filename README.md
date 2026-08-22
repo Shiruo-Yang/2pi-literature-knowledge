@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.2** · Snapshot: **2026-08-20**
+Release: **v3.3-local-source-audit** · Snapshot: **2026-08-22**
 
 ## At a glance
 
@@ -16,7 +16,7 @@ Release: **v3.2** · Snapshot: **2026-08-20**
 
 ```mermaid
 flowchart LR
-    S[44-DOI source pool] --> E[Evidence units with complete citation clusters]
+    S[45-DOI source pool + local-source audit] --> E[Evidence units with complete citation clusters]
     E --> L1[Layer 1: domain evaluation knowledge]
     L1 --> L2[Layer 2: endpoints and molecular representations]
     L2 --> W[Audited six-task utility prior]
@@ -38,12 +38,18 @@ The layer labels describe scientific functions, not internal project stages.
 Literature evidence is represented as individual evidence units rather than merged into a sparse, all-purpose molecular database. Each unit records its source, supported statement, normalized criterion, downstream computational use and claim limit.
 
 - Covers optical response, photochemical role, initiating family, coinitiator dependence, formulation-related considerations and explicit boundary cases.
-- The source pool contains 44 unique DOIs; the formalised rule registries use the source subsets and citation clusters recorded for each evidence unit rather than implying that every source generated every rule.
+- The source pool contains 45 unique DOI records after a reverse audit of local full-text and QM assets; the formalised rule registries use the source subsets and citation clusters recorded for each evidence unit rather than implying that every source generated every rule.
 - Each rule exposes a primary source for readability and a complete, deduplicated citation cluster for verification.
 - Keeps 19 synthesis-route precedents in a separate registry so route plausibility is not confused with mechanistic evidence or experimental synthesis validation.
 - Determines which quantities enter the six-task profile and which chemical roles require admission, exclusion or further review.
 
 Primary records: [`source_registry.csv`](source_registry.csv), [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv), and [`synthesis_route_evidence_registry.csv`](synthesis_route_evidence_registry.csv).
+
+### Local full-text and QM source audit
+
+The reverse audit found one genuinely used local primary source that was absent from the previous 44-DOI snapshot: Malval et al., *Chemistry of Materials* (2011), DOI `10.1021/cm200595y`. It is now registered as `SRC045` and decomposed into three source-linked evidence units covering task-prior input, thioxanthone family/topology representation and MDEA-assisted Type-II mechanism context. See [`local_source_evidence_registry.csv`](local_source_evidence_registry.csv) and [`local_source_audit_20260822.md`](local_source_audit_20260822.md). The raw workspace DOI scan is retained for audit only; citation-list occurrences are not automatically treated as learned evidence.
+
+The local Zotero parse queue contains 345 parsed PDFs. [`local_pdf_source_inventory.csv`](local_pdf_source_inventory.csv) exposes their DOI/title metadata without local storage paths and distinguishes the 4 records already linked to public structured evidence from 341 `raw_text_only` records. Raw parsing is deliberately not presented as completed evidence extraction or model learning.
 
 ### Layer 2 — Endpoint and representation knowledge: what is predicted and how is a molecule represented?
 
