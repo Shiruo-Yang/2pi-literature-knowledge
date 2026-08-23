@@ -1,10 +1,17 @@
 # Completeness, traceability and claim audit
 
-Release: **v3.2** (2026-08-20)
+Release: **v3.4** (2026-08-23)
+
+## Manuscript alignment update
+
+- The Introduction and Methods terminology from the 22 August manuscript snapshot is mapped to the frozen repository objects in `MANUSCRIPT_ALIGNMENT.md`.
+- `DenseGNN` and `PI-DenseGNN` are explicitly mapped to D06 and F06; no additional trained model is implied.
+- The external optical-evidence boundary is restricted to `sigma_max`, the qualified ZINC22 deployment boundary begins at 9,939 records, and candidate-specific QM claim limits are retained.
+- The source-pool count is 45 after the local-source reverse audit.
 
 ## Audit result
 
-- 44 unique DOI sources; title, year and journal metadata complete. The formalised domain, mechanism and route registries cite 44 unique sources in total.
+- 45 unique DOI sources; title, year and journal metadata complete. The formalised domain, mechanism and route registries cite 44 of these sources; SRC045 is exposed through the separate local-source evidence audit.
 - 25 domain-evaluation evidence units, 25 mechanism-decision rules and 19 route-evidence units expose complete, deduplicated citation clusters. Multi-source records: 19 domain, 19 mechanism and 0 route records.
 - All six targets contain a scientific definition, original unit, frozen training unit, valid-label count, exact forward and inverse transformation, invalid-value policy and source mapping.
 - One graph representation and 30 descriptor definitions have explicit implementation/evaluation states.

@@ -1,10 +1,11 @@
-# Supplementary registry summary (v3.2)
+# Supplementary registry summary (v3.4)
 
 This compact summary makes the knowledge-to-decision logic understandable without requiring inspection of the full repository.
 
 | Research object | Scientific question | Registry | Items |
 |---|---|---|---:|
-| Sources | Where did the evidence come from? | `source_registry.csv` | 44 |
+| Sources | Where did the evidence come from? | `source_registry.csv` | 45 |
+| Local-source functional evidence | How did the reverse-audited source enter the task prior, representation and mechanism context? | `local_source_evidence_registry.csv` | 3 |
 | Layer 1 — domain evaluation knowledge | What should a two-photon radical photoinitiator be evaluated on? | `domain_knowledge_registry.csv` | 25 |
 | Layer 2 — endpoint and representation knowledge | What is predicted and how is the molecule represented? | `endpoint_representation_registry.csv` | 37 |
 | Task-prior derivation | How was literature/rule evidence converted into the six loss weights? | `task_weight_derivation_registry.csv` | 10 |

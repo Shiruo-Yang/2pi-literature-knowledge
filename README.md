@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.3-local-source-audit** · Snapshot: **2026-08-22**
+Release: **v3.4-manuscript-alignment** · Snapshot: **2026-08-23**
 
 ## At a glance
 
@@ -109,7 +109,7 @@ Route evidence uses three defined provenance classes: `direct_route_precedent`, 
 
 1. Formalised literature evidence into source-linked domain, representation, mechanism and route objects.
 2. Converted a literature/rule prior into an explicit six-task utility-weight vector, verified its use in D06/F06 and audited five alternative weighting schemes.
-3. Constructed D06 and F06 six-task models and evaluated them on scaffold-disjoint outer tests.
+3. Constructed D06/DenseGNN and F06/PI-DenseGNN six-task models and evaluated them on scaffold-disjoint outer tests.
 4. Audited reliability through simpler comparisons, strict-clean retraining analysis, independent `sigma_max` evidence, applicability-domain tiers and D06/F06 disagreement.
 5. Applied the frozen decision framework to a role-aware ZINC22 candidate space instead of treating the database as a single optical leaderboard.
 6. Compressed 9,939 candidates into 2,583 lane-specific families and then 21 representatives: seven per mechanism lane, including primary, novelty and boundary/control roles.
@@ -141,7 +141,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 
 | Component | Evidence available | Current interpretation |
 |---|---|---|
-| Literature evidence | 44 unique DOI sources with complete title/year/journal metadata | Existing knowledge organised by evidence unit and computational role |
+| Literature evidence | 45 unique DOI sources with complete title/year/journal metadata | Existing knowledge organised by evidence unit and computational role |
 | Frozen models | D06/F06 task-level outer tests and independent `sigma_max` evaluation | D06 is primary; F06 disagreement is diagnostic |
 | Task-weight policy | Complete derivation, six exact weights, 12 model-task configuration matches, five sensitivity schemes and five deterministic-fallback disclosures | Implemented utility prior; equal weighting had slightly lower inner-CV macro RMSE, so no performance-optimality claim |
 | Strict-clean re-evaluation | Six-task outer-test comparison complete; replacement gate remains open | Sensitivity/retraining audit, not a replacement deployment model |
@@ -153,13 +153,14 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 
 1. Read the three layers and contributions above.
 2. Inspect five complete source-to-use chains in [`examples/evidence_to_computational_use_examples.csv`](examples/evidence_to_computational_use_examples.csv).
-3. Map manuscript concepts to repository evidence using [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
+3. Read the Introduction/Methods alignment and terminology aliases in [`MANUSCRIPT_ALIGNMENT.md`](MANUSCRIPT_ALIGNMENT.md), then map individual concepts using [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
 4. Check row counts, pending items and claim boundaries in [`AUDIT_REPORT.md`](AUDIT_REPORT.md) and [`completeness_summary.csv`](completeness_summary.csv).
 
 ## Repository map
 
 | File | What can be verified |
 |---|---|
+| [`MANUSCRIPT_ALIGNMENT.md`](MANUSCRIPT_ALIGNMENT.md) | current Introduction/Methods terminology, factual study map and statement limits |
 | [`source_registry.csv`](source_registry.csv) | DOI, title, year, journal and evidence use |
 | [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv) | source → evidence → normalized evaluation criterion → downstream use |
 | [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) | six endpoints, graph representation and descriptor implementation/evaluation status |
