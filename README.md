@@ -218,3 +218,26 @@ is a public-safe snapshot of the current Zotero literature inventory and access-
 - Same-layer exact-signature deduplication reduced automatic candidate evidence from 715 to 714 records and audited evidence from 150 to 149 records; the two removed records are retained in `dedup_relations.csv`.
 - All 863 current local evidence IDs were already present in `unified_evidence_v2`, so no duplicate evidence IDs were appended.
 - Local PDFs, full text, screenshots, credentials and absolute local paths are excluded. Automatic records remain candidates and are not promoted to experimentally verified facts.
+
+### v3 database contents
+
+| Object | Rows | Meaning |
+|---|---:|---|
+| `c1_source_registry` | 45 | Existing C1 DOI source pool |
+| `merged_source_registry` | 114 | DOI-deduplicated C1 + Zotero source registry |
+| `zotero_papers` | 80 | Current Zotero metadata snapshot: 74 DOI records and 6 DOI-absent records |
+| `candidate_evidence` | 714 | Exact same-layer deduplicated automatic evidence candidates |
+| `audited_evidence` | 149 | Exact same-layer deduplicated page-audited evidence records |
+| `source_access_resolution` | 30 | OA/landing-page resolution metadata, separate from evidence claims |
+| `all_evidence` | 863 | Query view over the two evidence layers |
+
+The SQLite snapshot also contains `evidence_fts` for full-text retrieval, `dedup_relations` for the two removed same-layer duplicates, and `remote_evidence_crosswalk` for the exact-ID comparison with the existing v2 registry. DOI-absent records remain separate, and cross-layer candidate/audited overlaps are retained rather than silently collapsed.
+
+Example queries:
+
+```bash
+sqlite3 outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/integrated_literature_evidence.sqlite \
+  "SELECT layer, COUNT(*) FROM all_evidence GROUP BY layer;"
+```
+
+The v3 package is a public metadata-and-evidence snapshot. It does not redistribute copyrighted full text or local Zotero attachments; access-resolution rows provide public landing-page metadata where available.
