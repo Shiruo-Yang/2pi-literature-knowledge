@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.4-manuscript-alignment** · Snapshot: **2026-08-23**
+Release: **v3.6-unified-evidence** · Snapshot: **2026-08-28**
 
 ## At a glance
 
@@ -195,3 +195,14 @@ The repository now includes a machine-generated literature field-evidence expans
 - `supplementary_numeric_evidence.csv` preserves raw values, units, page hints, text anchors, automatic status and deterministic gate reasons.
 - The package keeps missing values empty and retains automatic status and provenance. It is an automatic acquisition layer and should not be interpreted as a replacement for experimentally verified truth.
 - The new scripts `build_automatic_field_evidence_registry.py` and `build_automatic_literature_database.py` allow the package to be regenerated or extended with additional machine-mined anchor CSVs.
+
+## Unified evidence database (2026-08-28)
+
+The previous evidence registry and the automatic field-evidence registry are now available as one additive, queryable package. The merge retains both provenance layers and marks possible overlaps instead of silently deleting records.
+
+- `outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v1/` contains 1,145 unified records from 54 source identifiers: 137 preserved legacy records plus 1,008 automatic field records.
+- `unified_evidence_registry.csv` and `unified_evidence_registry.jsonl` are the complete tabular and machine-readable registries.
+- `supplementary_unified_evidence.csv` is the supplementary-data copy; `unified_numeric_evidence.csv` is the value-bearing subset; `unified_source_summary.csv` is the source-level summary.
+- `unified_evidence_database.sqlite` contains the unified registry, value-bearing subset, source summary, metadata, indexes and a query view.
+- `unified_evidence_summary.json` records counts, merge policy, field coverage and provenance-layer statistics.
+- `merge_legacy_and_automatic_evidence.py` regenerates the package from the two input registries. Legacy accepted status is preserved, while automatic statuses remain explicit and are not promoted to experimentally verified facts.
