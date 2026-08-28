@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.6-unified-evidence** · Snapshot: **2026-08-28**
+Release: **v3.7-current-unified-evidence** · Snapshot: **2026-08-28**
 
 ## At a glance
 
@@ -189,21 +189,21 @@ The supported repository-level claim is a **literature-grounded, reliability-aud
 
 The repository now includes a machine-generated literature field-evidence expansion package. It extends the existing evidence registries and produces supplementary data without requiring a manual review step in the extraction workflow.
 
-- `outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v3/` contains 1,008 field-evidence records: 694 full-text anchor records and 314 numeric/context candidates.
+- `outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v5/` contains 1,029 field-evidence records: 715 full-text anchor records and 314 numeric/context candidates from 55 source identifiers.
 - `literature_field_evidence_registry.jsonl` is the machine-readable one-record-per-field registry; the corresponding CSV is intended for tabular inspection and supplementary data preparation.
 - `supplementary_literature_field_evidence.csv` preserves optical cross-section, initiator loading, polymerisation-threshold candidates, experimental context, voxel/linewidth, triplet/ISC clues and mechanism clues.
 - `supplementary_numeric_evidence.csv` preserves raw values, units, page hints, text anchors, automatic status and deterministic gate reasons.
 - The package keeps missing values empty and retains automatic status and provenance. It is an automatic acquisition layer and should not be interpreted as a replacement for experimentally verified truth.
 - The new scripts `build_automatic_field_evidence_registry.py` and `build_automatic_literature_database.py` allow the package to be regenerated or extended with additional machine-mined anchor CSVs.
-- The broader literature candidate pool currently contains 80 source records. The second expansion batch added 40 candidates; 10 had local full text for automatic parsing and 30 remained metadata-only or unresolved in this snapshot.
+- The broader literature candidate pool currently contains 80 source records. The second expansion batch added 40 candidates; 51 have local or legally recovered full text and 29 remain metadata-only or not started in this snapshot.
 - Candidate discovery and legal-source resolution are tracked separately from field evidence. A candidate source is not counted as an evidence source unless a structured evidence record was generated.
 
 ## Unified evidence database (2026-08-28)
 
 The previous evidence registry and the automatic field-evidence registry are now available as one additive, queryable package. The merge retains both provenance layers and marks possible overlaps instead of silently deleting records.
 
-- `outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v1/` contains 1,145 unified records from 54 source identifiers: 137 preserved legacy records plus 1,008 automatic field records.
-- `unified_evidence_registry.csv` and `unified_evidence_registry.jsonl` are the complete tabular and machine-readable registries.
+- `outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v2/` contains 1,179 unified records from 55 source identifiers: 150 preserved legacy records plus 1,029 automatic field records.
+- `unified_evidence_registry.csv` and `unified_evidence_registry.jsonl` in v2 are the current complete tabular and machine-readable registries; v1 is retained as an earlier snapshot.
 - `supplementary_unified_evidence.csv` is the supplementary-data copy; `unified_numeric_evidence.csv` is the value-bearing subset; `unified_source_summary.csv` is the source-level summary.
 - `unified_evidence_database.sqlite` contains the unified registry, value-bearing subset, source summary, metadata, indexes and a query view.
 - `unified_evidence_summary.json` records counts, merge policy, field coverage and provenance-layer statistics.

@@ -1,17 +1,15 @@
-# Historical unified literature evidence database snapshot
+# Unified literature evidence database
 
-This package additively combines the previous 137-record evidence registry with the automatic field-evidence registry. It contains **1,145 records** from **54 source identifiers**.
+This package additively combines the previous 150-record evidence registry with the automatic field-evidence registry. It contains **1,179 records** from **55 source identifiers**.
 
-This is an earlier snapshot. The current unified package is `unified_evidence_v2`, which combines 150 legacy records with 1,029 automatic field records for a total of 1,179 records from 55 source identifiers.
-
-The broader literature candidate pool contains 80 source records. The expansion batch added 40 candidates; 10 had local full text available for automatic parsing and 30 remained metadata-only or unresolved at the time of this snapshot. These candidate records are not counted as field evidence unless an evidence record was actually generated.
+The broader literature candidate pool contains 80 source records. In the current expansion snapshot, 51 have local or legally recovered full text and 29 remain metadata-only or not started. Candidate discovery and legal-source resolution are tracked separately; a discovered or resolved source is not counted as field evidence unless a structured evidence record was generated.
 
 ## What is preserved
 
 - `legacy_registry`: the earlier text-exact records remain unchanged in meaning and retain their prior accepted status.
 - `automatic_field_registry`: machine-extracted field anchors and candidates retain their automatic status and use restriction.
 - `duplicate_relation`: possible overlaps are labelled; no records are silently deleted.
-- Source coverage is reported separately from the broader candidate pool, so a source being discovered or resolved does not by itself mean that it contributed a verified scientific value.
+- The current automatic layer contains 715 full-text field anchors and 314 numeric or experimental-context candidates. These are automatic acquisition records, not claims of experimental verification.
 
 ## Files
 

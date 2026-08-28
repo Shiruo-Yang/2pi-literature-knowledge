@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import argparse
 import re
 import sqlite3
 from collections import Counter, defaultdict
@@ -20,8 +21,8 @@ from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 LEGACY_CSV = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/audited_evidence/audited_evidence_registry.csv"
-AUTOMATIC_CSV = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v3/literature_field_evidence_registry.csv"
-OUTPUT_DIR = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v1"
+DEFAULT_AUTOMATIC_CSV = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v5/literature_field_evidence_registry.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v2"
 
 
 CANONICAL_FIELDS = [
@@ -264,12 +265,22 @@ def build_sqlite(rows: list[dict[str, str]], numeric_rows: list[dict[str, str]],
 
 
 def main() -> None:
-    legacy_rows = [make_legacy(row) for row in read_csv(LEGACY_CSV)]
-    automatic_rows = [make_automatic(row) for row in read_csv(AUTOMATIC_CSV)]
+    parser = argparse.ArgumentParser(description="Merge legacy and automatic literature evidence registries additively.")
+    parser.add_argument("--legacy-csv", type=Path, default=LEGACY_CSV)
+    parser.add_argument("--automatic-csv", type=Path, default=DEFAULT_AUTOMATIC_CSV)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    args = parser.parse_args()
+
+    legacy_csv = args.legacy_csv if args.legacy_csv.is_absolute() else ROOT / args.legacy_csv
+    automatic_csv = args.automatic_csv if args.automatic_csv.is_absolute() else ROOT / args.automatic_csv
+    output_dir = args.output_dir if args.output_dir.is_absolute() else ROOT / args.output_dir
+
+    legacy_rows = [make_legacy(row) for row in read_csv(legacy_csv)]
+    automatic_rows = [make_automatic(row) for row in read_csv(automatic_csv)]
     rows = legacy_rows + automatic_rows
     assign_overlap_metadata(rows)
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     numeric_fields = {"sigma_2pa", "pi_loading", "polymerization_threshold", "isc_t1_proxy"}
     numeric_rows = [row for row in rows if text(row.get("raw_value")) or text(row.get("field_name")) in numeric_fields]
     sources = source_summary(rows)
@@ -288,8 +299,8 @@ def main() -> None:
         "duplicate_relation_counts": dict(Counter(row["duplicate_relation"] for row in rows)),
         "automatic_status_counts": dict(Counter(row["automatic_status"] for row in rows)),
         "input_files": {
-            "legacy_registry": LEGACY_CSV.relative_to(ROOT).as_posix(),
-            "automatic_registry": AUTOMATIC_CSV.relative_to(ROOT).as_posix(),
+            "legacy_registry": legacy_csv.relative_to(ROOT).as_posix(),
+            "automatic_registry": automatic_csv.relative_to(ROOT).as_posix(),
         },
         "outputs": {
             "registry_csv": "unified_evidence_registry.csv",
@@ -301,18 +312,19 @@ def main() -> None:
         },
     }
 
-    write_csv(OUTPUT_DIR / "unified_evidence_registry.csv", rows, CANONICAL_FIELDS)
-    write_csv(OUTPUT_DIR / "supplementary_unified_evidence.csv", rows, CANONICAL_FIELDS)
-    write_csv(OUTPUT_DIR / "unified_numeric_evidence.csv", numeric_rows, CANONICAL_FIELDS)
-    write_csv(OUTPUT_DIR / "unified_source_summary.csv", sources, list(sources[0].keys()) if sources else [])
-    with (OUTPUT_DIR / "unified_evidence_registry.jsonl").open("w", encoding="utf-8") as handle:
+    write_csv(output_dir / "unified_evidence_registry.csv", rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "supplementary_unified_evidence.csv", rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "unified_numeric_evidence.csv", numeric_rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "unified_source_summary.csv", sources, list(sources[0].keys()) if sources else [])
+    with (output_dir / "unified_evidence_registry.jsonl").open("w", encoding="utf-8") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
-    (OUTPUT_DIR / "unified_evidence_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    build_sqlite(rows, numeric_rows, sources, OUTPUT_DIR / "unified_evidence_database.sqlite", summary)
+    (output_dir / "unified_evidence_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    build_sqlite(rows, numeric_rows, sources, output_dir / "unified_evidence_database.sqlite", summary)
 
     readme = f"# Unified literature evidence database\n\n"
-    readme += f"This package additively combines the previous 49-record evidence registry with the automatic field-evidence registry. It contains **{len(rows):,} records** from **{len(sources):,} source identifiers**.\n\n"
+    readme += f"This package additively combines the previous {len(legacy_rows):,}-record evidence registry with the automatic field-evidence registry. It contains **{len(rows):,} records** from **{len(sources):,} source identifiers**.\n\n"
+    readme += "The broader literature candidate pool and legal-source resolution are tracked separately. A discovered or resolved source is not counted as field evidence unless a structured evidence record was generated.\n\n"
     readme += "## What is preserved\n\n"
     readme += "- `legacy_registry`: the earlier text-exact records remain unchanged in meaning and retain their prior accepted status.\n"
     readme += "- `automatic_field_registry`: machine-extracted field anchors and candidates retain their automatic status and use restriction.\n"
@@ -320,7 +332,7 @@ def main() -> None:
     readme += "## Files\n\n"
     readme += "- `unified_evidence_registry.csv`: complete tabular registry.\n- `unified_evidence_registry.jsonl`: one complete JSON object per record.\n- `supplementary_unified_evidence.csv`: supplementary-data copy of the complete registry.\n- `unified_numeric_evidence.csv`: records carrying a numeric/value candidate.\n- `unified_source_summary.csv`: source-level counts and covered fields.\n- `unified_evidence_database.sqlite`: queryable SQLite database with registry, numeric subset, source summary, metadata, indexes, and view.\n- `unified_evidence_summary.json`: machine-readable counts and merge policy.\n\n"
     readme += "This is a fully automatic database merge. Automatic records are not silently promoted to manually verified facts; their machine status and provenance remain explicit.\n"
-    (OUTPUT_DIR / "README.md").write_text(readme, encoding="utf-8")
+    (output_dir / "README.md").write_text(readme, encoding="utf-8")
 
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
