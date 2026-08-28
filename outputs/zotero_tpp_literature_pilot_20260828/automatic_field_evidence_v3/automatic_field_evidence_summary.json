@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-08-28T17:03:52+08:00",
+  "workflow_mode": "fully_automatic_field_evidence_extraction",
+  "registry_record_count": 1008,
+  "anchor_record_count": 694,
+  "numeric_record_count": 314,
+  "supplementary_numeric_record_count": 314,
+  "source_count_with_records": 54,
+  "automatic_status_counts": {
+    "auto_anchor_candidate": 694,
+    "auto_provisional_accept": 176,
+    "auto_retained_context_candidate": 81,
+    "auto_retained_low_context_candidate": 57
+  },
+  "field_counts": {
+    "experimental_context": 114,
+    "isc_t1_proxy": 70,
+    "mechanism": 97,
+    "pi_loading": 256,
+    "polymerization_threshold": 167,
+    "sigma_2pa": 162,
+    "voxel_geometry": 142
+  },
+  "input_sha256": {
+    "outputs/zotero_tpp_literature_pilot_20260828/evidence/evidence_anchor_candidates.csv": "4b828e541b3f8db7702297b7f406081506fb665e7e1fb382ac22ced1fd9bcf4e",
+    "outputs/zotero_tpp_literature_expansion_20260828/batch_20260828/evidence/evidence_anchor_candidates.csv": "d5c24d6e36265a452324bbe0700bc71f073e71ada7c31840c8b2fd39c78c24e1",
+    "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/evidence_value_candidates.csv": "631fba797bc1b754a7dd144d4d2d006012804b51c45d6337ebc2c1106801c05f",
+    "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/extraction_decision.csv": "0e6fd4395b286a4757b0d350fb23b99cbdf45764aee0ac21113b239f51e121e8"
+  },
+  "output_files": [
+    "literature_field_evidence_registry.csv",
+    "literature_field_evidence_registry.jsonl",
+    "supplementary_literature_field_evidence.csv",
+    "supplementary_numeric_evidence.csv",
+    "literature_field_coverage.csv",
+    "automatic_field_evidence_summary.json",
+    "README.md"
+  ],
+  "claim_boundary": "All records are automatic extraction candidates. They are suitable for database expansion and automated downstream processing, but automatic status does not mean human-verified experimental truth."
+}

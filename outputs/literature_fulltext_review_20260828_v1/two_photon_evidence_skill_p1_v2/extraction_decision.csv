@@ -1,0 +1,315 @@
+﻿decision_id,candidate_id,evidence_id,run_id,source_id,decision,readiness_level,reject_reason,gate_notes
+DEC-0000001,CAND-0000001,EV-000001,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000002,CAND-0000002,EV-000001,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000003,CAND-0000003,EV-000001,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000004,CAND-0000004,EV-000002,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000005,CAND-0000005,EV-000003,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,possible_C_external_sigma2,external/mismatched sigma2 cannot enter main analysis without audit
+DEC-0000006,CAND-0000006,EV-000003,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000007,CAND-0000007,EV-000004,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,possible_C_external_sigma2,external/mismatched sigma2 cannot enter main analysis without audit
+DEC-0000008,CAND-0000008,EV-000004,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000009,CAND-0000009,EV-000005,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000010,CAND-0000010,EV-000006,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000011,CAND-0000011,EV-000007,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,possible_C_external_sigma2,external/mismatched sigma2 cannot enter main analysis without audit
+DEC-0000012,CAND-0000012,EV-000007,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000013,CAND-0000013,EV-000008,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000014,CAND-0000014,EV-000009,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000015,CAND-0000015,EV-000009,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000016,CAND-0000016,EV-000010,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000017,CAND-0000017,EV-000010,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000018,CAND-0000018,EV-000011,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000019,CAND-0000019,EV-000011,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000020,CAND-0000020,EV-000011,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000021,CAND-0000021,EV-000012,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000022,CAND-0000022,EV-000012,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000023,CAND-0000023,EV-000012,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000024,CAND-0000024,EV-000013,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000025,CAND-0000025,EV-000013,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000026,CAND-0000026,EV-000013,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000027,CAND-0000027,EV-000013,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000028,CAND-0000028,EV-000014,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000029,CAND-0000029,EV-000014,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000030,CAND-0000030,EV-000014,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000031,CAND-0000031,EV-000015,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000032,CAND-0000032,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000033,CAND-0000033,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000034,CAND-0000034,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000035,CAND-0000035,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000036,CAND-0000036,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000037,CAND-0000037,EV-000016,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,voxel_dimension_missing,voxel validation needs size evidence
+DEC-0000038,CAND-0000038,EV-000017,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000039,CAND-0000039,EV-000017,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000040,CAND-0000040,EV-000018,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000041,CAND-0000041,EV-000018,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,voxel_dimension_missing,voxel validation needs size evidence
+DEC-0000042,CAND-0000042,EV-000019,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000043,CAND-0000043,EV-000019,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,voxel_dimension_missing,voxel validation needs size evidence
+DEC-0000044,CAND-0000044,EV-000020,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000045,CAND-0000045,EV-000020,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,voxel_dimension_missing,voxel validation needs size evidence
+DEC-0000046,CAND-0000046,EV-000021,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000047,CAND-0000047,EV-000021,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000048,CAND-0000048,EV-000022,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000049,CAND-0000049,EV-000022,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000050,CAND-0000050,EV-000023,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000051,CAND-0000051,EV-000023,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000052,CAND-0000052,EV-000023,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000053,CAND-0000053,EV-000023,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,voxel_dimension_missing,voxel validation needs size evidence
+DEC-0000054,CAND-0000054,EV-000024,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,possible_C_external_sigma2,external/mismatched sigma2 cannot enter main analysis without audit
+DEC-0000055,CAND-0000055,EV-000024,tpe-20260828T082358Z-fd53a34a,ZPC-000028,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000056,CAND-0000056,EV-000025,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000057,CAND-0000057,EV-000026,tpe-20260828T082358Z-fd53a34a,ZPC-000028,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000058,CAND-0000058,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000059,CAND-0000059,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000060,CAND-0000060,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000061,CAND-0000061,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000062,CAND-0000062,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000063,CAND-0000063,EV-000027,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000064,CAND-0000064,EV-000028,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000065,CAND-0000065,EV-000028,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000066,CAND-0000066,EV-000028,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000067,CAND-0000067,EV-000028,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000068,CAND-0000068,EV-000028,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000069,CAND-0000069,EV-000029,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000070,CAND-0000070,EV-000029,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000071,CAND-0000071,EV-000030,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000072,CAND-0000072,EV-000030,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000073,CAND-0000073,EV-000030,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000074,CAND-0000074,EV-000030,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000075,CAND-0000075,EV-000031,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000076,CAND-0000076,EV-000031,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000077,CAND-0000077,EV-000031,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,"sigma2 candidate has value, unit, and wavelength anchor; A/B quality still needs audit"
+DEC-0000078,CAND-0000078,EV-000031,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000079,CAND-0000079,EV-000032,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000080,CAND-0000080,EV-000032,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000081,CAND-0000081,EV-000033,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000082,CAND-0000082,EV-000033,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000083,CAND-0000083,EV-000034,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000084,CAND-0000084,EV-000034,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000085,CAND-0000085,EV-000035,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000086,CAND-0000086,EV-000036,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000087,CAND-0000087,EV-000037,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000088,CAND-0000088,EV-000037,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000089,CAND-0000089,EV-000037,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000090,CAND-0000090,EV-000039,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000091,CAND-0000091,EV-000039,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000092,CAND-0000092,EV-000039,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000093,CAND-0000093,EV-000040,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000094,CAND-0000094,EV-000041,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000095,CAND-0000095,EV-000042,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000096,CAND-0000096,EV-000043,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000097,CAND-0000097,EV-000044,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000098,CAND-0000098,EV-000045,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000099,CAND-0000099,EV-000046,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000100,CAND-0000100,EV-000047,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000101,CAND-0000101,EV-000047,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000102,CAND-0000102,EV-000048,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000103,CAND-0000103,EV-000049,tpe-20260828T082358Z-fd53a34a,ZPC-000049,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000104,CAND-0000104,EV-000050,tpe-20260828T082358Z-fd53a34a,ZPC-000049,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000105,CAND-0000105,EV-000051,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000106,CAND-0000106,EV-000051,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000107,CAND-0000107,EV-000052,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000108,CAND-0000108,EV-000052,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000109,CAND-0000109,EV-000052,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000110,CAND-0000110,EV-000053,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000111,CAND-0000111,EV-000053,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000112,CAND-0000112,EV-000054,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000113,CAND-0000113,EV-000055,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000114,CAND-0000114,EV-000055,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000115,CAND-0000115,EV-000057,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000116,CAND-0000116,EV-000057,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000117,CAND-0000117,EV-000058,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000118,CAND-0000118,EV-000058,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000119,CAND-0000119,EV-000059,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000120,CAND-0000120,EV-000060,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000121,CAND-0000121,EV-000060,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000122,CAND-0000122,EV-000061,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000123,CAND-0000123,EV-000061,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000124,CAND-0000124,EV-000063,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000125,CAND-0000125,EV-000063,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000126,CAND-0000126,EV-000063,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000127,CAND-0000127,EV-000063,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000128,CAND-0000128,EV-000064,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000129,CAND-0000129,EV-000064,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000130,CAND-0000130,EV-000065,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000131,CAND-0000131,EV-000066,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000132,CAND-0000132,EV-000066,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000133,CAND-0000133,EV-000067,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000134,CAND-0000134,EV-000068,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000135,CAND-0000135,EV-000069,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000136,CAND-0000136,EV-000069,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000137,CAND-0000137,EV-000069,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000138,CAND-0000138,EV-000069,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000139,CAND-0000139,EV-000070,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000140,CAND-0000140,EV-000070,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000141,CAND-0000141,EV-000071,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000142,CAND-0000142,EV-000072,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000143,CAND-0000143,EV-000072,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000144,CAND-0000144,EV-000073,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000145,CAND-0000145,EV-000073,tpe-20260828T082358Z-fd53a34a,ZPC-000385,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000146,CAND-0000146,EV-000074,tpe-20260828T082358Z-fd53a34a,ZPC-000385,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000147,CAND-0000147,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000148,CAND-0000148,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000149,CAND-0000149,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000150,CAND-0000150,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000151,CAND-0000151,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000152,CAND-0000152,EV-000075,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000153,CAND-0000153,EV-000076,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000154,CAND-0000154,EV-000076,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000155,CAND-0000155,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000156,CAND-0000156,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000157,CAND-0000157,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000158,CAND-0000158,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000159,CAND-0000159,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000160,CAND-0000160,EV-000077,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000161,CAND-0000161,EV-000078,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000162,CAND-0000162,EV-000078,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000163,CAND-0000163,EV-000078,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000164,CAND-0000164,EV-000079,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000165,CAND-0000165,EV-000079,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000166,CAND-0000166,EV-000079,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000167,CAND-0000167,EV-000080,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000168,CAND-0000168,EV-000080,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000169,CAND-0000169,EV-000080,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000170,CAND-0000170,EV-000081,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000171,CAND-0000171,EV-000081,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000172,CAND-0000172,EV-000081,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000173,CAND-0000173,EV-000081,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000174,CAND-0000174,EV-000081,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000175,CAND-0000175,EV-000082,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000176,CAND-0000176,EV-000082,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000177,CAND-0000177,EV-000082,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000178,CAND-0000178,EV-000083,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000179,CAND-0000179,EV-000083,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000180,CAND-0000180,EV-000083,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000181,CAND-0000181,EV-000084,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000182,CAND-0000182,EV-000084,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000183,CAND-0000183,EV-000084,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000184,CAND-0000184,EV-000084,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000185,CAND-0000185,EV-000085,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,threshold candidate passes writing/polymerization local context gate
+DEC-0000186,CAND-0000186,EV-000085,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000187,CAND-0000187,EV-000086,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000188,CAND-0000188,EV-000086,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000189,CAND-0000189,EV-000087,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000190,CAND-0000190,EV-000087,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000191,CAND-0000191,EV-000087,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000192,CAND-0000192,EV-000088,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000193,CAND-0000193,EV-000088,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000194,CAND-0000194,EV-000088,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000195,CAND-0000195,EV-000088,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000196,CAND-0000196,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000197,CAND-0000197,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000198,CAND-0000198,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000199,CAND-0000199,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000200,CAND-0000200,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000201,CAND-0000201,EV-000089,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000202,CAND-0000202,EV-000090,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000203,CAND-0000203,EV-000090,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000204,CAND-0000204,EV-000090,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000205,CAND-0000205,EV-000091,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000206,CAND-0000206,EV-000091,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000207,CAND-0000207,EV-000091,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000208,CAND-0000208,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000209,CAND-0000209,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000210,CAND-0000210,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000211,CAND-0000211,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000212,CAND-0000212,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000213,CAND-0000213,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000214,CAND-0000214,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000215,CAND-0000215,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000216,CAND-0000216,EV-000092,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000217,CAND-0000217,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000218,CAND-0000218,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000219,CAND-0000219,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000220,CAND-0000220,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000221,CAND-0000221,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000222,CAND-0000222,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000223,CAND-0000223,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000224,CAND-0000224,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000225,CAND-0000225,EV-000093,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000226,CAND-0000226,EV-000094,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000227,CAND-0000227,EV-000094,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000228,CAND-0000228,EV-000094,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000229,CAND-0000229,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000230,CAND-0000230,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000231,CAND-0000231,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000232,CAND-0000232,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000233,CAND-0000233,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000234,CAND-0000234,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000235,CAND-0000235,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000236,CAND-0000236,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000237,CAND-0000237,EV-000095,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000238,CAND-0000238,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000239,CAND-0000239,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000240,CAND-0000240,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000241,CAND-0000241,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000242,CAND-0000242,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000243,CAND-0000243,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000244,CAND-0000244,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000245,CAND-0000245,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000246,CAND-0000246,EV-000096,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,COMSOL_context_not_verified,voxel evidence found; COMSOL readiness requires optical context and PI alignment
+DEC-0000247,CAND-0000247,EV-000097,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000248,CAND-0000248,EV-000098,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000249,CAND-0000249,EV-000098,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000250,CAND-0000250,EV-000098,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,loading_not_normalizable,raw loading retained but mmol/g cannot be generated
+DEC-0000251,CAND-0000251,EV-000098,tpe-20260828T082358Z-fd53a34a,ZPC-001953,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000252,CAND-0000252,EV-000099,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000253,CAND-0000253,EV-000100,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000254,CAND-0000254,EV-000100,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000255,CAND-0000255,EV-000100,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000256,CAND-0000256,EV-000101,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000257,CAND-0000257,EV-000101,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000258,CAND-0000258,EV-000102,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000259,CAND-0000259,EV-000103,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000260,CAND-0000260,EV-000104,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000261,CAND-0000261,EV-000105,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000262,CAND-0000262,EV-000105,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000263,CAND-0000263,EV-000105,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000264,CAND-0000264,EV-000105,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000265,CAND-0000265,EV-000105,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000266,CAND-0000266,EV-000106,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000267,CAND-0000267,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000268,CAND-0000268,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000269,CAND-0000269,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000270,CAND-0000270,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000271,CAND-0000271,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000272,CAND-0000272,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000273,CAND-0000273,EV-000107,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000274,CAND-0000274,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000275,CAND-0000275,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000276,CAND-0000276,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000277,CAND-0000277,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000278,CAND-0000278,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000279,CAND-0000279,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000280,CAND-0000280,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000281,CAND-0000281,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000282,CAND-0000282,EV-000108,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000283,CAND-0000283,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000284,CAND-0000284,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000285,CAND-0000285,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000286,CAND-0000286,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000287,CAND-0000287,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000288,CAND-0000288,EV-000109,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000289,CAND-0000289,EV-000110,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000290,CAND-0000290,EV-000110,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000291,CAND-0000291,EV-000111,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,threshold_not_power_mW,threshold is not directly normalizable to mW
+DEC-0000292,CAND-0000292,EV-000111,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,threshold_not_power_mW,threshold is not directly normalizable to mW
+DEC-0000293,CAND-0000293,EV-000111,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000294,CAND-0000294,EV-000112,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,threshold_not_power_mW,threshold is not directly normalizable to mW
+DEC-0000295,CAND-0000295,EV-000112,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,threshold_not_power_mW,threshold is not directly normalizable to mW
+DEC-0000296,CAND-0000296,EV-000112,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000297,CAND-0000297,EV-000113,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000298,CAND-0000298,EV-000114,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000299,CAND-0000299,EV-000115,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000300,CAND-0000300,EV-000116,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000301,CAND-0000301,EV-000117,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_resin,resin formulation evidence not explicit in parsed block
+DEC-0000302,CAND-0000302,EV-000118,tpe-20260828T082358Z-fd53a34a,ZPC-005664,manual_review,manual_review_required,context_missing_wavelength,wavelength is mandatory for series lock
+DEC-0000303,CAND-0000303,EV-000119,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000304,CAND-0000304,EV-000119,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000305,CAND-0000305,EV-000119,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000306,CAND-0000306,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000307,CAND-0000307,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000308,CAND-0000308,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000309,CAND-0000309,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000310,CAND-0000310,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000311,CAND-0000311,EV-000120,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000312,CAND-0000312,EV-000121,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit
+DEC-0000313,CAND-0000313,EV-000122,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,loading candidate has raw value/unit; normalization basis recorded
+DEC-0000314,CAND-0000314,EV-000122,tpe-20260828T082358Z-fd53a34a,ZPC-005664,auto_accept,manual_review_required,,context candidate has wavelength and resin signal; equality across all PIs still needs audit

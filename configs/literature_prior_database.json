@@ -1,0 +1,197 @@
+{
+  "database_name": "photoinitiator_literature_prior",
+  "database_version": "2026-08-28.v8",
+  "output_directory": "outputs/literature_prior_database_20260828_v8",
+  "raw_extract_asset": {
+    "asset_id": "ASSET_RAW_EXTRACT_001",
+    "path": "artifacts/extracts/paper_extracts.jsonl",
+    "required": true,
+    "data_layer": "unverified_legacy_extraction",
+    "description_cn": "34篇文献的旧版双模型结构化提取；保留用于回溯和复核，不自动视为已核验事实。"
+  },
+  "csv_assets": [
+    {
+      "asset_id": "ASSET_PRIOR_001",
+      "path": "literature_knowledge/source_registry.csv",
+      "table": "literature_source",
+      "required": true,
+      "data_layer": "verified_source_metadata",
+      "description_cn": "可追溯文献来源总表。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_002",
+      "path": "literature_knowledge/domain_knowledge_registry.csv",
+      "table": "domain_prior_rule",
+      "required": true,
+      "data_layer": "verified_prior_rule",
+      "description_cn": "由文献证据规范化得到的领域判断与候选评价规则。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_003",
+      "path": "literature_knowledge/endpoint_representation_registry.csv",
+      "table": "endpoint_and_representation_prior",
+      "required": true,
+      "data_layer": "verified_prior_definition",
+      "description_cn": "六项性质、分子表示、缺失值处理和适用边界的统一定义。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_004",
+      "path": "literature_knowledge/mechanism_decision_registry.csv",
+      "table": "mechanism_prior_rule",
+      "required": true,
+      "data_layer": "verified_prior_rule",
+      "description_cn": "I型裂解、II型共引发和电子转移通道的机理分流规则。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_005",
+      "path": "literature_knowledge/synthesis_route_evidence_registry.csv",
+      "table": "synthesis_route_prior",
+      "required": true,
+      "data_layer": "verified_route_evidence",
+      "description_cn": "候选分子家族的合成路线先例与适用范围。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_006",
+      "path": "literature_knowledge/local_source_evidence_registry.csv",
+      "table": "local_source_evidence",
+      "required": true,
+      "data_layer": "verified_source_text_evidence",
+      "description_cn": "经本地原文回核的文字证据锚点。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_007",
+      "path": "literature_knowledge/task_weight_derivation_registry.csv",
+      "table": "task_weight_derivation",
+      "required": true,
+      "data_layer": "prior_policy_provenance",
+      "description_cn": "六任务权重从文献字段池到最终方案的推导过程。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_008",
+      "path": "literature_knowledge/task_weight_policy_registry.csv",
+      "table": "task_weight_policy",
+      "required": true,
+      "data_layer": "prior_policy_not_scientific_truth",
+      "description_cn": "六任务权重数值、用途和声明边界；权重表示项目偏好，不代表自然规律。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_009",
+      "path": "literature_knowledge/task_weight_node_disclosure_registry.csv",
+      "table": "task_weight_node_disclosure",
+      "required": true,
+      "data_layer": "prior_policy_audit",
+      "description_cn": "任务权重推导节点的模型、回退路径和可复现性披露。"
+    },
+    {
+      "asset_id": "ASSET_PRIOR_010",
+      "path": "literature_knowledge/completeness_summary.csv",
+      "table": "literature_package_completeness",
+      "required": true,
+      "data_layer": "package_audit",
+      "description_cn": "现有文献知识包的完整性审计摘要。"
+    },
+    {
+      "asset_id": "ASSET_MINERU_001",
+      "path": "outputs/mineru_chem_pilot_guo2024_integrated_20260828_v5/molecule_records.csv",
+      "table": "mineru_molecule_observation",
+      "required": false,
+      "data_layer": "unverified_mineru_staging",
+      "description_cn": "MinerU识别的化学结构对象；必须人工核对结构、编号和原文位置。"
+    },
+    {
+      "asset_id": "ASSET_MINERU_002",
+      "path": "outputs/mineru_chem_pilot_guo2024_integrated_20260828_v5/visual_records.csv",
+      "table": "mineru_visual_observation",
+      "required": false,
+      "data_layer": "unverified_mineru_staging",
+      "description_cn": "MinerU识别的图片、表格、公式和路线图对象。"
+    },
+    {
+      "asset_id": "ASSET_MINERU_003",
+      "path": "outputs/mineru_chem_pilot_guo2024_integrated_20260828_v5/reaction_records.csv",
+      "table": "mineru_reaction_observation",
+      "required": false,
+      "data_layer": "unverified_mineru_staging",
+      "description_cn": "MinerU明确解析出的反应记录；试运行中允许为空。"
+    },
+    {
+      "asset_id": "ASSET_MINERU_004",
+      "path": "outputs/mineru_chem_pilot_guo2024_integrated_20260828_v5/review_queue.csv",
+      "table": "mineru_review_queue",
+      "required": false,
+      "data_layer": "human_review_queue",
+      "description_cn": "自动提取对象的人工复核任务清单。"
+    },
+    {
+      "asset_id": "ASSET_DISCOVERY_001",
+      "path": "outputs/literature_search_expansion_20260828_v3/literature_candidate_pool.csv",
+      "table": "literature_discovery_candidate",
+      "required": false,
+      "data_layer": "unverified_literature_discovery",
+      "description_cn": "多来源检索、去重和题名摘要初筛后的文献发现池；不是已核验来源。"
+    },
+    {
+      "asset_id": "ASSET_DISCOVERY_002",
+      "path": "outputs/literature_search_expansion_20260828_v3/literature_priority_candidates.csv",
+      "table": "literature_priority_candidate",
+      "required": false,
+      "data_layer": "unverified_literature_priority",
+      "description_cn": "相关性较高、建议优先全文回源的新文献；仍不是已核验来源。"
+    },
+    {
+      "asset_id": "ASSET_REVIEW_001",
+      "path": "outputs/literature_fulltext_review_20260828_v1/literature_fulltext_review_queue.csv",
+      "table": "literature_fulltext_review_queue",
+      "required": false,
+      "data_layer": "human_review_queue",
+      "description_cn": "优先文献的全文回源、证据锚点和升级判断队列；完成复核前不进入核心来源层。"
+    },
+    {
+      "asset_id": "ASSET_EVIDENCE_001",
+      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/evidence_blocks.csv",
+      "table": "literature_evidence_block",
+      "required": false,
+      "data_layer": "unverified_numeric_evidence",
+      "description_cn": "双光子全文中的候选证据块，保留来源、页码、字符位置和原文片段。"
+    },
+    {
+      "asset_id": "ASSET_EVIDENCE_002",
+      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/evidence_value_candidates.csv",
+      "table": "literature_numeric_evidence_candidate",
+      "required": false,
+      "data_layer": "unverified_numeric_evidence",
+      "description_cn": "双光子光学截面、用量、阈值、上下文和尺寸候选值；不是最终科学观测表。"
+    },
+    {
+      "asset_id": "ASSET_EVIDENCE_003",
+      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/manual_numeric_review_queue.csv",
+      "table": "literature_numeric_review_queue",
+      "required": false,
+      "data_layer": "human_review_queue",
+      "description_cn": "双光子数值候选的人工复核任务和严格闸门拒绝原因。"
+    },
+    {
+      "asset_id": "ASSET_EVIDENCE_004",
+      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/source_readiness_summary.csv",
+      "table": "literature_source_readiness_summary",
+      "required": false,
+      "data_layer": "unverified_numeric_evidence",
+      "description_cn": "按来源汇总双光子数值证据的可用性和阻塞原因。"
+    },
+    {
+      "asset_id": "ASSET_EVIDENCE_005",
+      "path": "outputs/literature_fulltext_review_20260828_v1/pucher_2009_targeted_audit/pucher_evidence_audit.csv",
+      "table": "literature_targeted_source_audit",
+      "required": false,
+      "data_layer": "unverified_targeted_source_audit",
+      "description_cn": "针对单篇全文来源的定向证据审计；记录表格数值、实验上下文、允许用途和人工签核状态。"
+    }
+  ],
+  "excluded_scopes": [
+    "ZINC22候选与筛选排序",
+    "图神经网络预测结果",
+    "外部验证结果",
+    "量子化学计算结果",
+    "筛选规则的当前版本"
+  ]
+}

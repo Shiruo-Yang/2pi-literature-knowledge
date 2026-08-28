@@ -1,0 +1,18 @@
+{
+  "expanded_inventory_rows": 40,
+  "new_local_pdf_rows": 10,
+  "legal_source_lookup_rows": 30,
+  "new_local_pdf_keys": [
+    "INAWB8HL",
+    "MZLGYQTP",
+    "H86SV53N",
+    "95TT3IKI",
+    "IYEGSI2X",
+    "TSTS6L69",
+    "B6CWSYVW",
+    "RK5TXPZ5",
+    "6ZQ3VP63",
+    "S7XPYQQM"
+  ],
+  "boundary": "Only local Zotero PDFs are parsed in this batch; records without local PDFs remain acquisition candidates."
+}

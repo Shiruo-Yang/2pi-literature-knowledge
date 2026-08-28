@@ -1,0 +1,19 @@
+{
+  "expansion_inventory_papers": 40,
+  "expansion_local_fulltext_papers": 10,
+  "expansion_candidate_anchor_rows": 101,
+  "papers_added": 0,
+  "anchors_added": 0,
+  "parsed_batch_papers": 10,
+  "total_papers": 80,
+  "metadata_only_or_unparsed_papers": 30,
+  "total_candidate_anchors": 694,
+  "total_audited_evidence": 137,
+  "integrity_check": "ok",
+  "all_evidence_view_rows": 831,
+  "paper_parse_status_counts": {
+    "not_started": 30,
+    "parsed": 50
+  },
+  "database_sha256": "cde205194e26fb801427d832b3a7355bcfb03bbc4e694d0afe9f41e54f2c0104"
+}

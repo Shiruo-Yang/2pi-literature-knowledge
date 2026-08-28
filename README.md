@@ -184,3 +184,14 @@ The supported repository-level claim is a **literature-grounded, reliability-aud
 ## Versioning and validation
 
 `VERSION`, `package_manifest.json` and `checksums.sha256` freeze this snapshot. Run `python scripts/validate_release.py` from the repository root to verify checksums and screen the public files for absolute local paths or internal working labels.
+
+## Automatic literature field expansion (2026-08-28)
+
+The repository now includes a machine-generated literature field-evidence expansion package. It extends the existing evidence registries and produces supplementary data without requiring a manual review step in the extraction workflow.
+
+- `outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v3/` contains 1,008 field-evidence records: 694 full-text anchor records and 314 numeric/context candidates.
+- `literature_field_evidence_registry.jsonl` is the machine-readable one-record-per-field registry; the corresponding CSV is intended for tabular inspection and supplementary data preparation.
+- `supplementary_literature_field_evidence.csv` preserves optical cross-section, initiator loading, polymerisation-threshold candidates, experimental context, voxel/linewidth, triplet/ISC clues and mechanism clues.
+- `supplementary_numeric_evidence.csv` preserves raw values, units, page hints, text anchors, automatic status and deterministic gate reasons.
+- The package keeps missing values empty and retains automatic status and provenance. It is an automatic acquisition layer and should not be interpreted as a replacement for experimentally verified truth.
+- The new scripts `build_automatic_field_evidence_registry.py` and `build_automatic_literature_database.py` allow the package to be regenerated or extended with additional machine-mined anchor CSVs.
