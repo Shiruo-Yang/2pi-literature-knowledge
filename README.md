@@ -208,3 +208,13 @@ The previous evidence registry and the automatic field-evidence registry are now
 - `unified_evidence_database.sqlite` contains the unified registry, value-bearing subset, source summary, metadata, indexes and a query view.
 - `unified_evidence_summary.json` records counts, merge policy, field coverage and provenance-layer statistics.
 - `merge_legacy_and_automatic_evidence.py` regenerates the package from the two input registries. Legacy accepted status is preserved, while automatic statuses remain explicit and are not promoted to experimentally verified facts.
+
+## Zotero public merge v3 (2026-08-28)
+
+[`outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/`](outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/)
+is a public-safe snapshot of the current Zotero literature inventory and access-resolution metadata.
+
+- 80 current Zotero source records were merged with the 45-source C1 registry using DOI-first deduplication; 11 DOI overlaps were mapped to existing C1 sources, leaving 114 unique merged source rows.
+- Same-layer exact-signature deduplication reduced automatic candidate evidence from 715 to 714 records and audited evidence from 150 to 149 records; the two removed records are retained in `dedup_relations.csv`.
+- All 863 current local evidence IDs were already present in `unified_evidence_v2`, so no duplicate evidence IDs were appended.
+- Local PDFs, full text, screenshots, credentials and absolute local paths are excluded. Automatic records remain candidates and are not promoted to experimentally verified facts.
