@@ -195,6 +195,8 @@ The repository now includes a machine-generated literature field-evidence expans
 - `supplementary_numeric_evidence.csv` preserves raw values, units, page hints, text anchors, automatic status and deterministic gate reasons.
 - The package keeps missing values empty and retains automatic status and provenance. It is an automatic acquisition layer and should not be interpreted as a replacement for experimentally verified truth.
 - The new scripts `build_automatic_field_evidence_registry.py` and `build_automatic_literature_database.py` allow the package to be regenerated or extended with additional machine-mined anchor CSVs.
+- The broader literature candidate pool currently contains 80 source records. The second expansion batch added 40 candidates; 10 had local full text for automatic parsing and 30 remained metadata-only or unresolved in this snapshot.
+- Candidate discovery and legal-source resolution are tracked separately from field evidence. A candidate source is not counted as an evidence source unless a structured evidence record was generated.
 
 ## Unified evidence database (2026-08-28)
 
