@@ -19,3 +19,14 @@ This compact summary makes the knowledge-to-decision logic understandable withou
 | QM evidence | What candidate-level evidence and claim ceiling resulted? | `representative_qm_evidence_registry.csv` | 21 |
 
 The workflow yields a computationally prioritised, QM-assessed candidate portfolio. It does not establish experimental polymerisation performance.
+
+## Source-local identity extension (v12)
+
+| Research object | Scientific question | Public package | Items |
+|---|---|---|---:|
+| Source-local entities | Which source-specific labels have a traceable molecular identity? | `accepted_source_identity_registry_v12.csv` | 72 |
+| Material/ionic records | Which records are salts, commercial materials or multicomponent objects? | `multicomponent_material_registry_v12.csv` | 8 |
+| Terminal non-chemical records | Which extracted tokens are not molecular identities? | `terminal_identity_registry_v12.csv` | 21 |
+| Unresolved identity queue | Which entities still require a source structure panel or explicit definition? | `unresolved_identity_triage.csv` | 31 |
+
+The identity extension is provenance-only. It does not add experimental optical values or alter the frozen model, ZINC22, external-validation or quantum-chemistry layers.

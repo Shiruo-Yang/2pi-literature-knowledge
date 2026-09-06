@@ -1,0 +1,19 @@
+{
+  "generated_at_utc": "2026-09-06T14:38:44+00:00",
+  "valid": true,
+  "sqlite_integrity": "ok",
+  "row_invariants": {
+    "source_local_entities": 124,
+    "evidence_entity_links": 3376,
+    "formulation_clusters": 2344
+  },
+  "accepted_identity_rows_total": 72,
+  "new_accepted_identity_rows": 17,
+  "material_rows_total": 8,
+  "terminal_nonchemical_rows": 13,
+  "terminal_identity_rows": 21,
+  "numeric_records_created": 0,
+  "model_training_labels_created": 0,
+  "external_validation_observations_created": 0,
+  "strict_comsol_ready_records_created": 0
+}

@@ -1,0 +1,6 @@
+2026-06-29 Asia/Shanghai
+
+PubChem skill usage notice:
+Check PubChem citation and PUG-REST usage terms before database queries:
+https://pubchem.ncbi.nlm.nih.gov/docs/citation-guidelines
+https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest

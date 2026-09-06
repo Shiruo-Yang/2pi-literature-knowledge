@@ -15,3 +15,7 @@ The literature-integration layer was frozen in v3.0. Version 3.1 recorded comple
 ## Scope boundary
 
 All seven strict-clean descriptor-ablation configurations completed on 20 August 2026. `dense_plus_pi_core` produced the lowest observed mean macro RMSE, but this sensitivity result neither establishes statistical superiority nor replaces the frozen D06/F06 deployment roles. The literature-prior loss weights are likewise reported as a frozen deployment-utility policy: equal weighting was marginally better in the controlled inner-CV comparison, and downstream external/ZINC22 invariance has not been established for alternative weights. Strict-clean retraining remains a separate sensitivity audit and does not replace the frozen endpoint definitions. The literature-integration layer remains closed.
+
+## v3.8 identity-layer extension
+
+The 6 September 2026 maintenance update adds a source-local identity layer without reopening the numerical evidence, model, screening or quantum-chemistry claims. The public snapshot records 124 source-local entities, 3,376 evidence links, 2,344 formulation clusters, 72 RDKit-valid accepted single-molecule identities, 8 separate material/ionic records and 13 terminal non-chemical tokens. The remaining 31 entities are retained in an automatic unresolved queue. Local filesystem paths, PDFs and page images are not distributed.

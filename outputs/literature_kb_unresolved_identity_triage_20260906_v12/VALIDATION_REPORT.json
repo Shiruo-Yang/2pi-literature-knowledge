@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-09-06T14:38:57+00:00",
+  "valid": true,
+  "errors": [],
+  "counts": {
+    "unresolved_input_entities": 31,
+    "triaged_entities": 31,
+    "candidate_evidence_rows": 168,
+    "accepted_entities_excluded": 72,
+    "terminal_entities_excluded": 21
+  }
+}

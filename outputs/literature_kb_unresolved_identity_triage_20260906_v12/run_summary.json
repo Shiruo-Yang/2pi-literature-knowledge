@@ -1,0 +1,49 @@
+{
+  "generated_at_utc": "2026-09-06T14:38:57+00:00",
+  "workflow": "current_unresolved_source_identity_automatic_triage",
+  "triage_class_counts": {
+    "wildcard_or_polymer_structure": 8,
+    "competing_structures": 4,
+    "structure_candidate_not_uniquely_linked": 3,
+    "no_structure_candidate": 16
+  },
+  "recommended_action_counts": {
+    "recover_source_defined_repeat_unit_or_complete_substituent": 8,
+    "resolve_competing_complete_panel_structures": 4,
+    "improve_panel_pairing_or_source_definition": 3,
+    "acquire_fulltext_structure_panel_or_explicit_name": 16
+  },
+  "automatically_recoverable_component_entities": 0,
+  "input_hashes": {
+    "identity_entities": "ddfc2e15c498a0b32ad785434f5a3ce046c56ce97127e0339da5ea7b77070bb5",
+    "accepted_identities": "b212cd4e61e36a6373061e8224029ca89825f82f6434abea2616f9b71096a982",
+    "text_decisions": "3d19d3dd02d6838e4976e5d9681594be71209f5feecdf1ff6d12be729add985e",
+    "terminal_registry": "13f1713ce48dc332848a5e13451dda8c2462c907bc9c289325d237ad0cefc331",
+    "candidate_adjacent": "4eee48a6e0b0e0dd760b89fc8dbccb467a3122ad3f98b7a67305d21b27b31514",
+    "candidate_named1": "74f8d8b3b7842edfc687820d54fbfb60aa4284caf87008ac41cf1fd1d954f9f0",
+    "candidate_named260": "e63d588b319d3e95de46920d417984b3854b528a7f7164e6fd196736f46bded5",
+    "candidate_namedm260": "3d4e246b6123ea99361278090d8db07185fcddf6835a3e27b2e3fb6e71667091",
+    "candidate_namedm400": "1e4e97972d97f6450a1c3ac44417c604c54f08eea20293925ac0687e4d458f08",
+    "candidate_numbered": "b6ee767ca9e9a5f5bc0a8e5809c825c078671160a413222a1e02cc86bb0278dd",
+    "candidate_numbered3": "32819c433238d74ed0cfb4c928674f46d09a95234b6d7f1a97b5eae28534694b",
+    "candidate_numbered260": "cf957a73ee6b2227f51f762215d7e3d97f509a082c84cd2a27a3a034792ba1c5",
+    "candidate_numbered400": "32e1c7f10d4f9f43758daf76c50ff728065a6f5cec40929a9c7a465429821449",
+    "candidate_source": "198a6a38a41903596ce83383447607a5127cdb6ba075ee535df6e66fca2e0f7f",
+    "candidate_source2": "e4d6de85a9249b9a512e353db6339566734de4c9c09cbc3f4d9cdf2ee434976f",
+    "candidate_textbatch": "aebbdbb98d1ba1876c1e3b6dac83bb9f49fe2fd72facd91a87a1bc9270626277"
+  },
+  "rdkit_version": "2026.03.3",
+  "scientific_boundary": "This queue prioritizes identity evidence only and cannot promote experimental values or downstream scientific-use records.",
+  "validation": {
+    "generated_at_utc": "2026-09-06T14:38:57+00:00",
+    "valid": true,
+    "errors": [],
+    "counts": {
+      "unresolved_input_entities": 31,
+      "triaged_entities": 31,
+      "candidate_evidence_rows": 168,
+      "accepted_entities_excluded": 72,
+      "terminal_entities_excluded": 21
+    }
+  }
+}
