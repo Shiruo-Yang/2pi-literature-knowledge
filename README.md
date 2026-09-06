@@ -2,7 +2,7 @@
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
-Release: **v3.8-literature-identity-enrichment** · Snapshot: **2026-09-06**
+Release: **current merged literature database** · Snapshot: **2026-09-06**
 
 ## At a glance
 
@@ -242,8 +242,10 @@ sqlite3 outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_2026
 
 The v3 package is a public metadata-and-evidence snapshot. It does not redistribute copyrighted full text or local Zotero attachments; access-resolution rows provide public landing-page metadata where available.
 
-### v12 source-local identity layer
+### Current source-local identity database
 
-The v3 evidence package is complemented by the v12 source-local molecular identity layer in `outputs/literature_kb_condition_identity_linkage_20260906_v12/`. It contains 124 source-local entities, 3,376 evidence links and 2,344 formulation clusters. Seventy-two entities have an accepted RDKit-valid single-molecule identity; eight salts, ionic materials or commercial multicomponent records are kept separately, and thirteen non-chemical tokens are terminally classified. The accompanying automatic queue contains 31 unresolved entities and 168 structure-candidate evidence rows. This identity layer organizes provenance and structure linkage only: it does not create new experimental values, model labels, screening outcomes or quantum-chemistry inputs.
+The unified evidence package is complemented by the current source-local molecular identity database in `outputs/literature_identity_current/`. It contains 124 source-local entities, 3,376 evidence links and 2,344 formulation clusters. Seventy-two entities have an accepted RDKit-valid single-molecule identity; eight salts, ionic materials or commercial multicomponent records are kept separately, and thirteen non-chemical tokens are terminally classified. The accompanying automatic queue contains 31 unresolved entities and 168 structure-candidate evidence rows. This database organizes provenance and structure linkage only: it does not create new experimental values, model labels, screening outcomes or quantum-chemistry inputs.
 
-See [`LITERATURE_IDENTITY_V12.md`](LITERATURE_IDENTITY_V12.md) for the public data boundary and reproducibility checks.
+The current machine-readable registries are `accepted_source_identity_registry.csv`, `multicomponent_material_registry.csv`, `terminal_identity_registry.csv`, `formulation_linkage_registry_enriched.csv` and `condition_identity_linkage.sqlite`. Previous intermediate registries are retained under `outputs/literature_identity_current/audit/`; they are not the active database. See [`LITERATURE_IDENTITY_DATABASE.md`](LITERATURE_IDENTITY_DATABASE.md) for the public data boundary and reproducibility checks.
+
+[`DATABASE_MAP.md`](DATABASE_MAP.md) gives the complete public directory map and explains how the literature, prior-knowledge, model, identity, screening and quantum-chemistry layers fit together.

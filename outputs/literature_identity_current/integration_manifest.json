@@ -1,7 +1,7 @@
 {
   "generated_at_utc": "2026-09-06T14:38:44+00:00",
   "base_database_sha256": "0377ef647d9b08866c53ed61ae84dffb707ae66420e72f0f3cb96dbe1a7acfbb",
-  "v12_database_sha256": "bed3d6b41e242ed692a2b54a712d99489445f934940fe92a97a8559b53dc78ac",
+  "current_database_sha256": "bed3d6b41e242ed692a2b54a712d99489445f934940fe92a97a8559b53dc78ac",
   "rdkit_version": "2026.03.3",
   "accepted_identity_count": 72,
   "material_count": 8,

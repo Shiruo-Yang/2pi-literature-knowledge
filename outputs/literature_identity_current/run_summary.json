@@ -42,8 +42,8 @@
   "accepted_scientific_records_created": 0,
   "strict_comsol_ready_records_created": 0,
   "claim_boundary": "Accepted 17 source-local complete identities and classified 6 new material/ionic records plus 13 nonchemical tokens. No numerical, model, external-validation, screening, or COMSOL records were created.",
-  "version": "v12_contextual_identity_and_terminal_classification",
-  "base_frozen_version": "LOCAL_PATH_REDACTED\\outputs\\literature_kb_condition_identity_linkage_20260906_v11",
+  "version": "current_contextual_identity_and_terminal_classification",
+  "base_database": "LOCAL_PATH_REDACTED\\outputs\\literature_identity_previous",
   "source_local_unresolved_entities_before": 77,
   "accepted_source_local_identity_links": 72,
   "accepted_identity_labels": [
