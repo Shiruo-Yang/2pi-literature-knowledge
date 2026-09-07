@@ -1,5 +1,7 @@
 # Evidence-to-decision framework for two-photon radical photoinitiator prioritisation
 
+[中文说明](README_CN.md) · [Database map](DATABASE_MAP.md) · [Identity database boundary](LITERATURE_IDENTITY_DATABASE.md)
+
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
 Release: **current merged literature database** · Snapshot: **2026-09-06**
