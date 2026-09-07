@@ -18,7 +18,7 @@
   "current_local_evidence_ids_in_remote": 863,
   "new_evidence_ids_to_upload": 0,
   "remote_unified_duplicate_ids": 0,
-  "public_sqlite": "outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/integrated_literature_evidence.sqlite",
+  "public_sqlite": "outputs/literature_evidence_current/source_inventory/integrated_literature_evidence.sqlite",
   "public_binary_source_files_included": 0,
   "policy": "Deduplicate DOI-first sources and exact same-layer evidence signatures; retain cross-layer overlaps and explicit dedup relations; do not upload local full text or credentials."
 }

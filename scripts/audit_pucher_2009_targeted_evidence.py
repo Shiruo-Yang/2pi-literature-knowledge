@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs/literature_fulltext_review_20260828_v1/pucher_2009_targeted_audit"
+OUT = ROOT / "outputs/audit_history/literature_fulltext_review_20260828/pucher_2009_targeted_audit"
 
 FIELDS = [
     "audit_id", "review_id", "source_id", "doi", "pi_label", "value_type",

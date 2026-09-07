@@ -20,9 +20,9 @@ from typing import Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LEGACY_CSV = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/audited_evidence/audited_evidence_registry.csv"
-DEFAULT_AUTOMATIC_CSV = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v5/literature_field_evidence_registry.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v2"
+LEGACY_CSV = ROOT / "outputs/literature_evidence_current/legacy_evidence_registry.csv"
+DEFAULT_AUTOMATIC_CSV = ROOT / "outputs/literature_evidence_current/automatic_field_evidence_registry.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "outputs/literature_evidence_current"
 
 
 CANONICAL_FIELDS = [
@@ -101,6 +101,10 @@ def legacy_field_name(value_type: str) -> str:
 
 
 def make_legacy(row: dict[str, str]) -> dict[str, str]:
+    if text(row.get("record_origin")) == "legacy_registry":
+        result = {field: text(row.get(field, "")) for field in CANONICAL_FIELDS}
+        result["record_origin"] = "legacy_registry"
+        return result
     source_id = text(row.get("paper_id")) or text(row.get("zotero_key")) or text(row.get("doi"))
     value_type = text(row.get("value_type"))
     anchor = text(row.get("evidence_anchor"))
@@ -201,7 +205,7 @@ def assign_overlap_metadata(rows: list[dict[str, str]]) -> None:
 def write_csv(path: Path, rows: Iterable[dict[str, str]], fields: list[str]) -> None:
     rows = list(rows)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: text(row.get(field, "")) for field in fields})
@@ -303,26 +307,26 @@ def main() -> None:
             "automatic_registry": automatic_csv.relative_to(ROOT).as_posix(),
         },
         "outputs": {
-            "registry_csv": "unified_evidence_registry.csv",
-            "registry_jsonl": "unified_evidence_registry.jsonl",
-            "supplementary_csv": "supplementary_unified_evidence.csv",
-            "numeric_csv": "unified_numeric_evidence.csv",
-            "source_summary_csv": "unified_source_summary.csv",
-            "sqlite": "unified_evidence_database.sqlite",
+            "registry_csv": "literature_evidence_registry.csv",
+            "registry_jsonl": "literature_evidence_registry.jsonl",
+            "supplementary_csv": "supplementary_evidence.csv",
+            "numeric_csv": "numeric_evidence.csv",
+            "source_summary_csv": "source_summary.csv",
+            "sqlite": "literature_evidence.sqlite",
         },
     }
 
-    write_csv(output_dir / "unified_evidence_registry.csv", rows, CANONICAL_FIELDS)
-    write_csv(output_dir / "supplementary_unified_evidence.csv", rows, CANONICAL_FIELDS)
-    write_csv(output_dir / "unified_numeric_evidence.csv", numeric_rows, CANONICAL_FIELDS)
-    write_csv(output_dir / "unified_source_summary.csv", sources, list(sources[0].keys()) if sources else [])
-    with (output_dir / "unified_evidence_registry.jsonl").open("w", encoding="utf-8") as handle:
+    write_csv(output_dir / "literature_evidence_registry.csv", rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "supplementary_evidence.csv", rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "numeric_evidence.csv", numeric_rows, CANONICAL_FIELDS)
+    write_csv(output_dir / "source_summary.csv", sources, list(sources[0].keys()) if sources else [])
+    with (output_dir / "literature_evidence_registry.jsonl").open("w", encoding="utf-8", newline="") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
-    (output_dir / "unified_evidence_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    build_sqlite(rows, numeric_rows, sources, output_dir / "unified_evidence_database.sqlite", summary)
+    (output_dir / "literature_evidence_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    build_sqlite(rows, numeric_rows, sources, output_dir / "literature_evidence.sqlite", summary)
 
-    readme = f"# Unified literature evidence database\n\n"
+    readme = f"# Current literature evidence database\n\n"
     readme += f"This package additively combines the previous {len(legacy_rows):,}-record evidence registry with the automatic field-evidence registry. It contains **{len(rows):,} records** from **{len(sources):,} source identifiers**.\n\n"
     readme += "The broader literature candidate pool and legal-source resolution are tracked separately. A discovered or resolved source is not counted as field evidence unless a structured evidence record was generated.\n\n"
     readme += "## What is preserved\n\n"
@@ -330,9 +334,9 @@ def main() -> None:
     readme += "- `automatic_field_registry`: machine-extracted field anchors and candidates retain their automatic status and use restriction.\n"
     readme += "- `duplicate_relation`: possible overlaps are labelled; no records are silently deleted.\n\n"
     readme += "## Files\n\n"
-    readme += "- `unified_evidence_registry.csv`: complete tabular registry.\n- `unified_evidence_registry.jsonl`: one complete JSON object per record.\n- `supplementary_unified_evidence.csv`: supplementary-data copy of the complete registry.\n- `unified_numeric_evidence.csv`: records carrying a numeric/value candidate.\n- `unified_source_summary.csv`: source-level counts and covered fields.\n- `unified_evidence_database.sqlite`: queryable SQLite database with registry, numeric subset, source summary, metadata, indexes, and view.\n- `unified_evidence_summary.json`: machine-readable counts and merge policy.\n\n"
+    readme += "- `literature_evidence_registry.csv`: complete tabular registry.\n- `legacy_evidence_registry.csv`: stable 150-record input partition.\n- `automatic_field_evidence_registry.csv`: stable 1,029-record automatic input partition.\n- `literature_evidence_registry.jsonl`: one complete JSON object per record.\n- `supplementary_evidence.csv`: supplementary-data copy of the complete registry.\n- `numeric_evidence.csv`: records carrying a numeric/value candidate.\n- `source_summary.csv`: source-level counts and covered fields.\n- `literature_evidence.sqlite`: queryable SQLite database with registry, numeric subset, source summary, metadata, indexes and view.\n- `literature_evidence_summary.json`: machine-readable counts and merge policy.\n\n"
     readme += "This is a fully automatic database merge. Automatic records are not silently promoted to manually verified facts; their machine status and provenance remain explicit.\n"
-    (output_dir / "README.md").write_text(readme, encoding="utf-8")
+    (output_dir / "README.md").write_text(readme, encoding="utf-8", newline="\n")
 
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

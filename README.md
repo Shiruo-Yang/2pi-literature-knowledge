@@ -1,6 +1,6 @@
 # Evidence-to-decision framework for two-photon radical photoinitiator prioritisation
 
-[中文说明](README_CN.md) · [Database map](DATABASE_MAP.md) · [Identity database boundary](LITERATURE_IDENTITY_DATABASE.md)
+[Database contents](#current-database) · [Identity database boundary](LITERATURE_IDENTITY_DATABASE.md)
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
@@ -177,77 +177,59 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 | [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
 | [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
 | [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
-| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the v3.2 evidence-maintenance boundary |
+| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the current evidence-maintenance boundary |
 
 ## Interpretation boundary
 
 The supported repository-level claim is a **literature-grounded, reliability-audited and mechanism-constrained computational prioritisation workflow** that produces a **QM-assessed candidate portfolio**. Experimental polymerisation, printing and formulation validation remain a separate evidence layer.
 
-## Versioning and validation
+## Current database
 
-`VERSION`, `package_manifest.json` and `checksums.sha256` freeze this snapshot. Run `python scripts/validate_release.py` from the repository root to verify checksums and screen the public files for absolute local paths or internal working labels.
+The repository exposes one current database rather than a sequence of numbered public packages. Its tables remain separated by scientific role so that source metadata, machine-extracted candidates, accepted molecular identities, model records and downstream computational evidence cannot be mistaken for one another.
 
-## Automatic literature field expansion (2026-08-28)
+### Database scale
 
-The repository now includes a machine-generated literature field-evidence expansion package. It extends the existing evidence registries and produces supplementary data without requiring a manual review step in the extraction workflow.
-
-- `outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v5/` contains 1,029 field-evidence records: 715 full-text anchor records and 314 numeric/context candidates from 55 source identifiers.
-- `literature_field_evidence_registry.jsonl` is the machine-readable one-record-per-field registry; the corresponding CSV is intended for tabular inspection and supplementary data preparation.
-- `supplementary_literature_field_evidence.csv` preserves optical cross-section, initiator loading, polymerisation-threshold candidates, experimental context, voxel/linewidth, triplet/ISC clues and mechanism clues.
-- `supplementary_numeric_evidence.csv` preserves raw values, units, page hints, text anchors, automatic status and deterministic gate reasons.
-- The package keeps missing values empty and retains automatic status and provenance. It is an automatic acquisition layer and should not be interpreted as a replacement for experimentally verified truth.
-- The new scripts `build_automatic_field_evidence_registry.py` and `build_automatic_literature_database.py` allow the package to be regenerated or extended with additional machine-mined anchor CSVs.
-- The broader literature candidate pool currently contains 80 source records. The second expansion batch added 40 candidates; 51 have local or legally recovered full text and 29 remain metadata-only or not started in this snapshot.
-- Candidate discovery and legal-source resolution are tracked separately from field evidence. A candidate source is not counted as an evidence source unless a structured evidence record was generated.
-
-## Unified evidence database (2026-08-28)
-
-The previous evidence registry and the automatic field-evidence registry are now available as one additive, queryable package. The merge retains both provenance layers and marks possible overlaps instead of silently deleting records.
-
-- `outputs/zotero_tpp_literature_pilot_20260828/unified_evidence_v2/` contains 1,179 unified records from 55 source identifiers: 150 preserved legacy records plus 1,029 automatic field records.
-- `unified_evidence_registry.csv` and `unified_evidence_registry.jsonl` in v2 are the current complete tabular and machine-readable registries; v1 is retained as an earlier snapshot.
-- `supplementary_unified_evidence.csv` is the supplementary-data copy; `unified_numeric_evidence.csv` is the value-bearing subset; `unified_source_summary.csv` is the source-level summary.
-- `unified_evidence_database.sqlite` contains the unified registry, value-bearing subset, source summary, metadata, indexes and a query view.
-- `unified_evidence_summary.json` records counts, merge policy, field coverage and provenance-layer statistics.
-- `merge_legacy_and_automatic_evidence.py` regenerates the package from the two input registries. Legacy accepted status is preserved, while automatic statuses remain explicit and are not promoted to experimentally verified facts.
-
-## Zotero public merge v3 (2026-08-28)
-
-[`outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/`](outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/)
-is a public-safe snapshot of the current Zotero literature inventory and access-resolution metadata.
-
-- 80 current Zotero source records were merged with the 45-source C1 registry using DOI-first deduplication; 11 DOI overlaps were mapped to existing C1 sources, leaving 114 unique merged source rows.
-- Same-layer exact-signature deduplication reduced automatic candidate evidence from 715 to 714 records and audited evidence from 150 to 149 records; the two removed records are retained in `dedup_relations.csv`.
-- All 863 current local evidence IDs were already present in `unified_evidence_v2`, so no duplicate evidence IDs were appended.
-- Local PDFs, full text, screenshots, credentials and absolute local paths are excluded. Automatic records remain candidates and are not promoted to experimentally verified facts.
-
-### v3 database contents
-
-| Object | Rows | Meaning |
+| Data object | Current size | Interpretation |
 |---|---:|---|
-| `c1_source_registry` | 45 | Existing C1 DOI source pool |
-| `merged_source_registry` | 114 | DOI-deduplicated C1 + Zotero source registry |
-| `zotero_papers` | 80 | Current Zotero metadata snapshot: 74 DOI records and 6 DOI-absent records |
-| `candidate_evidence` | 714 | Exact same-layer deduplicated automatic evidence candidates |
-| `audited_evidence` | 149 | Exact same-layer deduplicated page-audited evidence records |
-| `source_access_resolution` | 30 | OA/landing-page resolution metadata, separate from evidence claims |
-| `all_evidence` | 863 | Query view over the two evidence layers |
+| Registered literature sources | 345 | Traceable source records in the broader literature corpus |
+| Machine-extracted field candidates | 9,107 | Raw field-level candidates retained with provenance and status |
+| Normalized evidence groups | 8,573 | Canonicalized evidence records used to build condition and identity links |
+| Public literature evidence registry | 1,179 | 150 preserved audited records plus 1,029 automatic field records from 55 source identifiers |
+| DOI-deduplicated public source inventory | 114 | 45 established sources plus Zotero additions after DOI-first deduplication |
+| Source-local entities | 124 | Labels or compound identifiers interpreted within their original source |
+| Evidence-to-entity links | 3,376 | Traceable links between literature evidence and source-local entities |
+| Condition or formulation clusters | 2,344 | Grouped experimental-condition and formulation candidates |
+| Accepted single-molecule identities | 72 | Source-local identities with RDKit-valid structures; not necessarily 72 unique compounds |
+| Material or ionic records | 8 | Salts, ionic materials and commercial multicomponent objects kept outside the single-molecule graph layer |
+| Terminal non-chemical records | 13 | Acronyms, citation markers, instruments or laser labels excluded from molecular use |
+| Unresolved identity records | 31 | Records that still lack a unique source-supported structure assignment |
 
-The SQLite snapshot also contains `evidence_fts` for full-text retrieval, `dedup_relations` for the two removed same-layer duplicates, and `remote_evidence_crosswalk` for the exact-ID comparison with the existing v2 registry. DOI-absent records remain separate, and cross-layer candidate/audited overlaps are retained rather than silently collapsed.
+### Active database files
 
-Example queries:
+| Location | Contents | Primary use |
+|---|---|---|
+| [`outputs/literature_evidence_current/literature_evidence_registry.csv`](outputs/literature_evidence_current/literature_evidence_registry.csv) | Complete 1,179-record literature evidence registry | Excel inspection and supplementary-data preparation |
+| [`outputs/literature_evidence_current/legacy_evidence_registry.csv`](outputs/literature_evidence_current/legacy_evidence_registry.csv) | Stable 150-record preserved evidence partition | Reproducing the additive merge |
+| [`outputs/literature_evidence_current/automatic_field_evidence_registry.csv`](outputs/literature_evidence_current/automatic_field_evidence_registry.csv) | Stable 1,029-record automatic evidence partition | Reproducing and extending automatic extraction |
+| [`outputs/literature_evidence_current/literature_evidence_registry.jsonl`](outputs/literature_evidence_current/literature_evidence_registry.jsonl) | One machine-readable evidence object per line | Automated exchange and extension |
+| [`outputs/literature_evidence_current/literature_evidence.sqlite`](outputs/literature_evidence_current/literature_evidence.sqlite) | Evidence, numeric subset, source summary and query indexes | Programmatic querying |
+| [`outputs/literature_evidence_current/source_inventory/`](outputs/literature_evidence_current/source_inventory/) | DOI-deduplicated source inventory, access metadata and exact duplicate relations | Source discovery and provenance auditing |
+| [`outputs/literature_identity_current/accepted_source_identity_registry.csv`](outputs/literature_identity_current/accepted_source_identity_registry.csv) | Accepted source-local single-molecule identities | Structure linkage |
+| [`outputs/literature_identity_current/multicomponent_material_registry.csv`](outputs/literature_identity_current/multicomponent_material_registry.csv) | Salt, ionic and multicomponent material records | Material-level identity without forcing a single molecular graph |
+| [`outputs/literature_identity_current/formulation_linkage_registry_enriched.csv`](outputs/literature_identity_current/formulation_linkage_registry_enriched.csv) | Condition and formulation clusters linked to accepted identities where possible | Literature-to-formulation analysis |
+| [`outputs/literature_identity_current/condition_identity_linkage.sqlite`](outputs/literature_identity_current/condition_identity_linkage.sqlite) | Queryable identity, entity, evidence-link and formulation tables | Programmatic identity queries |
+| [`outputs/literature_identity_current/unresolved_queue/`](outputs/literature_identity_current/unresolved_queue/) | Unresolved records and 168 retained structure-candidate evidence rows | Further automated identity recovery |
 
-```bash
-sqlite3 outputs/zotero_tpp_literature_pilot_20260828/zotero_public_merge_v3_20260828/integrated_literature_evidence.sqlite \
-  "SELECT layer, COUNT(*) FROM all_evidence GROUP BY layer;"
-```
+CSV files are the human-readable and spreadsheet-compatible form. SQLite files are the queryable frozen databases. JSON and JSONL files preserve machine-readable records, summaries and provenance. Earlier snapshots and extraction intermediates are kept under `outputs/audit_history/` and `outputs/literature_identity_current/audit/`; they are not alternative current databases.
 
-The v3 package is a public metadata-and-evidence snapshot. It does not redistribute copyrighted full text or local Zotero attachments; access-resolution rows provide public landing-page metadata where available.
+### Source inventory and deduplication
 
-### Current source-local identity database
+The current source inventory merges 80 Zotero records with the established 45-source registry using DOI-first deduplication. Eleven DOI overlaps were mapped to existing sources, leaving 114 source rows. Exact same-layer deduplication retained 714 automatic candidates and 149 page-audited evidence records; two removed duplicates remain documented in `dedup_relations.csv`. DOI-absent records remain separate, and candidate/audited cross-layer overlaps are retained because they have different evidentiary meanings.
 
-The unified evidence package is complemented by the current source-local molecular identity database in `outputs/literature_identity_current/`. It contains 124 source-local entities, 3,376 evidence links and 2,344 formulation clusters. Seventy-two entities have an accepted RDKit-valid single-molecule identity; eight salts, ionic materials or commercial multicomponent records are kept separately, and thirteen non-chemical tokens are terminally classified. The accompanying automatic queue contains 31 unresolved entities and 168 structure-candidate evidence rows. This database organizes provenance and structure linkage only: it does not create new experimental values, model labels, screening outcomes or quantum-chemistry inputs.
+### Identity and scientific-use boundary
 
-The current machine-readable registries are `accepted_source_identity_registry.csv`, `multicomponent_material_registry.csv`, `terminal_identity_registry.csv`, `formulation_linkage_registry_enriched.csv` and `condition_identity_linkage.sqlite`. Previous intermediate registries are retained under `outputs/literature_identity_current/audit/`; they are not the active database. See [`LITERATURE_IDENTITY_DATABASE.md`](LITERATURE_IDENTITY_DATABASE.md) for the public data boundary and reproducibility checks.
+The identity database answers which molecule a source-specific name or compound number refers to and where that assignment came from. It does not create experimental optical values, six-task model labels, external-validation observations, ZINC22 screening decisions or quantum-chemistry inputs. Candidate structures enter the accepted single-molecule table only after source context, label–structure correspondence and molecular-structure checks agree. Material, ionic, ambiguous and non-chemical records remain separately classified.
 
-[`DATABASE_MAP.md`](DATABASE_MAP.md) gives the complete public directory map and explains how the literature, prior-knowledge, model, identity, screening and quantum-chemistry layers fit together.
+## Integrity and validation
+
+`VERSION`, `package_manifest.json` and `checksums.sha256` freeze the current snapshot. Run `python scripts/validate_release.py` from the repository root to verify checksums and screen the public files for absolute local paths or internal working labels. The current identity SQLite database passes its integrity check, and all 72 accepted single-molecule structures pass RDKit parsing and identifier recomputation.

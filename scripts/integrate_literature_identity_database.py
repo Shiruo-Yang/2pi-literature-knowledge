@@ -26,7 +26,7 @@ from rdkit.Chem import rdMolDescriptors
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "outputs" / "literature_identity_previous"
-TEXT = ROOT / "outputs" / "literature_kb_source_text_identity_recovery_v4_20260906"
+TEXT = ROOT / "outputs" / "literature_kb_source_text_identity_recovery_current_20260906"
 OUT = ROOT / "outputs" / "literature_identity_current"
 
 ACCEPTED_COLUMNS = [
@@ -217,6 +217,15 @@ def update_formulations(rows: list[dict[str, str]], identities: dict[str, dict[s
     out=[]; enriched=0; backed=0
     for original in rows:
         row=dict(original); ids=[x for x in (row.get("source_local_entity_ids", "").split(";") if row.get("source_local_entity_ids") else []) if x in identities]
+        consolidated_ids=set(x for x in row.get("crosschecked_source_local_entity_ids", "").split(";") if x)
+        consolidated_keys=set(x for x in row.get("crosschecked_source_local_inchikeys", "").split(";") if x)
+        for key in list(row):
+            if key.startswith("accepted_source_local_entity_ids_v"):
+                consolidated_ids.update(x for x in row.pop(key, "").split(";") if x)
+            elif key.startswith("accepted_source_local_inchikeys_v"):
+                consolidated_keys.update(x for x in row.pop(key, "").split(";") if x)
+        row["crosschecked_source_local_entity_ids"]=";".join(sorted(consolidated_ids))
+        row["crosschecked_source_local_inchikeys"]=";".join(sorted(consolidated_keys))
         if ids:
             enriched+=1; previous=int(row.get("structure_backed_entity_count", "0") or 0)
             oldids=set(x for x in row.get("crosschecked_source_local_entity_ids", "").split(";") if x)
@@ -312,7 +321,6 @@ def main() -> int:
     base_summary=json.loads((args.base_dir/"run_summary.json").read_text(encoding="utf-8")); summary={**base_summary,"database_role":"current_source_local_identity_database","built_at":now(),"base_database":str(args.base_dir.resolve()),"accepted_source_local_identity_links":len(accepted),"new_accepted_source_local_identity_links":len(identities),"source_local_entities_terminal_material":len(materials),"source_local_entities_terminal_material_total":len(material_rows),"source_local_entities_terminal_nonchemical":len(terminals),"remaining_source_local_entities_without_accepted_identity":remaining_entities,"source_local_unresolved_entities":remaining_entities,"source_local_resolved_evidence_links":source_resolved,"source_local_unresolved_evidence_links":source_unresolved,"new_evidence_links_enriched_with_structure":nlinks,"evidence_links_enriched_with_structure":source_resolved,"new_formulation_clusters_enriched":nforms,"newly_structure_backed_formulation_clusters":nback,"structure_backed_formulation_clusters_before":old_backed,"structure_backed_formulation_clusters_after":new_backed,"structure_backed_formulation_clusters":new_backed,"formulation_clusters_with_accepted_source_identity":accepted_formulations,"multicomponent_material_records":len(material_rows),"terminal_nonchemical_records":len(terminals),"terminal_identity_records":len(terminal_identity_rows),"accepted_numeric_scientific_records_created":0,"model_training_labels_created":0,"external_validation_observations_created":0,"strict_comsol_ready_records_created":0,"validation":validation,"claim_boundary":f"Accepted {len(identities)} source-local complete identities and classified {len(materials)} new material/ionic records plus {len(terminals)} nonchemical tokens. No numerical, model, external-validation, screening, or COMSOL records were created."}
     (args.output_dir/"run_summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding="utf-8"); (args.output_dir/"VALIDATION_REPORT.json").write_text(json.dumps(validation,ensure_ascii=False,indent=2),encoding="utf-8")
     manifest={"generated_at_utc":now(),"base_database_sha256":digest(args.base_dir/"condition_identity_linkage.sqlite"),"current_database_sha256":digest(args.output_dir/"condition_identity_linkage.sqlite"),"rdkit_version":rdBase.rdkitVersion,"accepted_identity_count":len(accepted),"material_count":len(material_rows),"terminal_nonchemical_count":len(terminals)}; (args.output_dir/"integration_manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
-    readme=f"# 条件—分子—配方身份数据库\n\n这是公开知识库中的当前来源内身份数据库。它在既有身份登记基础上自动扩充来源内身份：接受 {len(identities)} 条可唯一对应的完整分子身份；另将 {len(materials)} 条新增盐类、商业材料或离子组分不完整记录，以及 {len(terminals)} 条非化学缩写终止分类。\n\n总来源内实体 {len(ents)}；接受单分子身份 {len(accepted)}；材料记录 {len(material_rows)}；非化学终止记录 {len(terminals)}；自动待处理身份 {remaining_entities}。本数据库未生成数值真值、模型标签、外部验证观测或筛选结果。SQLite 完整性：{integrity}。\n"; (args.output_dir/"README_CN.md").write_text(readme,encoding="utf-8")
     print(json.dumps(summary,ensure_ascii=False,indent=2)); return 0 if validation["valid"] else 2
 
 if __name__=="__main__": raise SystemExit(main())

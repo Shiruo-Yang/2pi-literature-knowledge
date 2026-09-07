@@ -18,11 +18,11 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs" / "automatic_literature_database_20260828_v1"
+OUT = ROOT / "outputs" / "automatic_literature_database_current"
 ANCHOR_PATH = ROOT / "outputs" / "zotero_tpp_literature_pilot_20260828" / "evidence" / "evidence_anchor_candidates.csv"
-NUMERIC_PATH = ROOT / "outputs" / "literature_fulltext_review_20260828_v1" / "two_photon_evidence_skill_p1_v2" / "evidence_value_candidates.csv"
-DECISION_PATH = ROOT / "outputs" / "literature_fulltext_review_20260828_v1" / "two_photon_evidence_skill_p1_v2" / "extraction_decision.csv"
-CONTEXT_PATH = ROOT / "outputs" / "literature_fulltext_review_20260828_v1" / "two_photon_evidence_skill_p1_v2" / "series_context.csv"
+NUMERIC_PATH = ROOT / "outputs" / "audit_history" / "literature_fulltext_review_20260828" / "two_photon_evidence_skill_p1" / "evidence_value_candidates.csv"
+DECISION_PATH = ROOT / "outputs" / "audit_history" / "literature_fulltext_review_20260828" / "two_photon_evidence_skill_p1" / "extraction_decision.csv"
+CONTEXT_PATH = ROOT / "outputs" / "audit_history" / "literature_fulltext_review_20260828" / "two_photon_evidence_skill_p1" / "series_context.csv"
 SOURCE_PATH = ROOT / "literature_knowledge" / "source_registry.csv"
 
 

@@ -140,7 +140,7 @@
     },
     {
       "asset_id": "ASSET_REVIEW_001",
-      "path": "outputs/literature_fulltext_review_20260828_v1/literature_fulltext_review_queue.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/literature_fulltext_review_queue.csv",
       "table": "literature_fulltext_review_queue",
       "required": false,
       "data_layer": "human_review_queue",
@@ -148,7 +148,7 @@
     },
     {
       "asset_id": "ASSET_EVIDENCE_001",
-      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/evidence_blocks.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/two_photon_evidence_skill_p1/evidence_blocks.csv",
       "table": "literature_evidence_block",
       "required": false,
       "data_layer": "unverified_numeric_evidence",
@@ -156,7 +156,7 @@
     },
     {
       "asset_id": "ASSET_EVIDENCE_002",
-      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/evidence_value_candidates.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/two_photon_evidence_skill_p1/evidence_value_candidates.csv",
       "table": "literature_numeric_evidence_candidate",
       "required": false,
       "data_layer": "unverified_numeric_evidence",
@@ -164,7 +164,7 @@
     },
     {
       "asset_id": "ASSET_EVIDENCE_003",
-      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/manual_numeric_review_queue.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/two_photon_evidence_skill_p1/manual_numeric_review_queue.csv",
       "table": "literature_numeric_review_queue",
       "required": false,
       "data_layer": "human_review_queue",
@@ -172,7 +172,7 @@
     },
     {
       "asset_id": "ASSET_EVIDENCE_004",
-      "path": "outputs/literature_fulltext_review_20260828_v1/two_photon_evidence_skill_p1_v2/source_readiness_summary.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/two_photon_evidence_skill_p1/source_readiness_summary.csv",
       "table": "literature_source_readiness_summary",
       "required": false,
       "data_layer": "unverified_numeric_evidence",
@@ -180,7 +180,7 @@
     },
     {
       "asset_id": "ASSET_EVIDENCE_005",
-      "path": "outputs/literature_fulltext_review_20260828_v1/pucher_2009_targeted_audit/pucher_evidence_audit.csv",
+      "path": "outputs/audit_history/literature_fulltext_review_20260828/pucher_2009_targeted_audit/pucher_evidence_audit.csv",
       "table": "literature_targeted_source_audit",
       "required": false,
       "data_layer": "unverified_targeted_source_audit",

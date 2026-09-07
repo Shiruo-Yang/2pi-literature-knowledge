@@ -1,12 +1,12 @@
-# Zotero public merge v3 (2026-08-28)
+# Current public source inventory (2026-08-28)
 
-This package adds the current Zotero source inventory and access-resolution metadata to the latest public `2pi-literature-knowledge` repository.
+This directory contains the current Zotero source inventory and access-resolution metadata used by the public literature database.
 
 ## Deduplication policy
 
 - Sources are deduplicated DOI-first. If DOI is absent, the source remains a separate metadata record; no fuzzy title match was promoted.
 - Candidate and audited evidence are deduplicated by exact same-layer signature. Cross-layer overlaps are retained because machine candidates and audited values have different evidentiary meanings.
-- The remote `unified_evidence_v2` already contains the current 1,179 evidence IDs; `remote_evidence_crosswalk.csv` records that no evidence ID needs to be uploaded again.
+- The current literature evidence registry already contains the 1,179 evidence IDs; `remote_evidence_crosswalk.csv` records that no evidence ID needed to be appended during the source-inventory merge.
 - Local PDF/text/screenshot paths are replaced by `local_only/...` placeholders. No PDF, full-text file, cookie, credential, or absolute local path is included.
 
 ## Files
@@ -18,7 +18,7 @@ This package adds the current Zotero source inventory and access-resolution meta
 - `audited_evidence_deduplicated.csv`: sanitized page-audited layer.
 - `source_access_resolution.csv`: OA/landing-page metadata only.
 - `dedup_relations.csv`: records removed exact same-layer duplicates and their canonical IDs.
-- `remote_evidence_crosswalk.csv`: exact-ID comparison with public unified v2.
+- `remote_evidence_crosswalk.csv`: exact-ID comparison with the current public literature evidence registry.
 - `dedup_merge_report.json`: machine-readable counts and policy.
 
 All automatic records remain candidates; automatic status is not a claim of human-verified experimental truth.

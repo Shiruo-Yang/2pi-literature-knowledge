@@ -1,8 +1,8 @@
 # Literature-integration closure record
 
-Release: **v3.2** (2026-08-20)
+Current closure record (2026-08-20)
 
-The literature-integration layer was frozen in v3.0. Version 3.1 recorded completion of the descriptor-ablation evidence. This v3.2 maintenance snapshot restores the already completed literature-prior task-weight derivation, model-implementation, sensitivity and deterministic-fallback evidence without reopening or expanding the literature corpus.
+The literature-integration layer is frozen. The current maintenance snapshot includes the completed descriptor-ablation evidence, literature-prior task-weight derivation, model implementation, sensitivity analysis and deterministic-fallback disclosure without reopening or expanding the underlying literature claims.
 
 ## Closure criteria
 

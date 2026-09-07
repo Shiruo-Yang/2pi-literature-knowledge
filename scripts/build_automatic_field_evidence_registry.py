@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "outputs" / "zotero_tpp_literature_pilot_20260828"
 OUT = BASE / "automatic_field_evidence"
 ANCHOR_PATH = BASE / "evidence" / "evidence_anchor_candidates.csv"
-NUMERIC_PATH = ROOT / "outputs" / "literature_fulltext_review_20260828_v1" / "two_photon_evidence_skill_p1_v2" / "evidence_value_candidates.csv"
-DECISION_PATH = ROOT / "outputs" / "literature_fulltext_review_20260828_v1" / "two_photon_evidence_skill_p1_v2" / "extraction_decision.csv"
+NUMERIC_PATH = ROOT / "outputs" / "audit_history" / "literature_fulltext_review_20260828" / "two_photon_evidence_skill_p1" / "evidence_value_candidates.csv"
+DECISION_PATH = ROOT / "outputs" / "audit_history" / "literature_fulltext_review_20260828" / "two_photon_evidence_skill_p1" / "extraction_decision.csv"
 
 FIELD_MAP = {
     "sigma2": "sigma_2pa",
@@ -148,7 +148,7 @@ def parse_args() -> argparse.Namespace:
         "--output-dir",
         type=Path,
         default=OUT,
-        help="Versioned output directory. Relative paths are resolved from the project root.",
+        help="Output directory. Relative paths are resolved from the project root.",
     )
     return parser.parse_args()
 

@@ -1,6 +1,6 @@
 # Literature-prior six-task weighting policy
 
-Release: **v3.2** (2026-08-20)
+Current frozen policy (2026-08-20)
 
 ## Status in the study
 

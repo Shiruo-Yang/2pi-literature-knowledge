@@ -1,6 +1,6 @@
 # Completeness, traceability and claim audit
 
-Release: **v3.4** (2026-08-23)
+Current audit snapshot (2026-08-23)
 
 ## Manuscript alignment update
 

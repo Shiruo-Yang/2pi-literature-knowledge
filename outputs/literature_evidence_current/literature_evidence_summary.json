@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-28T09:55:43.200185+00:00",
+  "generated_at_utc": "2026-09-07T01:47:24.589931+00:00",
   "merge_policy": "additive; possible overlaps marked and retained",
   "legacy_input_records": 150,
   "automatic_input_records": 1029,
@@ -102,15 +102,15 @@
     "auto_anchor_candidate": 715
   },
   "input_files": {
-    "legacy_registry": "outputs/zotero_tpp_literature_pilot_20260828/audited_evidence/audited_evidence_registry.csv",
-    "automatic_registry": "outputs/zotero_tpp_literature_pilot_20260828/automatic_field_evidence_v5/literature_field_evidence_registry.csv"
+    "legacy_registry": "outputs/literature_evidence_current/legacy_evidence_registry.csv",
+    "automatic_registry": "outputs/literature_evidence_current/automatic_field_evidence_registry.csv"
   },
   "outputs": {
-    "registry_csv": "unified_evidence_registry.csv",
-    "registry_jsonl": "unified_evidence_registry.jsonl",
-    "supplementary_csv": "supplementary_unified_evidence.csv",
-    "numeric_csv": "unified_numeric_evidence.csv",
-    "source_summary_csv": "unified_source_summary.csv",
-    "sqlite": "unified_evidence_database.sqlite"
+    "registry_csv": "literature_evidence_registry.csv",
+    "registry_jsonl": "literature_evidence_registry.jsonl",
+    "supplementary_csv": "supplementary_evidence.csv",
+    "numeric_csv": "numeric_evidence.csv",
+    "source_summary_csv": "source_summary.csv",
+    "sqlite": "literature_evidence.sqlite"
   }
 }
