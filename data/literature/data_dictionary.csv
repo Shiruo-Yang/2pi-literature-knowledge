@@ -1,0 +1,92 @@
+﻿table,column,storage_type,primary_key,missing_value,unit_policy,definition
+sources,source_key,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+sources,doi,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive doi; see database guide.
+sources,title,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive title; see database guide.
+sources,year,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive year; see database guide.
+sources,journal,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive journal; see database guide.
+sources,scope,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive scope; see database guide.
+source_aliases,alias_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive alias id; see database guide.
+source_aliases,source_key,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+input_assets,asset_key,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive asset key; see database guide.
+input_assets,sha256,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive sha256; see database guide.
+input_assets,row_count,INTEGER,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive row count; see database guide.
+provenance,table_name,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive table name; see database guide.
+provenance,object_key,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive object key; see database guide.
+provenance,asset_key,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive asset key; see database guide.
+provenance,row_number,INTEGER,false,NULL for absent relationships; empty string for unreported text,not_applicable,"One-based CSV data row, excluding header."
+provenance,row_sha256,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,SHA-256 of sorted-key compact UTF-8 JSON for the complete original input row.
+evidence,evidence_id,TEXT,true,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Preserved automatic candidate ID or PUB-prefixed retained public evidence ID.
+evidence,source_key,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+evidence,field_name,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive field name; see database guide.
+evidence,field_group,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive field group; see database guide.
+evidence,raw_value,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Original value privately; only a syntactically numeric scalar publicly. A scalar is not necessarily a valid measurement.
+evidence,raw_unit,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive raw unit; see database guide.
+evidence,normalized_value,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Previously normalized input value; no new conversion or correction by this build.
+evidence,normalized_unit,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive normalized unit; see database guide.
+evidence,page_hint,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive page hint; see database guide.
+evidence,anchor_sha256,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,"SHA-256 of original text anchor; public anchor text withheld, not missing from private archive."
+evidence,anchor_text,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,"Original extraction context, private only. Public column is intentionally empty."
+evidence,evidence_class,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive evidence class; see database guide.
+evidence,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Status inherited from input; not a new audit result.
+evidence,use_status,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,"Explicit permitted-use boundary, independent of inherited confidence."
+evidence,condition_scope,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited locality of extraction context; not proof that all fields belong to one experiment.
+evidence,source_lane,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive source lane; see database guide.
+evidence,duplicate_group_id,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,Inherited or descriptive duplicate group id; see database guide.
+evidence,candidate_value_visibility,TEXT,false,NULL for absent relationships; empty string for unreported text,raw_unit/normalized_unit accompany evidence values; no new unit conversion,"Whether public scalar is exposed, input is empty, or nonscalar text is retained privately."
+evidence_groups,group_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited candidate duplicate group; not deduplication of experimental measurements.
+evidence_groups,representative_evidence_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive representative evidence id; see database guide.
+evidence_groups,member_count,INTEGER,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive member count; see database guide.
+evidence_group_members,group_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited candidate duplicate group; not deduplication of experimental measurements.
+evidence_group_members,evidence_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Preserved automatic candidate ID or PUB-prefixed retained public evidence ID.
+public_evidence_crosswalk,public_evidence_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive public evidence id; see database guide.
+public_evidence_crosswalk,evidence_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Preserved automatic candidate ID or PUB-prefixed retained public evidence ID.
+public_evidence_crosswalk,relation,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive relation; see database guide.
+entities,entity_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive entity id; see database guide.
+entities,source_key,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+entities,label,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive label; see database guide.
+entities,entity_scope,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive entity scope; see database guide.
+entities,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Status inherited from input; not a new audit result.
+entities,identity_class,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,"Source-local single molecule, terminal material/nonchemical, unresolved, or global alias-only reference."
+accepted_identities,entity_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive entity id; see database guide.
+accepted_identities,canonical_name,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive canonical name; see database guide.
+accepted_identities,canonical_smiles,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive canonical smiles; see database guide.
+accepted_identities,inchikey,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive inchikey; see database guide.
+accepted_identities,molecular_formula,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive molecular formula; see database guide.
+accepted_identities,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Status inherited from input; not a new audit result.
+accepted_identities,confidence_tier,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive confidence tier; see database guide.
+accepted_identities,source_location,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive source location; see database guide.
+accepted_identities,source_evidence_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive source evidence id; see database guide.
+accepted_identities,use_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,"Explicit permitted-use boundary, independent of inherited confidence."
+conditions,cluster_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive cluster id; see database guide.
+conditions,source_key,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+conditions,page_hint,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive page hint; see database guide.
+conditions,condition_scope,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited locality of extraction context; not proof that all fields belong to one experiment.
+conditions,cluster_quality,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive cluster quality; see database guide.
+conditions,original_member_count,INTEGER,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive original member count; see database guide.
+condition_members,cluster_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive cluster id; see database guide.
+condition_members,evidence_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Preserved automatic candidate ID or PUB-prefixed retained public evidence ID.
+formulations,formulation_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive formulation id; see database guide.
+formulations,cluster_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive cluster id; see database guide.
+formulations,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Status inherited from input; not a new audit result.
+formulations,field_groups,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive field groups; see database guide.
+formulations,use_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,"Explicit permitted-use boundary, independent of inherited confidence."
+evidence_entity_links,link_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive link id; see database guide.
+evidence_entity_links,evidence_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Preserved automatic candidate ID or PUB-prefixed retained public evidence ID.
+evidence_entity_links,entity_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive entity id; see database guide.
+evidence_entity_links,cluster_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive cluster id; see database guide.
+evidence_entity_links,match_basis,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive match basis; see database guide.
+evidence_entity_links,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Status inherited from input; not a new audit result.
+evidence_entity_links,confidence,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive confidence; see database guide.
+rules,rule_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive rule id; see database guide.
+rules,rule_type,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive rule type; see database guide.
+rules,summary,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive summary; see database guide.
+rules,rule_text,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive rule text; see database guide.
+rules,scope_limit,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive scope limit; see database guide.
+rules,original_status,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Status inherited from input; not a new audit result.
+rule_sources,rule_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive rule id; see database guide.
+rule_sources,source_key,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Stable hash of normalized DOI; otherwise exact source alias. Not a certificate of independent publication.
+quality_issues,issue_id,TEXT,true,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive issue id; see database guide.
+quality_issues,object_type,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive object type; see database guide.
+quality_issues,object_id,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive object id; see database guide.
+quality_issues,issue_type,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive issue type; see database guide.
+quality_issues,action,TEXT,false,NULL for absent relationships; empty string for unreported text,not_applicable,Inherited or descriptive action; see database guide.

@@ -1,0 +1,23 @@
+{
+  "accepted_identities.csv": "baeddd6b2794fb79b0aaa3d165bf34192c8934587b97d7b52b8941336623556d",
+  "condition_members.csv": "c1b0313bf47f9869992581bdf5c822a04ac16eeeaa7739110feb2a48e79dcb20",
+  "conditions.csv": "27c2cff18ae8d2348642745eb21b148a3b74e62f12681efe948d8a8d0ae4afbb",
+  "data_dictionary.csv": "5702457086176ec1ef491939eec320b317bc065d4107f2f0b1f07798238f76a6",
+  "entities.csv": "366dceecfe3d695bd3183445d1782bc7212296d88fb9e5acd6219e821893a49c",
+  "evidence.csv": "4dde606f1ddce82c65f81deda79bee52b63dce26f7aadfb7479ba883e0af5790",
+  "evidence.jsonl": "b5f0d6038fdf3814a9bb822ceec446c0c8fd330653cff55627a054ba2ae54ad0",
+  "evidence_entity_links.csv": "6dd6d7a333e86fd3d977f48bc947f1d6fd1784d51cf54b4618fb601159b90597",
+  "evidence_group_members.csv": "dad3868ecd07e83a1aa267be9ae142be44c381d182111fb09cae774b75b606f4",
+  "evidence_groups.csv": "a237dedf9842d87f458987cdc326795c1ed16f8ae4ccb3eb99348c74268b6a87",
+  "formulations.csv": "62351ab75832ded9b248654cd0c8f81d1982fd75b87a9e5a174b2d5ba5fd2ad6",
+  "input_assets.csv": "518d1c4f9c3b3e89aae6b2c0c10d228f8e3f814207dc65df6ce2de8ce144447a",
+  "literature.sqlite": "a2e57bafc7dacd08db9339d6aabf6e89756297bffa21e5561f3ee4f90d657311",
+  "provenance.csv": "8b17810853a2001d4bd5931458948f6538ff29cd2bee00575c640a23c31f29a8",
+  "public_evidence_crosswalk.csv": "73dc5238b66df62cfcb06e4fba9ee283ffef92925270556234f6c0bbd85e5121",
+  "quality_issues.csv": "816463523060adf97029fa1d63a110eeb9916d1d064f466f9a0dbdd91665f866",
+  "rule_sources.csv": "e0ead621fe37f11d1874b18681fa484fcabac0445504eabca117c91f1416f0a6",
+  "rules.csv": "5a4ae3bdd296ee256dcd9dc573bff1fec786a3050b397eefd963be5604308227",
+  "source_aliases.csv": "d5783045b15395d22f35d5c241c495236eb18f825af6f04c1f2a2dcbe4f9aa7e",
+  "sources.csv": "dc6dab73a6f5f5dbdd42fca5131c5cca2952386b876d1268e638775dcdb2ea49",
+  "summary.json": "cc15621e23e7ca551ae4520e4c4209f7e83cbe34ac1b7d673f918edfbf24f07c"
+}

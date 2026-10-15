@@ -1,235 +1,70 @@
-# Evidence-to-decision framework for two-photon radical photoinitiator prioritisation
+# Two-photon photoinitiator literature knowledge database
 
-[Database contents](#current-database) · [Identity database boundary](LITERATURE_IDENTITY_DATABASE.md)
+A source-linked database of literature field evidence, molecular identities, experimental-context candidates and photoinitiator priors. The current normalization integrates existing public registries and previously collected local corpus without re-extracting papers, overwriting raw evidence or promoting machine candidates to validated measurements.
 
-This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
-
-Release: **current merged literature database** · Snapshot: **2026-09-06**
-
-## At a glance
-
-| Question | What this study did |
-|---|---|
-| What is the scientific bottleneck? | High predicted two-photon response does not by itself establish radical-generation competence, formulation suitability or reliable extrapolation to a new scaffold. |
-| What is the design principle? | Prediction, reliability assessment, mechanism admissibility, portfolio construction and physicochemical assessment are treated as separate evidence layers and connected only at the candidate-decision stage. |
-| What was built? | Three traceable knowledge layers, an auditable literature-prior task-weight policy, two six-task molecular models with distinct roles, reliability/risk controls, a lane-specific ZINC22 deployment and mechanism-matched QM evidence tiers. |
-| What is the final output? | A 21-representative, QM-assessed candidate portfolio spanning Type-I, Type-II and SET/PET hypotheses. |
-| What is not claimed? | The portfolio is not a set of experimentally validated photoinitiators, and the mechanism assignments are not experimental mechanism proofs. |
-
-```mermaid
-flowchart LR
-    S[45-DOI source pool + local-source audit] --> E[Evidence units with complete citation clusters]
-    E --> L1[Layer 1: domain evaluation knowledge]
-    L1 --> L2[Layer 2: endpoints and molecular representations]
-    L2 --> W[Audited six-task utility prior]
-    W --> M[D06 primary model and F06 diagnostic model]
-    M --> R[Reliability and risk controls]
-    R --> Z[ZINC22: 9,939 candidates]
-    Z --> F[2,583 lane-specific families]
-    F --> L3[Layer 3: mechanism decisions]
-    L3 --> P[21 representatives]
-    P --> Q[Lane-matched QM evidence tiers]
-```
-
-## The three knowledge layers
-
-The layer labels describe scientific functions, not internal project stages.
-
-### Layer 1 — Domain evaluation knowledge: what should be evaluated?
-
-Literature evidence is represented as individual evidence units rather than merged into a sparse, all-purpose molecular database. Each unit records its source, supported statement, normalized criterion, downstream computational use and claim limit.
-
-- Covers optical response, photochemical role, initiating family, coinitiator dependence, formulation-related considerations and explicit boundary cases.
-- The source pool contains 45 unique DOI records after a reverse audit of local full-text and QM assets; the formalised rule registries use the source subsets and citation clusters recorded for each evidence unit rather than implying that every source generated every rule.
-- Each rule exposes a primary source for readability and a complete, deduplicated citation cluster for verification.
-- Keeps 19 synthesis-route precedents in a separate registry so route plausibility is not confused with mechanistic evidence or experimental synthesis validation.
-- Determines which quantities enter the six-task profile and which chemical roles require admission, exclusion or further review.
-
-Primary records: [`source_registry.csv`](source_registry.csv), [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv), and [`synthesis_route_evidence_registry.csv`](synthesis_route_evidence_registry.csv).
-
-### Local full-text and QM source audit
-
-The reverse audit found one genuinely used local primary source that was absent from the previous 44-DOI snapshot: Malval et al., *Chemistry of Materials* (2011), DOI `10.1021/cm200595y`. It is now registered as `SRC045` and decomposed into three source-linked evidence units covering task-prior input, thioxanthone family/topology representation and MDEA-assisted Type-II mechanism context. See [`local_source_evidence_registry.csv`](local_source_evidence_registry.csv) and [`local_source_audit_20260822.md`](local_source_audit_20260822.md). The raw workspace DOI scan is retained for audit only; citation-list occurrences are not automatically treated as learned evidence.
-
-The local Zotero parse queue contains 345 parsed PDFs. [`local_pdf_source_inventory.csv`](local_pdf_source_inventory.csv) exposes their DOI/title metadata without local storage paths and distinguishes the 4 records already linked to public structured evidence from 341 `raw_text_only` records. Raw parsing is deliberately not presented as completed evidence extraction or model learning.
-
-### Layer 2 — Endpoint and representation knowledge: what is predicted and how is a molecule represented?
-
-The project defines a six-task predictive profile comprising `sigma_780`, `sigma_max`, toxicity, solubility, synthetic accessibility and an intersystem-crossing-related energy proxy. These outputs are candidate-profile proxies; they are not direct measurements of photopolymerisation performance.
-
-| Endpoint | Raw unit/scale | Valid labels | Frozen target transform |
-|---|---|---:|---|
-| `sigma_780` | GM | 209,162 | affine-standardised `log10(1 + y)` |
-| `sigma_max` | GM | 209,162 | affine-standardised `log10(1 + y)` |
-| toxicity | dimensionless dataset score | 209,162 | affine-standardised identity |
-| solubility | µg mL−1 | 127,943 | affine-standardised `log10(1 + y)` |
-| synthetic accessibility | dimensionless local 0–1 score | 209,162 | affine-standardised identity |
-| `isc_energy` | eV | 129,671 | affine-standardised identity |
-
-Exact forward/inverse formulae, invalid-value handling and source-field mappings are provided in [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv). These definitions describe the frozen deployment assets; strict-clean retraining is reported separately as a sensitivity audit.
-
-- Both final models use the molecular graph and 11 dense RDKit descriptors.
-- D06 is the primary predictive model.
-- F06 adds 11 photoinitiator-family/topology descriptors and is used as a family-sensitive diagnostic view; D06/F06 disagreement is a reliability signal, not an equal-weight ensemble vote.
-- Eight sparse PI-core descriptors are retained in the controlled ablation study but are not inputs to the frozen D06/F06 deployment models.
-- The registry distinguishes implementation status from ablation status: all seven five-fold comparisons are complete, but the frozen D06/F06 deployment roles remain unchanged.
-
-Primary records: [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) and [`model_evaluation_registry.csv`](model_evaluation_registry.csv).
-
-### Training-policy bridge — how were the six task losses balanced?
-
-The six losses used a literature-informed, rule-structured utility prior. A targeted 34-paper weighting corpus informed an 11-field competition set; four deterministic role-isolated templates and a rule-based adjudication produced seven weighted-core indicators. `absorption_range` remained a rule-layer spectral-window criterion, and the other six indicator weights were renormalised for Chemprop.
-
-| Task | Unit-sum weight | Chemprop mean-one weight |
-|---|---:|---:|
-| `sigma_780` | 0.134404 | 0.806421 |
-| `sigma_max` | 0.144641 | 0.867845 |
-| toxicity | 0.176176 | 1.057055 |
-| solubility | 0.186038 | 1.116228 |
-| synthetic accessibility | 0.202641 | 1.215843 |
-| `isc_energy` | 0.156101 | 0.936609 |
-
-All 12 model–task values match the archived final D06/F06 training specifications. A five-scheme controlled audit found that equal weighting had the lowest observed inner-CV macro RMSE (0.260143) and the deployed literature prior gave 0.262932. The prior is therefore an explicit deployment-utility policy, not a performance optimum. The archived LLM-compatible branch used deterministic fallback for all four role nodes and the adjudicator; no external LLM-generated role score was used.
-
-Primary records: [`TASK_WEIGHT_POLICY.md`](TASK_WEIGHT_POLICY.md), [`task_weight_derivation_registry.csv`](task_weight_derivation_registry.csv), [`task_weight_policy_registry.csv`](task_weight_policy_registry.csv), [`task_weight_model_implementation_registry.csv`](task_weight_model_implementation_registry.csv), [`task_weight_sensitivity_registry.csv`](task_weight_sensitivity_registry.csv) and [`task_weight_node_disclosure_registry.csv`](task_weight_node_disclosure_registry.csv).
-
-### Layer 3 — Mechanistic decision knowledge: how is a candidate routed and assessed?
-
-Literature-derived rules separate candidates into Type-I, Type-II and SET/PET lanes before higher-cost calculations are interpreted.
-
-- Type-I asks whether a chemically meaningful initiating bond supports a cleavage hypothesis.
-- Type-II requires an explicit coinitiator or hydrogen-donor/electron-transfer context.
-- SET/PET requires donor/acceptor assignment, redox inputs and excited-state localization review.
-- Positive, boundary and excluded cases retain different claim ceilings rather than being forced into one global score.
-- The final QM registry records candidate-specific evidence, decision status and the strongest allowed interpretation.
-
-Primary records: [`mechanism_decision_registry.csv`](mechanism_decision_registry.csv) and [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv).
-
-Route evidence uses three defined provenance classes: `direct_route_precedent`, `qualified_close_analogue` and `contextual_or_analogous_support`. The classes support route-plausibility review only and are never used as model inputs or ranking weights.
-
-## What the full study completed
-
-1. Formalised literature evidence into source-linked domain, representation, mechanism and route objects.
-2. Converted a literature/rule prior into an explicit six-task utility-weight vector, verified its use in D06/F06 and audited five alternative weighting schemes.
-3. Constructed D06/DenseGNN and F06/PI-DenseGNN six-task models and evaluated them on scaffold-disjoint outer tests.
-4. Audited reliability through simpler comparisons, strict-clean retraining analysis, independent `sigma_max` evidence, applicability-domain tiers and D06/F06 disagreement.
-5. Applied the frozen decision framework to a role-aware ZINC22 candidate space instead of treating the database as a single optical leaderboard.
-6. Compressed 9,939 candidates into 2,583 lane-specific families and then 21 representatives: seven per mechanism lane, including primary, novelty and boundary/control roles.
-7. Assigned mechanism-matched QM evidence tiers: 20 representatives reached normal neutral minima, one SET/PET representative was excluded after geometry failure, and the surviving cases retained lane-specific claim ceilings.
-
-## Distinct contributions
-
-### 1. Literature knowledge made computationally actionable
-
-The contribution is not the collection of papers itself. It is the traceable conversion of heterogeneous evidence into evaluation criteria, endpoint/descriptor definitions, mechanism rules, boundary cases and route-specific downstream uses.
-
-### 2. Reliability and mechanism jointly control candidate decisions
-
-Predicted scores are not treated as sufficient evidence. Scaffold-disjoint evaluation, independent optical evidence, applicability-domain status, D06/F06 disagreement, family diversity and mechanism admissibility are preserved as separate decision signals.
-
-### 3. Mechanism-matched routing connects screening to QM assessment
-
-Candidates are not sent through one generic QM checklist. Type-I, Type-II and SET/PET hypotheses receive different physicochemical questions, and their outcomes are reported as evidence tiers that can support, retain as exploratory or exclude a candidate.
-
-### What supports the contributions but is not claimed as a standalone innovation
-
-- Use of ZINC22 and the number of screened molecules.
-- Use of Chemprop, graph neural networks, RDKit descriptors or QM calculations by themselves.
-- The six task-weight numbers by themselves; they are an explicit and audited implementation policy, not a performance-optimised discovery claim.
-- A single global multi-property score.
-- Experimentally validated photopolymerisation performance.
-
-## Evidence and current status
-
-| Component | Evidence available | Current interpretation |
-|---|---|---|
-| Literature evidence | 45 unique DOI sources with complete title/year/journal metadata | Existing knowledge organised by evidence unit and computational role |
-| Frozen models | D06/F06 task-level outer tests and independent `sigma_max` evaluation | D06 is primary; F06 disagreement is diagnostic |
-| Task-weight policy | Complete derivation, six exact weights, 12 model-task configuration matches, five sensitivity schemes and five deterministic-fallback disclosures | Implemented utility prior; equal weighting had slightly lower inner-CV macro RMSE, so no performance-optimality claim |
-| Strict-clean re-evaluation | Six-task outer-test comparison complete; replacement gate remains open | Sensitivity/retraining audit, not a replacement deployment model |
-| Descriptor ablation | 7 of 7 scheduled five-fold experiments complete; validation-set hashes matched in all 35 fold/configuration checks | `dense_plus_pi_core` had the lowest observed macro RMSE (0.284826 ± 0.055743); this does not replace D06/F06 or establish statistical superiority |
-| ZINC22 application | 9,939 candidates → 2,583 families → 21 representatives | Lane-specific portfolio construction, not a cross-lane leaderboard |
-| QM assessment | 20 neutral minima passed; one geometry-failed exclusion; lane-specific evidence tiers assigned | Minimal computational closure with conservative claim ceilings |
-
-## Five-minute verification path
-
-1. Read the three layers and contributions above.
-2. Inspect five complete source-to-use chains in [`examples/evidence_to_computational_use_examples.csv`](examples/evidence_to_computational_use_examples.csv).
-3. Read the Introduction/Methods alignment and terminology aliases in [`MANUSCRIPT_ALIGNMENT.md`](MANUSCRIPT_ALIGNMENT.md), then map individual concepts using [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
-4. Check row counts, pending items and claim boundaries in [`AUDIT_REPORT.md`](AUDIT_REPORT.md) and [`completeness_summary.csv`](completeness_summary.csv).
-
-## Repository map
-
-| File | What can be verified |
-|---|---|
-| [`MANUSCRIPT_ALIGNMENT.md`](MANUSCRIPT_ALIGNMENT.md) | current Introduction/Methods terminology, factual study map and statement limits |
-| [`source_registry.csv`](source_registry.csv) | DOI, title, year, journal and evidence use |
-| [`domain_knowledge_registry.csv`](domain_knowledge_registry.csv) | source → evidence → normalized evaluation criterion → downstream use |
-| [`endpoint_representation_registry.csv`](endpoint_representation_registry.csv) | six endpoints, graph representation and descriptor implementation/evaluation status |
-| [`TASK_WEIGHT_POLICY.md`](TASK_WEIGHT_POLICY.md) | human-readable derivation, implementation, sensitivity and disclosure summary |
-| [`task_weight_derivation_registry.csv`](task_weight_derivation_registry.csv) | complete evidence-to-six-weight transformation chain |
-| [`task_weight_policy_registry.csv`](task_weight_policy_registry.csv) | exact six-task and Chemprop-scaled weights with D06/F06 matches |
-| [`task_weight_model_implementation_registry.csv`](task_weight_model_implementation_registry.csv) | 12 task-by-model archived configuration checks |
-| [`task_weight_sensitivity_registry.csv`](task_weight_sensitivity_registry.csv) | five completed grouped-scaffold weighting schemes |
-| [`task_weight_node_disclosure_registry.csv`](task_weight_node_disclosure_registry.csv) | deterministic fallback, prompt hashes and no-external-LLM boundary |
-| [`mechanism_decision_registry.csv`](mechanism_decision_registry.csv) | Type-I/Type-II/SET-PET routing, context and claim limits |
-| [`synthesis_route_evidence_registry.csv`](synthesis_route_evidence_registry.csv) | route precedent kept separate from mechanism evidence |
-| [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
-| [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
-| [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
-| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the current evidence-maintenance boundary |
-
-## Interpretation boundary
-
-The supported repository-level claim is a **literature-grounded, reliability-audited and mechanism-constrained computational prioritisation workflow** that produces a **QM-assessed candidate portfolio**. Experimental polymerisation, printing and formulation validation remain a separate evidence layer.
+Snapshot: **2026-10-15** · [Database guide](DATABASE_GUIDE.md) · [Quality audit](DATABASE_AUDIT.md) · [Machine-readable summary](data/literature/summary.json)
 
 ## Current database
 
-The repository exposes one current database rather than a sequence of numbered public packages. Its tables remain separated by scientific role so that source metadata, machine-extracted candidates, accepted molecular identities, model records and downstream computational evidence cannot be mistaken for one another.
-
-### Database scale
-
-| Data object | Current size | Interpretation |
+| Object | Records | Meaning |
 |---|---:|---|
-| Registered literature sources | 345 | Traceable source records in the broader literature corpus |
-| Machine-extracted field candidates | 9,107 | Raw field-level candidates retained with provenance and status |
-| Normalized evidence groups | 8,573 | Canonicalized evidence records used to build condition and identity links |
-| Public literature evidence registry | 1,179 | 150 preserved audited records plus 1,029 automatic field records from 55 source identifiers |
-| DOI-deduplicated public source inventory | 114 | 45 established sources plus Zotero additions after DOI-first deduplication |
-| Source-local entities | 124 | Labels or compound identifiers interpreted within their original source |
-| Evidence-to-entity links | 3,376 | Traceable links between literature evidence and source-local entities |
-| Condition or formulation clusters | 2,344 | Grouped experimental-condition and formulation candidates |
-| Accepted single-molecule identities | 72 | Source-local identities with RDKit-valid structures; not necessarily 72 unique compounds |
-| Material or ionic records | 8 | Salts, ionic materials and commercial multicomponent objects kept outside the single-molecule graph layer |
-| Terminal non-chemical records | 13 | Acronyms, citation markers, instruments or laser labels excluded from molecular use |
-| Unresolved identity records | 31 | Records that still lack a unique source-supported structure assignment |
+| Combined source directory | 621 | DOI-first or alias-only source keys; not all have extracted evidence |
+| Sources with recorded DOIs | 612 | Recorded identifiers, not newly verified publication metadata |
+| Sources with field evidence | 286 | Actual field-evidence coverage, before internal-document flags |
+| Automatic field candidates | 9,107 | Extracted candidates, not certified experimental values |
+| Historical audit-layer records | 150 | Original audit status preserved; not newly re-audited |
+| Integrated field records | 9,257 | 9,107 automatic candidates plus 150 historical records |
+| Automatic evidence groups | 8,573 | Inherited duplicate groups with all members retained |
+| Source-local entities | 124 | 72 accepted identities, 8 material/ionic, 13 nonchemical and 31 unresolved |
+| Distinct recorded accepted structures | 26 | Distinct InChIKeys across the 72 source-local assignments |
+| Evidence-to-entity links | 3,376 | Includes alias-only matches and source-local links |
+| Condition/formulation clusters | 2,344 | Contextual groupings, not necessarily complete experimental recipes |
+| Domain / mechanism / route priors | 25 / 25 / 19 | 69 rules with 477 source links, separate from measurements |
 
-### Active database files
+The previous 1,179-record public registry is fully accounted for: its 1,029 automatic records map to existing local candidates, and its 150 historical records remain a separate layer. **Do not add 1,179 to 9,107.** The previous 345-row source inventory is one input to the combined directory, not the full evidence-bearing source count. Of the 621 source keys, 335 have no field evidence in this build.
 
-| Location | Contents | Primary use |
-|---|---|---|
-| [`outputs/literature_evidence_current/literature_evidence_registry.csv`](outputs/literature_evidence_current/literature_evidence_registry.csv) | Complete 1,179-record literature evidence registry | Excel inspection and supplementary-data preparation |
-| [`outputs/literature_evidence_current/legacy_evidence_registry.csv`](outputs/literature_evidence_current/legacy_evidence_registry.csv) | Stable 150-record preserved evidence partition | Reproducing the additive merge |
-| [`outputs/literature_evidence_current/automatic_field_evidence_registry.csv`](outputs/literature_evidence_current/automatic_field_evidence_registry.csv) | Stable 1,029-record automatic evidence partition | Reproducing and extending automatic extraction |
-| [`outputs/literature_evidence_current/literature_evidence_registry.jsonl`](outputs/literature_evidence_current/literature_evidence_registry.jsonl) | One machine-readable evidence object per line | Automated exchange and extension |
-| [`outputs/literature_evidence_current/literature_evidence.sqlite`](outputs/literature_evidence_current/literature_evidence.sqlite) | Evidence, numeric subset, source summary and query indexes | Programmatic querying |
-| [`outputs/literature_evidence_current/source_inventory/`](outputs/literature_evidence_current/source_inventory/) | DOI-deduplicated source inventory, access metadata and exact duplicate relations | Source discovery and provenance auditing |
-| [`outputs/literature_identity_current/accepted_source_identity_registry.csv`](outputs/literature_identity_current/accepted_source_identity_registry.csv) | Accepted source-local single-molecule identities | Structure linkage |
-| [`outputs/literature_identity_current/multicomponent_material_registry.csv`](outputs/literature_identity_current/multicomponent_material_registry.csv) | Salt, ionic and multicomponent material records | Material-level identity without forcing a single molecular graph |
-| [`outputs/literature_identity_current/formulation_linkage_registry_enriched.csv`](outputs/literature_identity_current/formulation_linkage_registry_enriched.csv) | Condition and formulation clusters linked to accepted identities where possible | Literature-to-formulation analysis |
-| [`outputs/literature_identity_current/condition_identity_linkage.sqlite`](outputs/literature_identity_current/condition_identity_linkage.sqlite) | Queryable identity, entity, evidence-link and formulation tables | Programmatic identity queries |
-| [`outputs/literature_identity_current/unresolved_queue/`](outputs/literature_identity_current/unresolved_queue/) | Unresolved records and 168 retained structure-candidate evidence rows | Further automated identity recovery |
+## Files to use
 
-CSV files are the human-readable and spreadsheet-compatible form. SQLite files are the queryable frozen databases. JSON and JSONL files preserve machine-readable records, summaries and provenance. Earlier snapshots and extraction intermediates are kept under `outputs/audit_history/` and `outputs/literature_identity_current/audit/`; they are not alternative current databases.
+| File | Use |
+|---|---|
+| [literature.sqlite](data/literature/literature.sqlite) | Query all normalized relational tables and conservative views |
+| [sources.csv](data/literature/sources.csv) | Source keys, DOIs, titles and scope flags |
+| [evidence.csv](data/literature/evidence.csv) / [evidence.jsonl](data/literature/evidence.jsonl) | Spreadsheet / programmatic field-evidence access |
+| [accepted_identities.csv](data/literature/accepted_identities.csv) / [entities.csv](data/literature/entities.csv) | Structure assignments and identity categories |
+| [conditions.csv](data/literature/conditions.csv) / [formulations.csv](data/literature/formulations.csv) | Experimental-context groupings |
+| [evidence_entity_links.csv](data/literature/evidence_entity_links.csv) | Link status, confidence and match basis |
+| [rules.csv](data/literature/rules.csv) / [rule_sources.csv](data/literature/rule_sources.csv) | Domain, mechanism and route priors with citations |
+| [quality_issues.csv](data/literature/quality_issues.csv) | Missing provenance and possible semantic conflicts |
+| [public_evidence_crosswalk.csv](data/literature/public_evidence_crosswalk.csv) | Complete mapping from the earlier public registry |
+| [data_dictionary.csv](data/literature/data_dictionary.csv) | Fields, missing values and unit policy |
+| [input_assets.csv](data/literature/input_assets.csv), [provenance.csv](data/literature/provenance.csv), [manifest.json](data/literature/manifest.json) | Input hashes, row provenance and output checksums |
 
-### Source inventory and deduplication
+CSV files use UTF-8 with a byte-order mark for spreadsheet compatibility. SQLite provides relational queries; JSONL provides one evidence object per line. No Excel installation is needed.
 
-The current source inventory merges 80 Zotero records with the established 45-source registry using DOI-first deduplication. Eleven DOI overlaps were mapped to existing sources, leaving 114 source rows. Exact same-layer deduplication retained 714 automatic candidates and 149 page-audited evidence records; two removed duplicates remain documented in `dedup_relations.csv`. DOI-absent records remain separate, and candidate/audited cross-layer overlaps are retained because they have different evidentiary meanings.
+## Quality and scientific-use boundaries
 
-### Identity and scientific-use boundary
+The normalization flags 1,399 evidence rows lacking page locators, 122 possible geometry-versus-wavelength context collisions, and four possible internal research documents containing 32 field records. All remain traceable. The view `literature_candidates_excluding_flagged_internal_docs` excludes flagged documents but does not certify the remaining data as independent experiments.
 
-The identity database answers which molecule a source-specific name or compound number refers to and where that assignment came from. It does not create experimental optical values, six-task model labels, external-validation observations, ZINC22 screening decisions or quantum-chemistry inputs. Candidate structures enter the accepted single-molecule table only after source context, label–structure correspondence and molecular-structure checks agree. Material, ionic, ambiguous and non-chemical records remain separately classified.
+Accepted identity is not an accepted numerical measurement. A field value, context cluster, alias match and source-supported structure are different evidence objects. Numeric-looking candidates still require correct compound, endpoint, unit, condition and original-source ownership. Absorption cross section is not polymerization efficiency; a maximum in a measured wavelength window is not automatically a global maximum.
 
-## Integrity and validation
+This build creates **zero newly certified measurements and zero training labels**. It does not access sealed final-test labels, retrain models, update screening decisions or revise quantum-chemistry conclusions.
 
-`VERSION`, `package_manifest.json` and `checksums.sha256` freeze the current snapshot. Run `python scripts/validate_release.py` from the repository root to verify checksums and screen the public files for absolute local paths or internal working labels. The current identity SQLite database passes its integrity check, and all 72 accepted single-molecule structures pass RDKit parsing and identifier recomputation.
+## Access and reproducibility
+
+The public database contains metadata, scalar candidates, inherited identities, rules, relationships and hashes. Full text anchors, nonscalar extraction text, source PDFs and original path-bearing inputs remain in a separate local archive. Withheld public text is distinguished from data missing in the original extraction. Third-party content retains its original rights; no new licence over it is granted.
+
+Validate with Python 3.11 or later:
+
+```sh
+python scripts/test_normalize_literature_database.py
+python scripts/verify_normalized_database.py data/literature
+python scripts/validate_release.py
+```
+
+The [database guide](DATABASE_GUIDE.md) describes rebuild inputs, normalization policies and SQL queries. The independent verifier checks all 17 tables, file hashes, foreign keys, group membership, CSV/JSONL mirrors and public export boundaries. With the private archive, it also verifies original input bytes and 62,575 row-provenance links.
+
+## Earlier study records and compatibility
+
+Use `data/literature` as the single current normalized database entry point. The older [public evidence package](outputs/literature_evidence_current/) and [identity package](outputs/literature_identity_current/) remain unchanged for compatibility and provenance; they are not extra observations to append.
+
+The previous model, task-weight, screening and quantum-chemistry narrative is preserved in [Historical study context](HISTORICAL_STUDY_CONTEXT.md). Those study records are not inputs to this normalized database, and their scientific claims have not been renewed by the rebuild.

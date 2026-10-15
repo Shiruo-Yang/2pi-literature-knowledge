@@ -1,0 +1,58 @@
+{
+  "schema": "normalized_literature_database",
+  "table_counts": {
+    "sources": 621,
+    "source_aliases": 717,
+    "input_assets": 17,
+    "provenance": 62575,
+    "evidence": 9257,
+    "evidence_groups": 8573,
+    "evidence_group_members": 9107,
+    "public_evidence_crosswalk": 1179,
+    "entities": 210,
+    "accepted_identities": 72,
+    "conditions": 2344,
+    "condition_members": 8107,
+    "formulations": 2344,
+    "evidence_entity_links": 3376,
+    "rules": 69,
+    "rule_sources": 477,
+    "quality_issues": 1573
+  },
+  "inventory_source_records": 345,
+  "distinct_recorded_dois": 612,
+  "sources_with_evidence": 286,
+  "sources_without_field_evidence": 335,
+  "internal_document_evidence_records": 32,
+  "source_local_identity_classes": {
+    "accepted_single_molecule_identity_only": 72,
+    "terminal_material_record": 8,
+    "terminal_nonchemical_token": 13,
+    "unresolved_identity": 31
+  },
+  "accepted_distinct_recorded_inchikeys": 26,
+  "evidence_status_counts": {
+    "legacy_audit_status_inherited_not_reaudited": 150,
+    "machine_candidate_not_measurement_certified": 9107
+  },
+  "public_crosswalk_counts": {
+    "retained_separate_audit_layer": 150,
+    "same_preserved_extraction_origin": 1029
+  },
+  "source_scope_counts": {
+    "internal_workflow_candidate": 4,
+    "literature_inventory_not_independence_certified": 617
+  },
+  "quality_issue_counts": {
+    "doi_not_recorded_on_input_row": 48,
+    "missing_page_locator": 1399,
+    "possible_geometry_vs_wavelength_context_collision": 122,
+    "possible_own_research_document": 4
+  },
+  "new_certified_measurements": 0,
+  "new_training_labels": 0,
+  "structure_validation": "Inherited identifiers preserved; no chemical structure revalidation performed by this builder.",
+  "rights": "No new licence granted over third-party material. Full text, source PDFs and private raw rows are not in this projection.",
+  "foreign_key_check": [],
+  "integrity_check": "ok"
+}
