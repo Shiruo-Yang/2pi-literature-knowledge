@@ -32,7 +32,25 @@ The current field inventory contains 9,257 records mapped from 98 original field
 | [field_dictionary.csv](data/research/field_dictionary.csv) | Original field names, canonical concepts, manuscript roles and interpretation requirements |
 | [research.sqlite](data/research/research.sqlite) | All scientific tables, relationships and the five module views |
 
-The source directory contains 621 source keys, of which 286 have field evidence. Those are coverage counts, not counts of newly read papers or complete experiments. Existing bibliography data filled 225 missing years and 224 missing journals, with row-level provenance.
+The source directory contains 626 source keys, of which 286 have field evidence. Five references from existing local source audits are now connected to the scientific database; they are not five newly mined papers. Those are coverage counts, not counts of fully extracted papers or complete experiments. Existing bibliography data filled 225 missing years and 224 missing journals, with row-level provenance.
+
+## Paper-supporting evidence and permitted use
+
+The [paper evidence index](data/research/paper_core.csv) brings together 69 source-linked priors, six fixed endpoint definitions, two previously source-checked optical table records and three structure-identity conflict cases. These 80 entries are different kinds of support, **not 80 validated measurements**. Each entry states its permitted use, current assessment status and prohibited interpretations.
+
+| Current addition | What can be inspected |
+|---|---|
+| [Field readiness](data/research/evidence_readiness.csv) | A use-specific assessment for all 9,257 field candidates, including unresolved ownership, units, location and inherited holds |
+| [Rule readiness](data/research/rule_readiness.csv) | Citation coverage and recorded scope for all 69 priors; primary-experiment support and counterevidence remain explicitly unassessed |
+| [Source optical records](data/research/source_measurements.csv) / [structures](data/research/source_structures.csv) / [conditions](data/research/measurement_conditions.csv) | Two Cvejn table values linked to their source structures and 16 condition fields; three additional Rumi structure-only cases retain an internal drawing/name conflict |
+| [Review-to-primary links](data/research/source_lineage.csv) | Three checked bibliographic links, kept separate from unverified individual measurement chains |
+| [Coverage and gaps](data/research/quality_coverage.csv) | Counts by scientific concept, source, scalar candidacy, location, identity links and use restrictions |
+
+The optical cases report 757 GM at 830 nm and 667 GM at 810 nm in THF. They retain the 750–850 nm measurement window, separate sample/reference conditions, and missing pulse-duration/repetition-rate information. They are source-reported **window maxima**, not certified global maxima, independent final-test additions, production training replacements or polymerisation-efficiency measurements. This integration reuses prior source audits; it does not create new human certification or increase the number of independent experiments by assertion.
+
+These cases can support source-fact citation and within-paper descriptive comparisons with their reported conditions and limits. This does not establish harmonised cross-source comparability or eligibility for model evaluation.
+
+Readiness checks measure completeness and inherited use restrictions. **Extraction accuracy and recall have not yet been measured against independent reference annotations.** A located source, a parseable structure or matching tools alone is not an accuracy benchmark.
 
 ## Reading the data
 
@@ -51,8 +69,12 @@ CSV files open in spreadsheet software. SQLite supports linked queries. These co
 ```sh
 python scripts/query_research_database.py
 python scripts/query_research_database.py --module mechanism --kind rules --limit 3
+python scripts/query_research_database.py --module mechanism --kind core --query coinitiator --limit 3
+python scripts/query_research_database.py --kind source-measurements --limit 2
+python scripts/query_research_database.py --kind coverage --module property_profile
 python scripts/build_research_database.py --output new_research_staging
 python scripts/verify_research_database.py --directory new_research_staging --metadata inputs/bibliographic_metadata.csv
+python scripts/verify_evidence_quality.py --directory new_research_staging
 python scripts/validate_release.py
 ```
 

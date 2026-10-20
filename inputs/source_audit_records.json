@@ -1,0 +1,359 @@
+{
+  "schema": "source_audit_public_projection",
+  "audit_sources": [
+    {
+      "audit_id": "cvejn_source_audit",
+      "input_sha256": "21bf0006ee8230aaf5eea7256244c5ba90a83acb28d39b3224a432dd1f6aefbb",
+      "original_manifest_sha256": "007f9079efdd5e5c7858b4e16fdc2d81fb3a4dc9e041325ae02b932356b2a730",
+      "source_document_sha256": "accee4333c480793d082f2af042eb3d648f608f5dc6debfdef129ac01e185d9f",
+      "review_basis": "existing_assistant_source_review_with_computational_checks",
+      "human_review_status": "not_performed"
+    },
+    {
+      "audit_id": "rumi_structure_audit",
+      "input_sha256": "fb618d9ae649875ef327186c2037db4a389155038d06af6bf1c541d8f0741592",
+      "original_manifest_sha256": "70e131610dd494b8844b823d635a29c84844f52f298027e48263ffc204e1498b",
+      "source_document_sha256": "e6dc31938d9a5dce794b14b23a01d4363b91fe303cf49021c2607c547e2dfd69",
+      "review_basis": "existing_assistant_source_review_with_internal_drawing_conflict_recorded",
+      "human_review_status": "not_performed"
+    },
+    {
+      "audit_id": "review_primary_lineage_audit",
+      "input_sha256": "aeee8178e36132704598fe22841df473a66824d48f0233044b042935295bb583",
+      "original_manifest_sha256": "70e131610dd494b8844b823d635a29c84844f52f298027e48263ffc204e1498b",
+      "source_document_sha256": "",
+      "review_basis": "existing_accessible_review_text_and_reference_list_check",
+      "human_review_status": "not_performed"
+    }
+  ],
+  "structures": [
+    {
+      "structure_record_id": "STRUCT-CVEJN2015-6",
+      "doi": "10.1039/c5tc01293g",
+      "source_compound_number": "6",
+      "canonical_smiles": "N#CC(C#N)=Cc1ccc(N(c2ccc(C=C(C#N)C#N)cc2)c2ccc(C=C(C#N)C#N)cc2)cc1",
+      "molecular_formula": "C30H15N7",
+      "structure_locator": "Fig2 PDF_page2 printed7346; Experimental PDF_page8 printed7352",
+      "structure_basis": "assistant_transcribed_Fig2_independent_of_stored_SMILES",
+      "source_internal_conflict": "",
+      "conflict_resolution": "",
+      "audit_id": "cvejn_source_audit",
+      "human_review_status": "not_performed",
+      "identity_status": "assistant_source_linked_not_author_certified"
+    },
+    {
+      "structure_record_id": "STRUCT-CVEJN2015-7",
+      "doi": "10.1039/c5tc01293g",
+      "source_compound_number": "7",
+      "canonical_smiles": "N#CC(C#N)=CC#Cc1ccc(N(c2ccc(C#CC=C(C#N)C#N)cc2)c2ccc(C#CC=C(C#N)C#N)cc2)cc1",
+      "molecular_formula": "C36H15N7",
+      "structure_locator": "Fig2 PDF_page2 printed7346; Experimental PDF_page8 printed7352",
+      "structure_basis": "assistant_transcribed_Fig2_independent_of_stored_SMILES",
+      "source_internal_conflict": "",
+      "conflict_resolution": "",
+      "audit_id": "cvejn_source_audit",
+      "human_review_status": "not_performed",
+      "identity_status": "assistant_source_linked_not_author_certified"
+    },
+    {
+      "structure_record_id": "STRUCT-RUMI2000-2",
+      "doi": "10.1021/ja994497s",
+      "source_compound_number": "2",
+      "canonical_smiles": "CCCCN(CCCC)c1ccc(/C=C/C=C/c2ccc(N(C)C)cc2)cc1",
+      "molecular_formula": "C26H36N2",
+      "structure_locator": "Supporting information PDF page 3 printed S3; compound-specific synthesis name, elemental formula and HRMS; Scheme1 parameter list on S3",
+      "structure_basis": "independent_assistant_transcription_from_scanned_systematic_name_and_formula",
+      "source_internal_conflict": "Scheme1 generic product drawing labels both donors n-Bu, but parameter list R=Me for 2-5 and compound-specific names/formulas support asymmetric donors",
+      "conflict_resolution": "use compound-specific name plus independent formula/HRMS, not the generic product drawing alone",
+      "audit_id": "rumi_structure_audit",
+      "human_review_status": "not_performed",
+      "identity_status": "assistant_source_linked_with_recorded_source_conflict"
+    },
+    {
+      "structure_record_id": "STRUCT-RUMI2000-3",
+      "doi": "10.1021/ja994497s",
+      "source_compound_number": "3",
+      "canonical_smiles": "CCCCN(CCCC)c1ccc(/C=C/C=C/C=C/c2ccc(N(C)C)cc2)cc1",
+      "molecular_formula": "C28H38N2",
+      "structure_locator": "Supporting information PDF page 4 printed S4; compound-specific synthesis name, elemental formula and HRMS; Scheme1 parameter list on S3",
+      "structure_basis": "independent_assistant_transcription_from_scanned_systematic_name_and_formula",
+      "source_internal_conflict": "Scheme1 generic product drawing labels both donors n-Bu, but parameter list R=Me for 2-5 and compound-specific names/formulas support asymmetric donors",
+      "conflict_resolution": "use compound-specific name plus independent formula/HRMS, not the generic product drawing alone",
+      "audit_id": "rumi_structure_audit",
+      "human_review_status": "not_performed",
+      "identity_status": "assistant_source_linked_with_recorded_source_conflict"
+    },
+    {
+      "structure_record_id": "STRUCT-RUMI2000-4",
+      "doi": "10.1021/ja994497s",
+      "source_compound_number": "4",
+      "canonical_smiles": "CCCCN(CCCC)c1ccc(/C=C/C=C/C=C/C=C/c2ccc(N(C)C)cc2)cc1",
+      "molecular_formula": "C30H40N2",
+      "structure_locator": "Supporting information PDF page 4 printed S4; compound-specific synthesis name, elemental formula and HRMS; Scheme1 parameter list on S3",
+      "structure_basis": "independent_assistant_transcription_from_scanned_systematic_name_and_formula",
+      "source_internal_conflict": "Scheme1 generic product drawing labels both donors n-Bu, but parameter list R=Me for 2-5 and compound-specific names/formulas support asymmetric donors",
+      "conflict_resolution": "use compound-specific name plus independent formula/HRMS, not the generic product drawing alone",
+      "audit_id": "rumi_structure_audit",
+      "human_review_status": "not_performed",
+      "identity_status": "assistant_source_linked_with_recorded_source_conflict"
+    }
+  ],
+  "measurements": [
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "structure_record_id": "STRUCT-CVEJN2015-6",
+      "doi": "10.1039/c5tc01293g",
+      "canonical_property": "two_photon_cross_section",
+      "value": "757",
+      "unit": "GM",
+      "measurement_wavelength_nm": "830",
+      "sample_solvent": "THF",
+      "measurement_method": "two_photon_excited_fluorescence",
+      "value_qualifier": "reported_window_maximum",
+      "peak_definition": "reported_maximum_within_750_850_nm_measurement_window",
+      "numeric_locator": "Table1 PDF_page4 printed7348 row6 final_column_and_footnote_g",
+      "condition_locator": "Two photon absorption PDF_page6 printed7350",
+      "numeric_evidence_class": "text_exact",
+      "audit_id": "cvejn_source_audit",
+      "human_review_status": "not_performed",
+      "global_sigma_max_eligible": "false",
+      "training_eligible": "false",
+      "final_test_eligible": "false",
+      "independent_new_sample_claim": "false",
+      "existing_training_record_replacement": "false",
+      "original_database_curve_history_certified": "false",
+      "development_connectivity_overlap": "no_match_in_previously_checked_development_pool_not_proof_of_independence",
+      "measurement_status": "assistant_source_checked_with_missing_laser_specifications",
+      "use_scope": "source_reported_optical_context_not_global_peak_or_polymerization_efficiency"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "structure_record_id": "STRUCT-CVEJN2015-7",
+      "doi": "10.1039/c5tc01293g",
+      "canonical_property": "two_photon_cross_section",
+      "value": "667",
+      "unit": "GM",
+      "measurement_wavelength_nm": "810",
+      "sample_solvent": "THF",
+      "measurement_method": "two_photon_excited_fluorescence",
+      "value_qualifier": "reported_window_maximum",
+      "peak_definition": "reported_maximum_within_750_850_nm_measurement_window",
+      "numeric_locator": "Table1 PDF_page4 printed7348 row7 final_column_and_footnote_g",
+      "condition_locator": "Two photon absorption PDF_page6 printed7350",
+      "numeric_evidence_class": "text_exact",
+      "audit_id": "cvejn_source_audit",
+      "human_review_status": "not_performed",
+      "global_sigma_max_eligible": "false",
+      "training_eligible": "false",
+      "final_test_eligible": "false",
+      "independent_new_sample_claim": "false",
+      "existing_training_record_replacement": "false",
+      "original_database_curve_history_certified": "false",
+      "development_connectivity_overlap": "existing_development_match",
+      "measurement_status": "assistant_source_checked_with_missing_laser_specifications",
+      "use_scope": "source_reported_optical_context_not_global_peak_or_polymerization_efficiency"
+    }
+  ],
+  "measurement_conditions": [
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "sample_concentration",
+      "value": "0.0001",
+      "unit": "mol/L",
+      "role": "sample",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "reference_dye",
+      "value": "Rhodamine B",
+      "unit": "",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "reference_solvent",
+      "value": "methanol",
+      "unit": "",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "reference_concentration",
+      "value": "0.0001",
+      "unit": "mol/L",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "measurement_window_lower",
+      "value": "750",
+      "unit": "nm",
+      "role": "measurement_range",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "measurement_window_upper",
+      "value": "850",
+      "unit": "nm",
+      "role": "measurement_range",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "pulse_duration",
+      "value": "",
+      "unit": "fs",
+      "role": "laser",
+      "condition_status": "not_recovered_from_main_article",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C6_TABLE1",
+      "condition_name": "repetition_rate",
+      "value": "",
+      "unit": "Hz",
+      "role": "laser",
+      "condition_status": "not_recovered_from_main_article",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "sample_concentration",
+      "value": "0.0001",
+      "unit": "mol/L",
+      "role": "sample",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "reference_dye",
+      "value": "Rhodamine B",
+      "unit": "",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "reference_solvent",
+      "value": "methanol",
+      "unit": "",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "reference_concentration",
+      "value": "0.0001",
+      "unit": "mol/L",
+      "role": "reference",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "measurement_window_lower",
+      "value": "750",
+      "unit": "nm",
+      "role": "measurement_range",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "measurement_window_upper",
+      "value": "850",
+      "unit": "nm",
+      "role": "measurement_range",
+      "condition_status": "reported_source_condition",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "pulse_duration",
+      "value": "",
+      "unit": "fs",
+      "role": "laser",
+      "condition_status": "not_recovered_from_main_article",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    },
+    {
+      "measurement_id": "CVEJN2015_C7_TABLE1",
+      "condition_name": "repetition_rate",
+      "value": "",
+      "unit": "Hz",
+      "role": "laser",
+      "condition_status": "not_recovered_from_main_article",
+      "source_locator": "Two photon absorption PDF_page6 printed7350",
+      "audit_id": "cvejn_source_audit"
+    }
+  ],
+  "source_lineage": [
+    {
+      "review_doi": "10.1002/anie.201204203",
+      "primary_doi": "10.1021/ja994497s",
+      "reference_number": "12",
+      "locator": "Figure2 caption [12]; reference12 Rumi JACS2000 122 9500-9510",
+      "evidence_url": "https://www.researchgate.net/publication/235650121_From_One-Photon_to_Two-Photon_Probes_Caged_Compounds_Actuators_and_Photoswitches",
+      "access_basis": "web_tool_author_uploaded_review_text; direct_download_403",
+      "bibliographic_link_verified": "true",
+      "individual_measurement_chain_verified": "false",
+      "independence_certified": "false",
+      "audit_id": "review_primary_lineage_audit"
+    },
+    {
+      "review_doi": "10.1002/anie.201204203",
+      "primary_doi": "10.1002/chem.200600689",
+      "reference_number": "13",
+      "locator": "planarity discussion [13]; reference13 Mongin ChemEurJ2007 13 1481-1498",
+      "evidence_url": "https://www.researchgate.net/publication/235650121_From_One-Photon_to_Two-Photon_Probes_Caged_Compounds_Actuators_and_Photoswitches",
+      "access_basis": "web_tool_author_uploaded_review_text; direct_download_403",
+      "bibliographic_link_verified": "true",
+      "individual_measurement_chain_verified": "false",
+      "independence_certified": "false",
+      "audit_id": "review_primary_lineage_audit"
+    },
+    {
+      "review_doi": "10.1002/anie.201204203",
+      "primary_doi": "10.1021/ol203188h",
+      "reference_number": "55",
+      "locator": "Section3.3 discussion [55]; reference55 Bao OrgLett2012 14 572-575",
+      "evidence_url": "https://www.researchgate.net/publication/235650121_From_One-Photon_to_Two-Photon_Probes_Caged_Compounds_Actuators_and_Photoswitches",
+      "access_basis": "web_tool_author_uploaded_review_text; direct_download_403",
+      "bibliographic_link_verified": "true",
+      "individual_measurement_chain_verified": "false",
+      "independence_certified": "false",
+      "audit_id": "review_primary_lineage_audit"
+    }
+  ],
+  "projector_sha256": "2153ef365db272bf31275fe5e511e8c48ae2f27f667c33fc910e0cd1e1ec0041",
+  "limits": "Previously audited facts only; no new human certification, training labels or final-test membership."
+}

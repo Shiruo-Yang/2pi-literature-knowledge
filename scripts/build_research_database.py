@@ -10,6 +10,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 from open_literature_database import connect
+from research_evidence_quality import add_audit_sources, append_quality_tables
 
 
 def fingerprint(path):
@@ -122,6 +123,13 @@ def build(root, output, metadata=None):
     asset('field_use_decisions', root / 'configs/literature_field_use_decisions.json')
     asset('research_taxonomy', cfg_path)
     asset('builder', Path(__file__))
+    audit_path = root / 'inputs/source_audit_records.json'
+    policy_path = root / 'configs/evidence_use_policy.json'
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    policy = json.loads(policy_path.read_text(encoding='utf-8'))
+    asset('source_audit_projection', audit_path)
+    asset('evidence_use_policy', policy_path)
+    asset('evidence_quality_builder', Path(__file__).with_name('research_evidence_quality.py'))
     metadata_by_doi = defaultdict(list)
     if metadata:
         asset('existing_literature_metadata', metadata)
@@ -150,6 +158,7 @@ def build(root, output, metadata=None):
                 formatting_only = bool(paper[field]) and all(format_key(v) == format_key(paper[field]) for v in values)
                 conflicts.append({'source_key': paper['source_key'], 'field_name': field, 'base_value': paper[field], 'candidate_values': ';'.join(values), 'difference_type': 'formatting_variant' if formatting_only else 'unresolved_content_conflict', 'action': 'retain_base_spelling' if formatting_only else 'retain_base_and_flag_conflict'})
         papers.append(paper)
+    added_audit_sources = add_audit_sources(papers, audit)
     entities = [dict(r) for r in source.execute('SELECT * FROM base.entities ORDER BY entity_id')]
     accepted = [dict(r) for r in source.execute('SELECT * FROM base.accepted_identities ORDER BY entity_id')]
     compounds, assignments, compound_by_entity = {}, [], {}
@@ -258,6 +267,7 @@ def build(root, output, metadata=None):
     table('metadata_provenance', metadata_links, ['source_key', 'field_name', 'reported_value', 'asset_id', 'input_row', 'action'], 'FOREIGN KEY(source_key) REFERENCES papers(source_key)')
     table('metadata_conflicts', conflicts, ['source_key', 'field_name', 'base_value', 'candidate_values', 'difference_type', 'action'], 'FOREIGN KEY(source_key) REFERENCES papers(source_key)')
     table('input_assets', assets, constraints='PRIMARY KEY(asset_id)')
+    quality_summary = append_quality_tables(db, table, papers, audit, policy)
     db.executescript('''
     CREATE VIEW structural_priors AS SELECT * FROM knowledge_rules WHERE module_id='molecular_design';
     CREATE VIEW mechanism_rules AS SELECT * FROM knowledge_rules WHERE module_id='mechanism';
@@ -286,6 +296,8 @@ def build(root, output, metadata=None):
                'component_holds_preserved': sum(r['component_use_action'] != 'no_component_override' for r in index),
                'internal_document_exclusions_preserved': sum(r['external_evidence_use'].startswith('exclude_') for r in index),
                'new_certified_measurements': 0, 'new_training_labels': 0,
+               'existing_audit_sources_added': len(added_audit_sources),
+               'evidence_quality': quality_summary,
                'observation_definition': 'A source-anchored scalar candidate; compound ownership and experimental conditions may still be unresolved.',
                'foreign_key_check': [], 'integrity_check': 'ok'}
     (output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8', newline='\n')

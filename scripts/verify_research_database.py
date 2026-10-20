@@ -104,7 +104,8 @@ def verify(root, directory, metadata=None):
             assert papers[item['source_key']][item['field_name']] == item['reported_value']
             assert not papers[item['source_key']]['base_' + item['field_name']]
     for path in directory.glob('*.csv'):
-        assert not __import__('re').search(r'(?i)[a-z]:[\\/]', path.read_text(encoding='utf-8-sig')), path
+        # A drive letter must start a token; the trailing s:/ in https:// is not a local path.
+        assert not __import__('re').search(r'(?i)(?<![a-z0-9])[a-z]:[\\/]', path.read_text(encoding='utf-8-sig')), path
     return {'status': 'passed', 'tables_checked': len(summary['tables']), 'preserved_field_records': len(current), 'task_profile_rows': len(profile), 'new_certified_labels': 0}
 
 

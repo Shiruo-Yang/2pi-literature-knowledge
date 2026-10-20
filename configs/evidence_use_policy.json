@@ -1,0 +1,26 @@
+{
+  "schema": "research_evidence_use_policy",
+  "principle": "Evidence location, scientific ownership, and permission for a particular use are separate checks.",
+  "candidate_quantitative_requirements": [
+    "unique_scientific_ownership",
+    "property_specific_conditions",
+    "source_checked_value_and_unit"
+  ],
+  "unresolved_wavelength_property": "reported_wavelength_unspecified",
+  "core_rule_use": "source_linked_prior_for_interpretation_not_candidate_performance_proof",
+  "core_profile_use": "frozen_endpoint_rationale_not_weight_optimality_evidence",
+  "core_measurement_use": "source_reported_window_maximum_with_explicit_missing_conditions",
+  "core_identity_use": "source_identity_conflict_case_not_optical_measurement",
+  "accuracy_evaluation_status": "not_measured_against_independent_reference_annotations",
+  "training_labels_created": 0,
+  "prohibited_shortcuts": [
+    "source_location_as_measurement_certification",
+    "neighboring_conditions_as_unique_measurement_conditions",
+    "context_cluster_as_unique_experiment",
+    "source_local_name_match_as_value_ownership",
+    "window_maximum_as_global_sigma_max",
+    "initiator_loading_as_solubility",
+    "literature_citation_count_as_optimal_task_weight_evidence",
+    "bibliographic_lineage_as_verified_measurement_lineage"
+  ]
+}

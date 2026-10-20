@@ -36,7 +36,27 @@ The modules follow the manuscript's literature-knowledge role. They do not freez
 | `metadata_provenance`, `metadata_conflicts` | Bibliographic fills or differences linked to the input metadata row |
 | `research_modules`, `input_assets` | Module definitions, exact record counts and input fingerprints |
 
-All tables are available as UTF-8-with-BOM CSV files alongside the queryable SQLite database. `summary.json` reports the actual build counts. `manifest.json` checks every export. The five research modules are the browsing structure; the 17 relational tables implement the underlying links.
+All tables are available as UTF-8-with-BOM CSV files alongside the queryable SQLite database. `summary.json` reports the actual build counts. `manifest.json` checks every export. The five research modules are the browsing structure; 26 relational tables implement the scientific records, source audits and use assessments.
+
+### Paper-supporting evidence and quality assessments
+
+`paper_core` is an entry point to existing study support, not a certification tier. Its 80 entries comprise 69 literature-linked rules, six frozen endpoint definitions, two source-checked measurement cases and three source-identity cases. Records state their allowed and prohibited uses. Citation-linked priors are useful for interpretation but are not candidate-specific mechanism proof; endpoint-rationale citations do not establish optimal weights or a minimal sufficient task set.
+
+`evidence_readiness` assesses every preserved field candidate. It distinguishes source-location evidence, accepted source-local name links, explicit units, numerical/component holds, internal-document exclusion and unresolved scientific ownership. It does not certify a candidate value merely because it has a source locator. `rule_readiness` records citation counts and the presence of scope/partner context, while leaving primary-experiment support and counterevidence explicitly unadjudicated. `quality_coverage` reports these checks separately for the 56 canonical concepts. These are completeness/use checks, not measured precision or recall.
+
+### Previously audited source-defined cases
+
+`source_structures` stores five source-local structure records separately from the 26 inherited accepted structure identifiers. They have not been globally merged with that index or counted as five new unique molecules. Two Cvejn structure records are associated with `source_measurements`; three Rumi structures are identity-conflict cases without optical labels. The Rumi generic drawing/name discrepancy remains explicit, together with the compound-specific name/formula basis for the previous assistant transcription.
+
+`source_measurements` contains Cvejn compounds 6 and 7: 757 GM at 830 nm and 667 GM at 810 nm, respectively. The source table, structure and method locators remain linked. `measurement_conditions` contains 16 fields: eight per measurement, including sample concentration, reference dye/solvent/concentration, scan bounds and two explicitly missing laser specifications. THF is the sample solvent; methanol belongs to the Rhodamine B reference and is not reassigned to the sample.
+
+These are maxima within the reported 750–850 nm measurement window, not certified global maxima. Their source review was performed by the assistant in the prior audit, not an independent human reviewer. They are retained as source-reported optical context with missing laser specifications, not a fully comparable measurement cohort. Training, final-test, global-maximum and independent-new-sample eligibility remain false; the original curve-extraction history is not certified. The known development overlap is retained categorically without importing training targets, predictions or sealed test data. No legacy observation is replaced, and cross-database duplicate status remains unresolved.
+
+`source_fact_use` permits citation of the reported facts and within-source descriptive comparisons when conditions and limitations are disclosed. `cross_source_comparison_ready` remains false: absent laser specifications have not been harmonised across publications. This use-specific distinction does not prohibit quoting an otherwise traceable source value merely because every laser parameter is unavailable.
+
+`source_lineage` adds three previously checked review-to-primary reference links. Bibliographic linkage does not certify the structure–value–condition chain of individual measurements. `source_audits` records original audit-input, manifest and source-document hashes without publishing local paths or source documents. Five DOI references absent from the old 621-source inventory are appended, giving 626 keys; unavailable bibliographic metadata are not invented.
+
+The path-free input is `inputs/source_audit_records.json`. A public rebuild needs this file, not the local copyrighted full text. The optional `verify_source_audit_inputs.py` additionally checks the privately retained original assets and independently re-parses the saved source table, without opening model datasets or sealed test labels. It verifies provenance and preserved facts, not whole-corpus extraction accuracy.
 
 ### Compound identity and scientific ownership
 
@@ -81,7 +101,7 @@ The current use restrictions are carried into every affected evidence record and
 README.md                    Study argument, five modules and main download links
 data/research/               Current scientific tables and research.sqlite
 data/literature/             Preserved base evidence and traceability maintenance layer
-inputs/                     Public bibliography projection for reproducible metadata fills
+inputs/                     Public bibliography and path-free source-audit fact projections
 configs/                    Controlled scientific dictionary and field-use decisions
 docs/                       Scientific data guide and maintenance documentation
 study_context/              Previous manuscript map, model/weight/screening/QM registries
@@ -98,11 +118,15 @@ The current scientific export rebuilds from public files with Python 3.11 or lat
 ```sh
 python scripts/build_research_database.py --output new_research_staging
 python scripts/verify_research_database.py --directory new_research_staging --metadata inputs/bibliographic_metadata.csv
+python scripts/verify_evidence_quality.py --directory new_research_staging
 python scripts/test_research_database.py
+python scripts/test_evidence_quality.py
 python scripts/query_research_database.py --module mechanism --kind rules --limit 3
+python scripts/query_research_database.py --module mechanism --kind core --query coinitiator --limit 3
+python scripts/query_research_database.py --kind source-measurements --limit 2
 ```
 
-The independent verifier checks all 17 relational tables, CSV/SQLite agreement, every original evidence ID, controlled-field assignments, identity/source links, explicit unit arithmetic, unchanged task weights, use restrictions and metadata row provenance. The preserved base and current snapshot hashes are also checked by the release validation tools. These checks establish reproducible organization and conservative transformations; source-level extraction precision remains a separate evaluation task.
+The independent verifiers check all 26 relational tables, CSV/SQLite agreement, every original evidence ID, controlled-field assignments, identity/source links, explicit unit arithmetic, unchanged task weights, use restrictions, metadata row provenance and the source-audit projection. The preserved base and current snapshot hashes are also checked by the release validation tools. These checks establish reproducible organization and conservative transformations; source-level extraction precision remains a separate evaluation task.
 
 The bibliography projection contains only the 247 previously acquired paper identifiers, DOIs, titles, years and journals, in original row order. Its provenance file fingerprints the original private path-bearing input. Original full text and images remain in the local evidence archive, while public scientific tables retain their identifiers and checksums.
 
