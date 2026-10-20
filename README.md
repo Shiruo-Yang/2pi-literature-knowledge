@@ -1,81 +1,65 @@
-# Two-photon photoinitiator literature knowledge database
+# Literature knowledge for two-photon photoinitiator prioritisation
 
-A source-linked database of literature field evidence, molecular identities, experimental-context candidates and photoinitiator priors. The current normalization integrates existing public registries and previously collected local corpus without re-extracting papers, overwriting raw evidence or promoting machine candidates to validated measurements.
+This database supports the study's central workflow: literature-defined molecular requirements inform a six-task molecular profile, while mechanism, formulation and synthesis evidence guide the interpretation of candidate predictions.
 
-Base snapshot: **2026-10-15** · Traceability update: **2026-10-20** · [Database guide](DATABASE_GUIDE.md) · [Quality audit](DATABASE_AUDIT.md) · [Base summary](data/literature/summary.json)
+The scientific content is organised into five modules that follow that argument. [Study and data guide](docs/RESEARCH_DATABASE.md) · [Current database](data/research/research.sqlite) · [Data summary](data/research/summary.json)
 
-## Current database
+## Research content
 
-| Object | Records | Meaning |
-|---|---:|---|
-| Combined source directory | 621 | DOI-first or alias-only source keys; not all have extracted evidence |
-| Sources with recorded DOIs | 612 | Recorded identifiers, not newly verified publication metadata |
-| Sources with field evidence | 286 | Actual field-evidence coverage, before internal-document flags |
-| Automatic field candidates | 9,107 | Extracted candidates, not certified experimental values |
-| Historical audit-layer records | 150 | Original audit status preserved; not newly re-audited |
-| Integrated field records | 9,257 | 9,107 automatic candidates plus 150 historical records |
-| Automatic evidence groups | 8,573 | Inherited duplicate groups with all members retained |
-| Source-local entities | 124 | 72 accepted identities, 8 material/ionic, 13 nonchemical and 31 unresolved |
-| Distinct recorded accepted structures | 26 | Distinct InChIKeys across the 72 source-local assignments |
-| Evidence-to-entity links | 3,376 | Includes alias-only matches and source-local links |
-| Condition/formulation clusters | 2,344 | Contextual groupings, not necessarily complete experimental recipes |
-| Domain / mechanism / route priors | 25 / 25 / 19 | 69 rules with 477 source links, separate from measurements |
+| Module | What the literature contributes | Current records |
+|---|---|---|
+| Molecular design and structural priors | Molecular families, donor/acceptor roles and structural boundaries used before interpreting graph-model predictions | 25 domain rules; 7 identity/role field records |
+| Six-task property rationale and optical evidence | Endpoint definitions, optical and excited-state evidence, and the scope of each predictive proxy | 6 fixed endpoint definitions; 286 related field records |
+| Photoinitiation mechanism | Type-I, Type-II and SET/PET context, partner requirements and limits on mechanism claims | 25 mechanism rules; 205 statement candidates |
+| Formulation and processing | Resin/initiator loading, irradiation conditions, thresholds, conversion and fabricated geometry | 8,700 field candidates; 2,344 context groups |
+| Synthesis and materialisation | Source-backed route precedent and its applicability to molecular families | 19 route-evidence records; 59 text candidates |
 
-The previous 1,179-record public registry is fully accounted for: its 1,029 automatic records map to existing local candidates, and its 150 historical records remain a separate layer. **Do not add 1,179 to 9,107.** The previous 345-row source inventory is one input to the combined directory, not the full evidence-bearing source count. Of the 621 source keys, 335 have no field evidence in this build.
+Each module answers a question in the paper. Literature records provide chemical rationale, experimental context and source evidence. The frozen six-task labels and model weights retain their separate computational provenance; related literature records are not assigned directly as new model labels.
 
-## Files to use
+The current field inventory contains 9,257 records mapped from 98 original field names to 56 canonical concepts. The 69 source-linked rules and six endpoint definitions supply the study's knowledge layer. Field candidates, scalar candidates, context groups and rules are counted separately.
 
-| File | Use |
+## Main tables
+
+| File | Scientific use |
 |---|---|
-| [literature.sqlite](data/literature/literature.sqlite) | Query all normalized relational tables and conservative views |
-| [Current read-only query entry point](scripts/open_literature_database.py) | Combine the unchanged base with current source-location and field-use assessments |
-| [Traceability overlay](data/literature/traceability/) / [summary](data/literature/traceability/summary.json) | Recovered original-source locations and explicit unresolved cases |
-| [sources.csv](data/literature/sources.csv) | Source keys, DOIs, titles and scope flags |
-| [evidence.csv](data/literature/evidence.csv) / [evidence.jsonl](data/literature/evidence.jsonl) | Spreadsheet / programmatic field-evidence access |
-| [accepted_identities.csv](data/literature/accepted_identities.csv) / [entities.csv](data/literature/entities.csv) | Structure assignments and identity categories |
-| [conditions.csv](data/literature/conditions.csv) / [formulations.csv](data/literature/formulations.csv) | Experimental-context groupings |
-| [evidence_entity_links.csv](data/literature/evidence_entity_links.csv) | Link status, confidence and match basis |
-| [rules.csv](data/literature/rules.csv) / [rule_sources.csv](data/literature/rule_sources.csv) | Domain, mechanism and route priors with citations |
-| [quality_issues.csv](data/literature/quality_issues.csv) | Missing provenance and possible semantic conflicts |
-| [public_evidence_crosswalk.csv](data/literature/public_evidence_crosswalk.csv) | Complete mapping from the earlier public registry |
-| [data_dictionary.csv](data/literature/data_dictionary.csv) | Fields, missing values and unit policy |
-| [input_assets.csv](data/literature/input_assets.csv), [provenance.csv](data/literature/provenance.csv), [manifest.json](data/literature/manifest.json) | Input hashes, row provenance and output checksums |
+| [papers.csv](data/research/papers.csv) | Literature identifiers and bibliography, with original and updated metadata |
+| [compounds.csv](data/research/compounds.csv) / [source assignments](data/research/compound_source_links.csv) | 26 recorded structure identifiers linked to 72 previously accepted source-local identities |
+| [knowledge_rules.csv](data/research/knowledge_rules.csv) / [citations](data/research/rule_sources.csv) | Molecular-design rules, mechanism requirements and synthesis-route precedent |
+| [six_task_profile.csv](data/research/six_task_profile.csv) / [rationale sources](data/research/profile_sources.csv) | The six fixed endpoint definitions, existing utility weights and literature-rationale links |
+| [observations.csv](data/research/observations.csv) | Source-anchored scalar candidates with explicit property, unit, identity/context links and use status |
+| [formulation_contexts.csv](data/research/formulation_contexts.csv) | Existing formulation and exposure context groups |
+| [evidence_index.csv](data/research/evidence_index.csv) / [observation links](data/research/observation_evidence.csv) | Every original field record linked to its module, concept, location and candidate |
+| [field_dictionary.csv](data/research/field_dictionary.csv) | Original field names, canonical concepts, manuscript roles and interpretation requirements |
+| [research.sqlite](data/research/research.sqlite) | All scientific tables, relationships and the five module views |
 
-CSV files use UTF-8 with a byte-order mark for spreadsheet compatibility. SQLite provides relational queries; JSONL provides one evidence object per line. No Excel installation is needed.
+The source directory contains 621 source keys, of which 286 have field evidence. Those are coverage counts, not counts of newly read papers or complete experiments. Existing bibliography data filled 225 missing years and 224 missing journals, with row-level provenance.
 
-## Quality and scientific-use boundaries
+## Reading the data
 
-The original normalization flagged 1,399 evidence rows lacking page locators. The current source-location overlay recovers unique, source-verified locations for **1,017** of these: **772 publisher-XML node spans and 245 PDF page spans**. XML articles without pagination receive node addresses, not invented page numbers. **382 remain unresolved.** The base missing-page flags stay unchanged for audit history.
+A scalar candidate has a reported value that can be organised numerically. Its compound ownership, measurement method or conditions may still need source resolution. The 6,179 scalar candidates therefore remain labelled as candidates. The property module contains 48 of these; most remaining scalar records describe processing conditions.
 
-Across the union of missing-location and semantic-warning records, 1,496 records from 58 source identifiers were assessed; 1,092 have source-verified anchor locations, including 75 that already had page hints. DOI checks bind original documents to source metadata. Text matching locates an anchor, not a certified measurement.
+Measurement wavelength, solvent, method, temperature, peak definition and value qualifier have explicit fields. Missing or unresolved information stays visible. A nearby processing wavelength is not filled into an optical measurement, and a two-photon cross section is not automatically interpreted as either a global maximum or polymerisation efficiency.
 
-The current view withholds the **250 nm wavelength component in four records** after assistant inspection of Pucher et al.'s original PDF page 9 confirmed that this number describes fabricated line width. These are four extractions from one source, not four independent experiments. No replacement wavelength or new line-width label is created. Another **33 records** lack their literal scalar in the attached anchor; their numerical use is held pending value-to-anchor review, without declaring their reported values wrong. One original page hint lies outside the recovered anchor span and is retained alongside the new location. See the [traceability method and field dictionary](TRACEABILITY.md).
+Current use restrictions remain part of the tables: four 250 nm wavelength components are withheld after source-image review identified fabricated line width; 33 scalar-to-anchor gaps require review; 32 internal-document records are excluded from external-evidence use. The underlying records remain traceable.
 
-The original 122 broad geometry/wavelength warnings remain available; the other 118 have not been cleared by this targeted check. Four possible internal research documents containing 32 field records remain excluded from external-evidence use in the current view. Neither exclusion nor recovered location certifies the remaining data as independent experiments.
+The [study and data guide](docs/RESEARCH_DATABASE.md) explains module scope, record definitions, controlled units, source attribution and remaining evidence gaps.
 
-Accepted identity is not an accepted numerical measurement. A field value, context cluster, alias match and source-supported structure are different evidence objects. Numeric-looking candidates still require correct compound, endpoint, unit, condition and original-source ownership. Absorption cross section is not polymerization efficiency; a maximum in a measured wavelength window is not automatically a global maximum.
+## Query and reproduce
 
-This build creates **zero newly certified measurements and zero training labels**. It does not access sealed final-test labels, retrain models, update screening decisions or revise quantum-chemistry conclusions.
-
-## Access and reproducibility
-
-The public database contains metadata, scalar candidates, inherited identities, rules, relationships and hashes. Full text anchors, nonscalar extraction text, source PDFs and original path-bearing inputs remain in a separate local archive. Withheld public text is distinguished from data missing in the original extraction. Third-party content retains its original rights; no new licence over it is granted.
-
-Validate with Python 3.11 or later:
+CSV files open in spreadsheet software. SQLite supports linked queries. These commands use Python 3.11 or later and the standard library:
 
 ```sh
-python scripts/test_normalize_literature_database.py
-python scripts/verify_normalized_database.py data/literature
-python scripts/test_literature_traceability.py
-python scripts/test_current_literature_view.py
-python scripts/open_literature_database.py
+python scripts/query_research_database.py
+python scripts/query_research_database.py --module mechanism --kind rules --limit 3
+python scripts/build_research_database.py --output new_research_staging
+python scripts/verify_research_database.py --directory new_research_staging --metadata inputs/bibliographic_metadata.csv
 python scripts/validate_release.py
 ```
 
-The [database guide](DATABASE_GUIDE.md) describes rebuild inputs, normalization policies and SQL queries. The independent verifier checks all 17 tables, file hashes, foreign keys, group membership, CSV/JSONL mirrors and public export boundaries. With the private archive, it also verifies original input bytes and 62,575 row-provenance links.
+The scientific export preserves all original evidence IDs, source links, fixed task definitions, weights and use restrictions. The verifier checks table mirrors, relationships, explicit unit arithmetic and metadata provenance. No new measurement or training-label certification is inferred from restructuring.
 
-## Earlier study records and compatibility
+## Supporting records
 
-Use `data/literature` as the single current normalized database entry point. The older [public evidence package](outputs/literature_evidence_current/) and [identity package](outputs/literature_identity_current/) remain unchanged for compatibility and provenance; they are not extra observations to append.
+[Maintenance documentation](docs/) describes the preserved evidence base and source-location checks. [Earlier study records](study_context/) retain the previous manuscript map, model, weight-policy, screening and quantum-chemistry registries. [Earlier acquisition packages](outputs/) remain available for provenance and compatibility. These are supporting inputs to the current scientific database, not extra observations to append.
 
-The previous model, task-weight, screening and quantum-chemistry narrative is preserved in [Historical study context](HISTORICAL_STUDY_CONTEXT.md). Those study records are not inputs to this normalized database, and their scientific claims have not been renewed by the rebuild.
+Original full text, source images and private path-bearing inputs stay in the local evidence archive. Public exports provide scientific metadata, candidate values, rules, locations and fingerprints. Third-party material retains its original rights.

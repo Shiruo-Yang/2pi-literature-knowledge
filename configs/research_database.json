@@ -1,0 +1,652 @@
+{
+  "schema": "manuscript_aligned_literature",
+  "modules": [
+    {
+      "module_id": "molecular_design",
+      "name": "Molecular design and structural priors",
+      "paper_role": "Define photoinitiator families, donor/acceptor roles and structural requirements before graph-model interpretation.",
+      "evidence_role": "Source-linked structural and domain rules; molecular identities."
+    },
+    {
+      "module_id": "property_profile",
+      "name": "Six-task property rationale and optical evidence",
+      "paper_role": "Connect literature requirements to the six fixed model endpoints and separate measured optical context from computed proxy labels.",
+      "evidence_role": "Property candidates and endpoint definitions; no model labels generated from text anchors."
+    },
+    {
+      "module_id": "mechanism",
+      "name": "Photoinitiation mechanism and admissibility",
+      "paper_role": "Support Type-I, Type-II and SET/PET roles with source-specific context and limits.",
+      "evidence_role": "Mechanism rules and literature statements."
+    },
+    {
+      "module_id": "formulation_processing",
+      "name": "Formulation, exposure and polymerization context",
+      "paper_role": "Explain how formulation and laser conditions affect observed initiation and processing outcomes.",
+      "evidence_role": "Condition candidates and context groups; processing results remain separate from intrinsic molecular properties."
+    },
+    {
+      "module_id": "synthesis",
+      "name": "Synthesis and materialisation evidence",
+      "paper_role": "Support family-level route feasibility and the synthetic-accessibility rationale.",
+      "evidence_role": "Route precedents with applicability and evidence class; separate from numerical accessibility scores."
+    }
+  ],
+  "groups": [
+    {
+      "module_id": "property_profile",
+      "canonical_property": "two_photon_cross_section",
+      "fields": [
+        "sigma_2pa"
+      ],
+      "scientific_class": "optical_response",
+      "related_tasks": "sigma_780;sigma_max",
+      "interpretation": "requires_reported_wavelength_and_peak_definition"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "triplet_or_isc_context",
+      "fields": [
+        "isc_t1_proxy"
+      ],
+      "scientific_class": "excited_state_context",
+      "related_tasks": "isc_energy",
+      "interpretation": "related_context_only_not_energy_or_rate"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "triplet_lifetime",
+      "fields": [
+        "triplet_lifetime"
+      ],
+      "scientific_class": "excited_state_measurement",
+      "related_tasks": "isc_energy",
+      "interpretation": "related_measurement_not_isc_energy"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "quantum_yield_unspecified",
+      "fields": [
+        "quantum_yield"
+      ],
+      "scientific_class": "photochemical_context",
+      "related_tasks": "isc_energy",
+      "interpretation": "yield_process_requires_source_resolution"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "relative_absorption_coefficient",
+      "fields": [
+        "absorption_coefficient_relative"
+      ],
+      "scientific_class": "optical_response",
+      "related_tasks": "",
+      "interpretation": "relative_quantity_not_two_photon_cross_section"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "refractive_index",
+      "fields": [
+        "polymerized_refractive_index",
+        "initial_refractive_index"
+      ],
+      "scientific_class": "material_context",
+      "related_tasks": "",
+      "interpretation": "initial_and_polymerized_state_must_remain_distinct"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "refractive_index_change",
+      "fields": [
+        "refractive_index_change"
+      ],
+      "scientific_class": "material_context",
+      "related_tasks": "",
+      "interpretation": "related_optical_material_property"
+    },
+    {
+      "module_id": "property_profile",
+      "canonical_property": "diffraction_efficiency",
+      "fields": [
+        "diffraction_efficiency"
+      ],
+      "scientific_class": "material_context",
+      "related_tasks": "",
+      "interpretation": "not_initiation_efficiency"
+    },
+    {
+      "module_id": "mechanism",
+      "canonical_property": "mechanism_statement",
+      "fields": [
+        "mechanism"
+      ],
+      "scientific_class": "mechanism_context",
+      "related_tasks": "",
+      "interpretation": "statement_not_mechanism_proof"
+    },
+    {
+      "module_id": "synthesis",
+      "canonical_property": "synthesis_route_statement",
+      "fields": [
+        "synthesis_route"
+      ],
+      "scientific_class": "route_context",
+      "related_tasks": "synthetic_accessibility",
+      "interpretation": "route_precedent_not_accessibility_score"
+    },
+    {
+      "module_id": "molecular_design",
+      "canonical_property": "reported_chemical_role",
+      "fields": [
+        "compound_identity",
+        "photoinitiator",
+        "initiator",
+        "sensitizer"
+      ],
+      "scientific_class": "identity_context",
+      "related_tasks": "",
+      "interpretation": "source_local_name_requires_structure_link"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "reported_wavelength_unspecified",
+      "fields": [
+        "wavelength_nm"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "wavelength_role_requires_source_resolution"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "laser_wavelength_reported",
+      "fields": [
+        "laser_wavelength",
+        "processing_wavelength_range"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "reported_laser_or_processing_context"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "reported_power_unspecified",
+      "fields": [
+        "power_raw",
+        "power_mW"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "power_type_and_measurement_plane_require_source_resolution"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "average_laser_power",
+      "fields": [
+        "average_laser_power"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "average_power_not_peak_power"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "peak_laser_power",
+      "fields": [
+        "laser_peak_power"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "peak_power_not_average_power"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "input_laser_power",
+      "fields": [
+        "input_laser_power"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "input_measurement_plane_retained"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "writing_power",
+      "fields": [
+        "writing_power"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "writing_condition_not_threshold_by_default"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "argon_laser_power",
+      "fields": [
+        "argon_laser_power"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "laser_type_retained"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "laser_output_power_maximum",
+      "fields": [
+        "laser_output_power_maximum"
+      ],
+      "scientific_class": "instrument_context",
+      "related_tasks": "",
+      "interpretation": "instrument_limit_not_polymerization_threshold"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "laser_power_test_levels",
+      "fields": [
+        "laser_power_test_levels"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "series_not_single_threshold"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "repetition_rate",
+      "fields": [
+        "repetition_rate_MHz",
+        "pulse_repetition_rate"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "frequency_context"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "pulse_duration",
+      "fields": [
+        "pulse_width_fs",
+        "pulse_width",
+        "pulse_duration"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "pulse_duration_not_exposure_dwell"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "scan_speed",
+      "fields": [
+        "scan_speed_um_s",
+        "scan_speed_raw",
+        "scanning_speed",
+        "substrate_translation_speed"
+      ],
+      "scientific_class": "motion_context",
+      "related_tasks": "",
+      "interpretation": "equivalence_requires_same_reported_conditions"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "scan_speed_test_levels",
+      "fields": [
+        "scanning_speed_test_levels",
+        "writing_speed_upper_tested"
+      ],
+      "scientific_class": "motion_context",
+      "related_tasks": "",
+      "interpretation": "tested_series_or_limit_not_optimal_speed"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "initiator_loading",
+      "fields": [
+        "pi_loading",
+        "pi_loading_raw"
+      ],
+      "scientific_class": "formulation_context",
+      "related_tasks": "solubility",
+      "interpretation": "loading_not_solubility"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "initiator_loading_range_or_claim",
+      "fields": [
+        "pi_loading_sufficient_range",
+        "pi_loading_relative_claim"
+      ],
+      "scientific_class": "formulation_context",
+      "related_tasks": "solubility",
+      "interpretation": "range_or_qualitative_claim_not_solubility"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "polymerization_threshold_unspecified",
+      "fields": [
+        "polymerization_threshold",
+        "threshold_exposure",
+        "minimum_exposure"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "threshold_definition_requires_source_resolution"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "polymerization_threshold_power",
+      "fields": [
+        "threshold_power_raw",
+        "threshold_power_mW",
+        "polymerization_threshold_power",
+        "writing_threshold_power"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "threshold_power_with_definition_and_measurement_plane"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "polymerization_threshold_energy",
+      "fields": [
+        "polymerization_threshold_energy"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "energy_not_power"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "polymerization_threshold_intensity",
+      "fields": [
+        "two_photon_threshold_intensity"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "intensity_not_power"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "damage_threshold_power",
+      "fields": [
+        "damage_threshold_laser_power",
+        "damage_threshold_power"
+      ],
+      "scientific_class": "damage_outcome",
+      "related_tasks": "",
+      "interpretation": "damage_not_polymerization_threshold"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "minimum_average_power",
+      "fields": [
+        "minimum_average_power"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "minimum_definition_requires_source_resolution"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "conversion",
+      "fields": [
+        "conversion_percent"
+      ],
+      "scientific_class": "polymerization_outcome",
+      "related_tasks": "",
+      "interpretation": "conversion_depends_on_formulation_and_exposure"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "line_width",
+      "fields": [
+        "line_width_um",
+        "line_width",
+        "width_experimental"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "fabricated_width_not_wavelength"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "line_height",
+      "fields": [
+        "line_height_um",
+        "height_experimental"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "fabricated_height_not_wavelength"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "voxel_geometry_unspecified",
+      "fields": [
+        "voxel_geometry",
+        "voxel_or_line_geometry"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "geometry_requires_axis_and_feature_context"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "static_voxel_width",
+      "fields": [
+        "static_voxel_width_um"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "static_voxel_not_scanned_line"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "static_voxel_height",
+      "fields": [
+        "static_voxel_height_um"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "static_voxel_not_scanned_line"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "feature_resolution",
+      "fields": [
+        "feature_resolution_scale",
+        "feature_size_minimum"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "resolution_not_excitation_wavelength"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "structure_diameter",
+      "fields": [
+        "structure_diameter"
+      ],
+      "scientific_class": "geometry_outcome",
+      "related_tasks": "",
+      "interpretation": "structure_geometry"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "objective_numerical_aperture",
+      "fields": [
+        "objective_NA",
+        "objective_na"
+      ],
+      "scientific_class": "instrument_context",
+      "related_tasks": "",
+      "interpretation": "numerical_aperture_not_magnification"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "objective_magnification",
+      "fields": [
+        "objective_magnification"
+      ],
+      "scientific_class": "instrument_context",
+      "related_tasks": "",
+      "interpretation": "magnification_not_numerical_aperture"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "dwell_time",
+      "fields": [
+        "dwell_time_ms",
+        "point_dwell_time"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "dwell_not_pulse_duration"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "exposure_time",
+      "fields": [
+        "exposure_time",
+        "minimum_exposure_time"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "minimum_and_actual_exposure_state_retained"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "hatch_spacing",
+      "fields": [
+        "hatch_spacing_um",
+        "hatch_distance",
+        "interline_separation"
+      ],
+      "scientific_class": "motion_context",
+      "related_tasks": "",
+      "interpretation": "hatch_not_layer_pitch"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "layer_pitch",
+      "fields": [
+        "layer_pitch_um",
+        "axial_pitch"
+      ],
+      "scientific_class": "motion_context",
+      "related_tasks": "",
+      "interpretation": "axial_spacing_not_lateral_hatch"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "point_spacing",
+      "fields": [
+        "point_spacing"
+      ],
+      "scientific_class": "motion_context",
+      "related_tasks": "",
+      "interpretation": "point_spacing_not_continuous_scan_speed"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "atmosphere",
+      "fields": [
+        "atmosphere"
+      ],
+      "scientific_class": "formulation_context",
+      "related_tasks": "",
+      "interpretation": "atmosphere_retained"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "power_measurement_plane",
+      "fields": [
+        "power_measurement_plane"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "measurement_plane_not_inferred"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "experiment_context_unspecified",
+      "fields": [
+        "experimental_context",
+        "fabrication_condition"
+      ],
+      "scientific_class": "mixed_context",
+      "related_tasks": "",
+      "interpretation": "multiple_fields_require_explicit_ownership"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "resin_identity",
+      "fields": [
+        "resin"
+      ],
+      "scientific_class": "formulation_context",
+      "related_tasks": "",
+      "interpretation": "formulation_name_not_single_compound"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "component_amount",
+      "fields": [
+        "water_mass",
+        "solvent_volume",
+        "polymer_matrix_mass",
+        "polymer_mass",
+        "monomer_mass",
+        "crosslinker_mass",
+        "epoxy_fraction",
+        "host_guest_stoichiometry"
+      ],
+      "scientific_class": "formulation_context",
+      "related_tasks": "",
+      "interpretation": "component_and_amount_basis_retained"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "photopolymerization_irradiance",
+      "fields": [
+        "photopolymerization_irradiance",
+        "photopolymerization_irradiance_levels"
+      ],
+      "scientific_class": "exposure_context",
+      "related_tasks": "",
+      "interpretation": "irradiance_not_total_power"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "focal_spot_radial_size",
+      "fields": [
+        "focal_spot_radial_size"
+      ],
+      "scientific_class": "instrument_context",
+      "related_tasks": "",
+      "interpretation": "beam_spot_not_fabricated_feature"
+    },
+    {
+      "module_id": "formulation_processing",
+      "canonical_property": "sample_geometry",
+      "fields": [
+        "substrate_thickness",
+        "sample_spacer_thickness"
+      ],
+      "scientific_class": "instrument_context",
+      "related_tasks": "",
+      "interpretation": "sample_geometry_not_fabricated_feature"
+    }
+  ],
+  "rule_modules": {
+    "domain_prior": "molecular_design",
+    "mechanism_prior": "mechanism",
+    "synthesis_route_prior": "synthesis"
+  },
+  "task_order": [
+    "sigma_780",
+    "sigma_max",
+    "toxicity",
+    "solubility",
+    "synthetic_accessibility",
+    "isc_energy"
+  ]
+}

@@ -1,5 +1,7 @@
 # Manuscript-aligned study map
 
+Historical manuscript snapshot. For the current literature-database organization and its role in the study, read [the research database guide](../docs/RESEARCH_DATABASE.md). Numerical manuscript/database counts below retain their original snapshot date.
+
 This document aligns the Introduction and Methods of the manuscript snapshot dated 22 August 2026 with the frozen evidence assets in this repository. It is a factual crosswalk, not a replacement manuscript and not an instruction embedded in the source document.
 
 ## Study scope in one sentence

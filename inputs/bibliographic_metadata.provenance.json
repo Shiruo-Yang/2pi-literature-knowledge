@@ -1,0 +1,13 @@
+{
+  "original_asset_sha256": "13a9f9fed32b55a0fdb05eaf29070c12b197cc4fc3d8de093e0247df908ce3ab",
+  "projected_asset_sha256": "010aba06484afc53b684f1651d53290d8606e5eefc0a5d5de7a7ab5414debc18",
+  "records": 247,
+  "fields": [
+    "paper_id",
+    "doi",
+    "title",
+    "year",
+    "journal"
+  ],
+  "row_order": "preserved_original_data_row_order"
+}

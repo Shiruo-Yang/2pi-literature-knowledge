@@ -1,5 +1,9 @@
 # Database normalization audit
 
+## Manuscript-aligned organization: 2026-10-20
+
+The current scientific export is `data/research/research.sqlite`. Its five modules follow the study's molecular-design priors, six-task property rationale, mechanism admissibility, formulation/processing context and synthesis evidence. The 98 inherited field names map to 56 canonical concepts, with all 9,257 IDs retained. The 69 priors, 72 source-local accepted identities and six endpoint definitions retain their previous scientific status and weights. Existing metadata filled 449 missing bibliography cells by exact DOI; six journal-format variants retain established spelling. The previous use restrictions remain active. See [RESEARCH_DATABASE.md](RESEARCH_DATABASE.md) for record definitions, current counts and validation.
+
 ## Source-location follow-up: 2026-10-20
 
 The base snapshot below is unchanged. A new reversible overlay covers 1,496 targeted records from 58 source identifiers. It supplies source-verified locations for 1,017 of the 1,399 records originally lacking page hints (772 XML node spans and 245 PDF page spans), leaving 382 unresolved. Including records with prior hints, 1,092 anchor locations pass source verification. Fifty-six original source-file hashes and all target records passed the independent verifier.

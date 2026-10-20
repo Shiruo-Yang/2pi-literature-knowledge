@@ -29,7 +29,10 @@ for path in ROOT.rglob("*"):
             failures.append(f"sensitive/internal token in {path.relative_to(ROOT)}: {pattern}")
 
 def rows(name):
-    with (ROOT / name).open("r", encoding="utf-8-sig", newline="") as handle:
+    path = ROOT / "study_context" / name
+    if not path.exists():
+        path = ROOT / name
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle))
 
 source_ids = {row["source_id"] for row in rows("source_registry.csv")}

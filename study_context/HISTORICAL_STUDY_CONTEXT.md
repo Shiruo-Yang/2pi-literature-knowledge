@@ -4,7 +4,7 @@ Preserved pre-normalization README (2026-09-06 snapshot). Its study claims were 
 
 # Evidence-to-decision framework for two-photon radical photoinitiator prioritisation
 
-[Database contents](#current-database) · [Identity database boundary](LITERATURE_IDENTITY_DATABASE.md)
+[Database contents](#current-database) · [Identity database boundary](../docs/LITERATURE_IDENTITY_DATABASE.md)
 
 This repository documents how literature-derived photoinitiator knowledge was converted into model inputs, decision rules and mechanism-matched validation questions. The objective is not to rank molecules by two-photon response alone, but to distinguish optically favourable predictions from candidates that remain defensible after reliability, chemical-role and mechanism checks.
 
@@ -158,7 +158,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 ## Five-minute verification path
 
 1. Read the three layers and contributions above.
-2. Inspect five complete source-to-use chains in [`examples/evidence_to_computational_use_examples.csv`](examples/evidence_to_computational_use_examples.csv).
+2. Inspect five complete source-to-use chains in [`examples/evidence_to_computational_use_examples.csv`](../examples/evidence_to_computational_use_examples.csv).
 3. Read the Introduction/Methods alignment and terminology aliases in [`MANUSCRIPT_ALIGNMENT.md`](MANUSCRIPT_ALIGNMENT.md), then map individual concepts using [`manuscript_repository_crosswalk.csv`](manuscript_repository_crosswalk.csv).
 4. Check row counts, pending items and claim boundaries in [`AUDIT_REPORT.md`](AUDIT_REPORT.md) and [`completeness_summary.csv`](completeness_summary.csv).
 
@@ -181,7 +181,7 @@ Candidates are not sent through one generic QM checklist. Type-I, Type-II and SE
 | [`model_evaluation_registry.csv`](model_evaluation_registry.csv) | frozen outer tests, strict-clean comparison, external optical evidence and descriptor ablation |
 | [`screening_workflow_summary.csv`](screening_workflow_summary.csv) | ZINC22 deployment, family compression, representative selection and novelty QC |
 | [`representative_qm_evidence_registry.csv`](representative_qm_evidence_registry.csv) | 21 representatives, QM evidence tiers, decisions and candidate-specific limits |
-| [`LITERATURE_INTEGRATION_CLOSURE.md`](LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the current evidence-maintenance boundary |
+| [`LITERATURE_INTEGRATION_CLOSURE.md`](../docs/LITERATURE_INTEGRATION_CLOSURE.md) | Frozen literature-curation criteria and the current evidence-maintenance boundary |
 
 ## Interpretation boundary
 
@@ -212,17 +212,17 @@ The repository exposes one current database rather than a sequence of numbered p
 
 | Location | Contents | Primary use |
 |---|---|---|
-| [`outputs/literature_evidence_current/literature_evidence_registry.csv`](outputs/literature_evidence_current/literature_evidence_registry.csv) | Complete 1,179-record literature evidence registry | Excel inspection and supplementary-data preparation |
-| [`outputs/literature_evidence_current/legacy_evidence_registry.csv`](outputs/literature_evidence_current/legacy_evidence_registry.csv) | Stable 150-record preserved evidence partition | Reproducing the additive merge |
-| [`outputs/literature_evidence_current/automatic_field_evidence_registry.csv`](outputs/literature_evidence_current/automatic_field_evidence_registry.csv) | Stable 1,029-record automatic evidence partition | Reproducing and extending automatic extraction |
-| [`outputs/literature_evidence_current/literature_evidence_registry.jsonl`](outputs/literature_evidence_current/literature_evidence_registry.jsonl) | One machine-readable evidence object per line | Automated exchange and extension |
-| [`outputs/literature_evidence_current/literature_evidence.sqlite`](outputs/literature_evidence_current/literature_evidence.sqlite) | Evidence, numeric subset, source summary and query indexes | Programmatic querying |
-| [`outputs/literature_evidence_current/source_inventory/`](outputs/literature_evidence_current/source_inventory/) | DOI-deduplicated source inventory, access metadata and exact duplicate relations | Source discovery and provenance auditing |
-| [`outputs/literature_identity_current/accepted_source_identity_registry.csv`](outputs/literature_identity_current/accepted_source_identity_registry.csv) | Accepted source-local single-molecule identities | Structure linkage |
-| [`outputs/literature_identity_current/multicomponent_material_registry.csv`](outputs/literature_identity_current/multicomponent_material_registry.csv) | Salt, ionic and multicomponent material records | Material-level identity without forcing a single molecular graph |
-| [`outputs/literature_identity_current/formulation_linkage_registry_enriched.csv`](outputs/literature_identity_current/formulation_linkage_registry_enriched.csv) | Condition and formulation clusters linked to accepted identities where possible | Literature-to-formulation analysis |
-| [`outputs/literature_identity_current/condition_identity_linkage.sqlite`](outputs/literature_identity_current/condition_identity_linkage.sqlite) | Queryable identity, entity, evidence-link and formulation tables | Programmatic identity queries |
-| [`outputs/literature_identity_current/unresolved_queue/`](outputs/literature_identity_current/unresolved_queue/) | Unresolved records and 168 retained structure-candidate evidence rows | Further automated identity recovery |
+| [`outputs/literature_evidence_current/literature_evidence_registry.csv`](../outputs/literature_evidence_current/literature_evidence_registry.csv) | Complete 1,179-record literature evidence registry | Excel inspection and supplementary-data preparation |
+| [`outputs/literature_evidence_current/legacy_evidence_registry.csv`](../outputs/literature_evidence_current/legacy_evidence_registry.csv) | Stable 150-record preserved evidence partition | Reproducing the additive merge |
+| [`outputs/literature_evidence_current/automatic_field_evidence_registry.csv`](../outputs/literature_evidence_current/automatic_field_evidence_registry.csv) | Stable 1,029-record automatic evidence partition | Reproducing and extending automatic extraction |
+| [`outputs/literature_evidence_current/literature_evidence_registry.jsonl`](../outputs/literature_evidence_current/literature_evidence_registry.jsonl) | One machine-readable evidence object per line | Automated exchange and extension |
+| [`outputs/literature_evidence_current/literature_evidence.sqlite`](../outputs/literature_evidence_current/literature_evidence.sqlite) | Evidence, numeric subset, source summary and query indexes | Programmatic querying |
+| [`outputs/literature_evidence_current/source_inventory/`](../outputs/literature_evidence_current/source_inventory) | DOI-deduplicated source inventory, access metadata and exact duplicate relations | Source discovery and provenance auditing |
+| [`outputs/literature_identity_current/accepted_source_identity_registry.csv`](../outputs/literature_identity_current/accepted_source_identity_registry.csv) | Accepted source-local single-molecule identities | Structure linkage |
+| [`outputs/literature_identity_current/multicomponent_material_registry.csv`](../outputs/literature_identity_current/multicomponent_material_registry.csv) | Salt, ionic and multicomponent material records | Material-level identity without forcing a single molecular graph |
+| [`outputs/literature_identity_current/formulation_linkage_registry_enriched.csv`](../outputs/literature_identity_current/formulation_linkage_registry_enriched.csv) | Condition and formulation clusters linked to accepted identities where possible | Literature-to-formulation analysis |
+| [`outputs/literature_identity_current/condition_identity_linkage.sqlite`](../outputs/literature_identity_current/condition_identity_linkage.sqlite) | Queryable identity, entity, evidence-link and formulation tables | Programmatic identity queries |
+| [`outputs/literature_identity_current/unresolved_queue/`](../outputs/literature_identity_current/unresolved_queue) | Unresolved records and 168 retained structure-candidate evidence rows | Further automated identity recovery |
 
 CSV files are the human-readable and spreadsheet-compatible form. SQLite files are the queryable frozen databases. JSON and JSONL files preserve machine-readable records, summaries and provenance. Earlier snapshots and extraction intermediates are kept under `outputs/audit_history/` and `outputs/literature_identity_current/audit/`; they are not alternative current databases.
 

@@ -1,0 +1,92 @@
+{
+  "schema": "manuscript_aligned_literature",
+  "tables": {
+    "papers": 621,
+    "research_modules": 5,
+    "compounds": 26,
+    "compound_source_links": 72,
+    "formulation_contexts": 2344,
+    "observations": 6179,
+    "evidence_index": 9257,
+    "evidence_compounds": 466,
+    "observation_evidence": 6179,
+    "knowledge_rules": 69,
+    "rule_sources": 477,
+    "six_task_profile": 6,
+    "profile_sources": 13,
+    "field_dictionary": 98,
+    "metadata_provenance": 449,
+    "metadata_conflicts": 6,
+    "input_assets": 11
+  },
+  "modules": [
+    {
+      "module_id": "molecular_design",
+      "name": "Molecular design and structural priors",
+      "paper_role": "Define photoinitiator families, donor/acceptor roles and structural requirements before graph-model interpretation.",
+      "evidence_role": "Source-linked structural and domain rules; molecular identities.",
+      "field_records": 7,
+      "scalar_observation_candidates": 0,
+      "prior_rules": 25
+    },
+    {
+      "module_id": "property_profile",
+      "name": "Six-task property rationale and optical evidence",
+      "paper_role": "Connect literature requirements to the six fixed model endpoints and separate measured optical context from computed proxy labels.",
+      "evidence_role": "Property candidates and endpoint definitions; no model labels generated from text anchors.",
+      "field_records": 286,
+      "scalar_observation_candidates": 48,
+      "prior_rules": 0
+    },
+    {
+      "module_id": "mechanism",
+      "name": "Photoinitiation mechanism and admissibility",
+      "paper_role": "Support Type-I, Type-II and SET/PET roles with source-specific context and limits.",
+      "evidence_role": "Mechanism rules and literature statements.",
+      "field_records": 205,
+      "scalar_observation_candidates": 0,
+      "prior_rules": 25
+    },
+    {
+      "module_id": "formulation_processing",
+      "name": "Formulation, exposure and polymerization context",
+      "paper_role": "Explain how formulation and laser conditions affect observed initiation and processing outcomes.",
+      "evidence_role": "Condition candidates and context groups; processing results remain separate from intrinsic molecular properties.",
+      "field_records": 8700,
+      "scalar_observation_candidates": 6131,
+      "prior_rules": 0
+    },
+    {
+      "module_id": "synthesis",
+      "name": "Synthesis and materialisation evidence",
+      "paper_role": "Support family-level route feasibility and the synthetic-accessibility rationale.",
+      "evidence_role": "Route precedents with applicability and evidence class; separate from numerical accessibility scores.",
+      "field_records": 59,
+      "scalar_observation_candidates": 0,
+      "prior_rules": 19
+    }
+  ],
+  "field_records": 9257,
+  "original_field_names": 98,
+  "canonical_properties": 56,
+  "records_with_scalar_candidates": 6179,
+  "scalar_observation_candidates": 6179,
+  "representation_rows_linked_without_duplication": 0,
+  "accepted_structure_identifiers": 26,
+  "source_local_identity_assignments": 72,
+  "metadata_cells_filled_by_exact_doi": 449,
+  "missing_year_before": 576,
+  "missing_year_after": 351,
+  "missing_journal_before": 576,
+  "missing_journal_after": 352,
+  "metadata_content_conflicts": 0,
+  "metadata_format_variants_retained": 6,
+  "numerical_use_holds_preserved": 33,
+  "component_holds_preserved": 4,
+  "internal_document_exclusions_preserved": 32,
+  "new_certified_measurements": 0,
+  "new_training_labels": 0,
+  "observation_definition": "A source-anchored scalar candidate; compound ownership and experimental conditions may still be unresolved.",
+  "foreign_key_check": [],
+  "integrity_check": "ok"
+}

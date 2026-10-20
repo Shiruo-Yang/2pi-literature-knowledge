@@ -1,6 +1,6 @@
 # Current source-local molecular identity database
 
-Compatibility snapshot: the integrated current database is now [data/literature](data/literature/), documented in the [database guide](DATABASE_GUIDE.md). The files described below are preserved inputs, not additional observations. The 72 source-local accepted assignments correspond to 26 distinct recorded InChIKeys; this normalization does not re-certify their chemical identities.
+Compatibility snapshot: the current scientific compound index is in [data/research](../data/research), documented in the [research database guide](RESEARCH_DATABASE.md). The files described below are preserved supporting inputs, not additional observations. The 72 source-local accepted assignments correspond to 26 distinct recorded InChIKeys; this organization does not re-certify their chemical identities.
 
 This database adds a traceable identity layer to the literature-knowledge package. It is an evidence-organization resource, not a new experimental optical database.
 

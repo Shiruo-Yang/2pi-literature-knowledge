@@ -1,0 +1,27 @@
+﻿compound_id,recorded_inchikey,display_name,canonical_smiles,molecular_formula,identity_status
+CMP-003cfa4d26f52727514e3798,SQMFULTZZQBFBM-UHFFFAOYSA-N,tris(trimethylsilyl)silane,C[Si](C)(C)[SiH]([Si](C)(C)C)[Si](C)(C)C,C9H28Si4,inherited_accepted_identity_not_revalidated
+CMP-069aa72780935e1cc60663e3,CQBXCXDSJHXART-UHFFFAOYSA-N,MTPBP,O=C(c1ccccc1)c1ccc(Sc2ccc(N3C(=O)C=CC3=O)cc2)cc1,C23H15NO3S,inherited_accepted_identity_not_revalidated
+CMP-0f52d649c9949f5912eb771b,JKNCOURZONDCGV-UHFFFAOYSA-N,DMAEMA,C=C(C)C(=O)OCCN(C)C,C8H15NO2,inherited_accepted_identity_not_revalidated
+CMP-1650e407aa2182a03302a6a7,LOCXTTRLSIDGPS-AZPGRJICSA-N,OXE01,CCCCCC/C(=N\OC(=O)c1ccccc1)C(=O)c1ccc(Sc2ccccc2)cc1,C27H27NO3S,inherited_accepted_identity_not_revalidated
+CMP-17ce5e09b0900ff0f9ec6fc5,GSEJCLTVZPLZKY-UHFFFAOYSA-N,TEA,OCCN(CCO)CCO,C6H15NO3,inherited_accepted_identity_not_revalidated
+CMP-36a1239145f87cc2ebd8d3ca,BZQNACWKQNVZDM-UHFFFAOYSA-N,compound 2,CC(=O)c1ccc(-c2ccc(C(=O)c3ccccc3)cc2)cc1,C21H16O2,inherited_accepted_identity_not_revalidated
+CMP-3ec49b2d7e062786ccfb5b63,HRTOQFBQOFIFEE-UHFFFAOYSA-N,13031-04-4,CC1(C)COC(=O)C1=O,C6H8O3,inherited_accepted_identity_not_revalidated
+CMP-4ddd650636aa0ca6f7646879,VNQXSTWCDUXYEZ-UHFFFAOYSA-N,camphorquinone,CC12CCC(C(=O)C1=O)C2(C)C,C10H14O2,inherited_accepted_identity_not_revalidated
+CMP-5222f57f02a304b88761cb58,YRHRIQCWCFGUEQ-UHFFFAOYSA-N,thioxanthone,O=c1c2ccccc2sc2ccccc12,C13H8OS,inherited_accepted_identity_not_revalidated
+CMP-5ba91dedee4e6e2ea3294be0,KWVGIHKZDCUPEU-UHFFFAOYSA-N,Benzil dimethyl ketal,COC(OC)(C(=O)c1ccccc1)c1ccccc1,C16H16O3,inherited_accepted_identity_not_revalidated
+CMP-5babb35f24739cd287a4d5e4,GYVGXEWAOAAJEU-UHFFFAOYSA-N,DMPT,Cc1ccc(N(C)C)cc1,C9H13N,inherited_accepted_identity_not_revalidated
+CMP-723a89be89ba24983628dc86,KTALPKYXQZGAEG-UHFFFAOYSA-N,2-isopropyl-9H-thioxanthen-9-one,CC(C)c1ccc2sc3ccccc3c(=O)c2c1,C16H14OS,inherited_accepted_identity_not_revalidated
+CMP-7647984617b86539976fe541,NPFYZDNDJHZQKY-UHFFFAOYSA-N,4-Hydroxybenzophenone,O=C(c1ccccc1)c1ccc(O)cc1,C13H10O2,inherited_accepted_identity_not_revalidated
+CMP-89447d74d510aa01871c17ab,QNODIIQQMGDSEF-UHFFFAOYSA-N,1-hydroxycyclohexyl phenyl ketone,O=C(c1ccccc1)C1(O)CCCCC1,C13H16O2,inherited_accepted_identity_not_revalidated
+CMP-89c9c5f7f981be99d7de067b,GJKGAPPUXSSCFI-UHFFFAOYSA-N,1-[4-(2-hydroxyethoxy)-phenyl]- 2-hydroxy-2-methyl-1-propane-1-one,CC(C)(O)C(=O)c1ccc(OCCO)cc1,C12H16O4,inherited_accepted_identity_not_revalidated
+CMP-90bda9698328c588db00d224,XMLYCEVDHLAQEL-UHFFFAOYSA-N,2-Hydroxy-2-methyl-phenylpropane-1-one,CC(C)(O)C(=O)c1ccccc1,C10H12O2,inherited_accepted_identity_not_revalidated
+CMP-92855b6d9a90c34f9f2a3392,DABMEVPGORHCEI-WOJGMQOQSA-N,DCCA,C=CC(=O)O/N=C/c1cc2ccc(N(CC)CC)cc2oc1=O,C17H18N2O4,inherited_accepted_identity_not_revalidated
+CMP-9b9b5c2723a953b768ae09b2,FZUGPQWGEGAKET-UHFFFAOYSA-N,ethyl-4-dimethylaminobenzoate,CCOC(=O)c1ccc(N(C)C)cc1,C11H15NO2,inherited_accepted_identity_not_revalidated
+CMP-9fe066dbf44895a6b29fd9ac,KWHQMDCQGGHVJP-DCIPZJNNSA-N,BFC,O=C1/C(=C/c2ccco2)CCC/C1=C\c1ccco1,C16H14O3,inherited_accepted_identity_not_revalidated
+CMP-a5a99f0fe65f3592abe0eec7,ZMANZCXQSJIPKH-UHFFFAOYSA-N,TEA,CCN(CC)CC,C6H15N,inherited_accepted_identity_not_revalidated
+CMP-afc378d0b4cf1c9106366e21,RWCCWEUUXYIKHB-UHFFFAOYSA-N,benzophenone,O=C(c1ccccc1)c1ccccc1,C13H10O,inherited_accepted_identity_not_revalidated
+CMP-ccaaff2b76bccb2a6e84071a,ZMDDERVSCYEKPQ-UHFFFAOYSA-N,"Ethyl (2,4,6-trimethylbenzoyl)phenylphosphinate",CCOP(=O)(C(=O)c1c(C)cc(C)cc1C)c1ccccc1,C18H21O3P,inherited_accepted_identity_not_revalidated
+CMP-cf40ae0c21ec26e00d29c687,KMNCBSZOIQAUFX-UHFFFAOYSA-N,BEE,CCOC(C(=O)c1ccccc1)c1ccccc1,C16H16O2,inherited_accepted_identity_not_revalidated
+CMP-d0f37d184e968bcbe956c747,DIJAKAWXMZJVED-UHFFFAOYSA-N,p–Methoxybenzoyldiphenylphosphine oxide,COc1ccc(C(=O)P(=O)(c2ccccc2)c2ccccc2)cc1,C20H17O3P,inherited_accepted_identity_not_revalidated
+CMP-ddfc20b048801ea379320578,VYHBFRJRBHMIQZ-UHFFFAOYSA-N,"4,4'-bis(diethylamino)benzophenone (Michler's ethyl ketone)",CCN(CC)c1ccc(C(=O)c2ccc(N(CC)CC)cc2)cc1,C21H28N2O,inherited_accepted_identity_not_revalidated
+CMP-e62c0f83808394a470d4ffcd,YEKNKLQFRKPNGV-UHFFFAOYSA-N,compound 3,O=C(CBr)c1ccc(-c2ccc(C(=O)c3ccccc3)cc2)cc1,C21H15BrO2,inherited_accepted_identity_not_revalidated

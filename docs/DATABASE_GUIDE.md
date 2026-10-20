@@ -1,10 +1,12 @@
 # Literature database guide
 
+Maintenance-layer documentation. The current manuscript-aligned scientific entry point is [data/research](../data/research/), documented in [RESEARCH_DATABASE.md](RESEARCH_DATABASE.md). The base described below supplies preserved evidence and provenance to that current database.
+
 Current source-location and field-use update: see [TRACEABILITY.md](TRACEABILITY.md) and use `scripts/open_literature_database.py` to join the unchanged base with its traceability overlay. Base tables below retain their original fields and counts; the overlay adds provenance and use restrictions, not new measurements.
 
 ## Scope and access
 
-The active database is `data/literature/literature.sqlite`, accompanied by UTF-8-with-BOM CSV tables, an evidence JSONL export, a data dictionary and checksums. It integrates existing literature records; it is not a newly validated experimental dataset. The build does not access sealed test labels, train models, revise quantum-chemistry results or rerun optical-character recognition.
+The preserved base database is `data/literature/literature.sqlite`, accompanied by UTF-8-with-BOM CSV tables, an evidence JSONL export, a data dictionary and checksums. It integrates existing literature records; it is not a newly validated experimental dataset. The build does not access sealed test labels, train models, revise quantum-chemistry results or rerun optical-character recognition.
 
 The public projection contains bibliographic metadata, scalar field candidates, inherited molecular identities, condition relationships, prior rules and provenance hashes. Source PDFs, complete text anchors, nonscalar candidate text, original input rows and local filesystem paths remain in a separate private archive. Empty public `anchor_text` cells therefore mean deliberately withheld text, not absent original evidence. `anchor_sha256` identifies the original anchor. `candidate_value_visibility` explains whether a value was exposed, originally absent or retained privately. Blank normalized values are not zero. There is no new licence grant over third-party material; consult original publishers and databases for reuse terms. No new dataset DOI or independent metadata certification is claimed.
 

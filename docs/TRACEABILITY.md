@@ -1,5 +1,7 @@
 # Source traceability and field-use assessments
 
+This is the source-location maintenance layer for the current [manuscript-aligned scientific database](../data/research), whose evidence index and scalar candidates carry the restrictions described here. See [RESEARCH_DATABASE.md](RESEARCH_DATABASE.md) for the public scientific entry points.
+
 Updated 2026-10-20. The base database and raw evidence remain byte-for-byte unchanged. The current entry point is `scripts/open_literature_database.py`, which joins the base to the overlay in memory and enables read-only mode. It retains all 9,257 records and exposes both original information and new assessments. Read `component_use_action`, `numeric_use_status` and `external_evidence_use` before downstream reuse; the view does not delete rows or supply a ready-made training set.
 
 ## Scope and outcome
