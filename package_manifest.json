@@ -29,7 +29,7 @@
     "frozen_task_weight_policy": "a220de05c5eff6e459f8356764d188665c2d35ef0414e29e67e523b6ce8fefb5"
   },
   "file_sha256": {
-    ".gitattributes": "cdac690189959fc0eb2bcc267e32505c56ae7b831d46e4d975b843978cc7c406",
+    ".gitattributes": "07ba33ba449f6892450c17639111fdb1dda97214ac5cf94fca3c6f2f317dc7c0",
     ".gitignore": "af7baca866e36f7698efe83489db5ae3a08547f087326312727191d7bcc0a2ea",
     "README.md": "7b4907adb7035512e4cebf0dc0b7e920e0b4313d93f80263f973eea7ef6879a3",
     "VERSION": "3067c1f2313a6c9014689796b9ea8ad1b0c7b7bdb99e372f2a9a05b2d3639a1c",

@@ -2,4 +2,4 @@
 data/literature/** -text
 data/research/** -text
 # Source projections are fingerprinted byte-for-byte, including acquired line endings.
-inputs/** -text
+inputs/** -text whitespace=cr-at-eol
