@@ -1,3 +1,5 @@
 * text=auto eol=lf
 data/literature/** -text
 data/research/** -text
+# Source projections are fingerprinted byte-for-byte, including acquired line endings.
+inputs/** -text
