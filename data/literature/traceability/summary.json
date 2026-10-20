@@ -1,0 +1,54 @@
+{
+  "base_database_sha256": "a2e57bafc7dacd08db9339d6aabf6e89756297bffa21e5561f3ee4f90d657311",
+  "private_archive_sha256": "c4b1cc2e0c7836d35744564f44339d753c7a5f607a477f2f8c378e28833ec91e",
+  "source_metadata_sha256": "13a9f9fed32b55a0fdb05eaf29070c12b197cc4fc3d8de093e0247df908ce3ab",
+  "target_records": 1496,
+  "original_missing_page_records": 1399,
+  "target_sources": 58,
+  "location_status_counts": {
+    "resolved_xml_node_span": 772,
+    "resolved_cached_page_span": 334,
+    "unresolved_no_exact_match": 108,
+    "ambiguous_multiple_matches": 282
+  },
+  "missing_page_location_status": {
+    "resolved_xml_node_span": 772,
+    "resolved_cached_page_span": 245,
+    "unresolved_no_exact_match": 108,
+    "ambiguous_multiple_matches": 274
+  },
+  "secondary_parser_checks": {
+    "not_reproduced_in_secondary_parser": 329,
+    "secondary_unique_same_page_span": 15,
+    "secondary_unique_primary_not_unique": 4
+  },
+  "semantic_counts": {
+    "broad_context_flag_only": 118,
+    "same_scalar_in_explicit_geometry_phrase": 4
+  },
+  "effective_location_counts": {
+    "source_verified_location_only": 1092,
+    "provisional_or_unresolved": 404
+  },
+  "missing_page_effective_location_counts": {
+    "source_verified_location_only": 1017,
+    "provisional_or_unresolved": 382
+  },
+  "source_binding_counts": {
+    "doi_in_original_article_metadata": 20,
+    "doi_in_first_two_pdf_pages": 31,
+    "not_confirmed": 7
+  },
+  "original_page_relation_counts": {
+    "no_original_page_or_not_comparable": 1421,
+    "original_page_inside_recovered_span": 74,
+    "original_page_outside_recovered_anchor_span": 1
+  },
+  "scalar_anchor_check_counts": {
+    "literal_scalar_present_not_endpoint_certified": 1286,
+    "not_applicable_nonscalar_or_empty": 177,
+    "literal_scalar_not_found_requires_value_anchor_review": 33
+  },
+  "new_certified_measurements": 0,
+  "original_rows_modified": 0
+}

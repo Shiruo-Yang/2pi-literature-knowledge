@@ -1,5 +1,7 @@
 # Literature database guide
 
+Current source-location and field-use update: see [TRACEABILITY.md](TRACEABILITY.md) and use `scripts/open_literature_database.py` to join the unchanged base with its traceability overlay. Base tables below retain their original fields and counts; the overlay adds provenance and use restrictions, not new measurements.
+
 ## Scope and access
 
 The active database is `data/literature/literature.sqlite`, accompanied by UTF-8-with-BOM CSV tables, an evidence JSONL export, a data dictionary and checksums. It integrates existing literature records; it is not a newly validated experimental dataset. The build does not access sealed test labels, train models, revise quantum-chemistry results or rerun optical-character recognition.

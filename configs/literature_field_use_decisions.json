@@ -1,0 +1,60 @@
+{
+  "assessment_date": "2026-10-20",
+  "base_database_sha256": "a2e57bafc7dacd08db9339d6aabf6e89756297bffa21e5561f3ee4f90d657311",
+  "reviewer": "assistant_source_image_inspection",
+  "human_review_status": "not_performed",
+  "records": [
+    {
+      "evidence_id": "UKB-c8f0eb2f527b794f9439",
+      "affected_component": "wavelength_nm",
+      "recorded_component_value": "250",
+      "action": "withhold_250_nm_wavelength_component",
+      "replacement_value": null,
+      "source_doi": "10.1021/ma9007785",
+      "source_sha256": "da24c1af7d0cf62515add3f4165dd7395dc8f645493c1257db1b71fdb82d60b5",
+      "inspected_pdf_page": 9,
+      "printed_page": "6527",
+      "source_image_sha256": "03cac1a0e04abf71f21a4597770f288e6ce47cd34673a34b91a17f4509e37314",
+      "review_basis": "The rendered source page describes 250 nm as fabricated line width, not excitation wavelength. This action applies only to the 250 nm wavelength component; other context fields remain candidates, and no corrected wavelength or compound-specific line-width label is inferred."
+    },
+    {
+      "evidence_id": "UKB-cd4841133c69d945c0fc",
+      "affected_component": "wavelength_nm",
+      "recorded_component_value": "250",
+      "action": "withhold_250_nm_wavelength_component",
+      "replacement_value": null,
+      "source_doi": "10.1021/ma9007785",
+      "source_sha256": "da24c1af7d0cf62515add3f4165dd7395dc8f645493c1257db1b71fdb82d60b5",
+      "inspected_pdf_page": 9,
+      "printed_page": "6527",
+      "source_image_sha256": "03cac1a0e04abf71f21a4597770f288e6ce47cd34673a34b91a17f4509e37314",
+      "review_basis": "The rendered source page describes 250 nm as fabricated line width, not excitation wavelength. This action applies only to the 250 nm wavelength component; other context fields remain candidates, and no corrected wavelength or compound-specific line-width label is inferred."
+    },
+    {
+      "evidence_id": "UKB-f30b9a0e18051f1519e1",
+      "affected_component": "wavelength_nm",
+      "recorded_component_value": "250",
+      "action": "withhold_250_nm_wavelength_component",
+      "replacement_value": null,
+      "source_doi": "10.1021/ma9007785",
+      "source_sha256": "da24c1af7d0cf62515add3f4165dd7395dc8f645493c1257db1b71fdb82d60b5",
+      "inspected_pdf_page": 9,
+      "printed_page": "6527",
+      "source_image_sha256": "03cac1a0e04abf71f21a4597770f288e6ce47cd34673a34b91a17f4509e37314",
+      "review_basis": "The rendered source page describes 250 nm as fabricated line width, not excitation wavelength. This action applies only to the 250 nm wavelength component; other context fields remain candidates, and no corrected wavelength or compound-specific line-width label is inferred."
+    },
+    {
+      "evidence_id": "UKB-ffc2b52587b2f86c7609",
+      "affected_component": "wavelength_nm",
+      "recorded_component_value": "250",
+      "action": "withhold_250_nm_wavelength_component",
+      "replacement_value": null,
+      "source_doi": "10.1021/ma9007785",
+      "source_sha256": "da24c1af7d0cf62515add3f4165dd7395dc8f645493c1257db1b71fdb82d60b5",
+      "inspected_pdf_page": 9,
+      "printed_page": "6527",
+      "source_image_sha256": "03cac1a0e04abf71f21a4597770f288e6ce47cd34673a34b91a17f4509e37314",
+      "review_basis": "The rendered source page describes 250 nm as fabricated line width, not excitation wavelength. This action applies only to the 250 nm wavelength component; other context fields remain candidates, and no corrected wavelength or compound-specific line-width label is inferred."
+    }
+  ]
+}

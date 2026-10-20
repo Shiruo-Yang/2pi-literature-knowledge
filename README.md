@@ -2,7 +2,7 @@
 
 A source-linked database of literature field evidence, molecular identities, experimental-context candidates and photoinitiator priors. The current normalization integrates existing public registries and previously collected local corpus without re-extracting papers, overwriting raw evidence or promoting machine candidates to validated measurements.
 
-Snapshot: **2026-10-15** · [Database guide](DATABASE_GUIDE.md) · [Quality audit](DATABASE_AUDIT.md) · [Machine-readable summary](data/literature/summary.json)
+Base snapshot: **2026-10-15** · Traceability update: **2026-10-20** · [Database guide](DATABASE_GUIDE.md) · [Quality audit](DATABASE_AUDIT.md) · [Base summary](data/literature/summary.json)
 
 ## Current database
 
@@ -28,6 +28,8 @@ The previous 1,179-record public registry is fully accounted for: its 1,029 auto
 | File | Use |
 |---|---|
 | [literature.sqlite](data/literature/literature.sqlite) | Query all normalized relational tables and conservative views |
+| [Current read-only query entry point](scripts/open_literature_database.py) | Combine the unchanged base with current source-location and field-use assessments |
+| [Traceability overlay](data/literature/traceability/) / [summary](data/literature/traceability/summary.json) | Recovered original-source locations and explicit unresolved cases |
 | [sources.csv](data/literature/sources.csv) | Source keys, DOIs, titles and scope flags |
 | [evidence.csv](data/literature/evidence.csv) / [evidence.jsonl](data/literature/evidence.jsonl) | Spreadsheet / programmatic field-evidence access |
 | [accepted_identities.csv](data/literature/accepted_identities.csv) / [entities.csv](data/literature/entities.csv) | Structure assignments and identity categories |
@@ -43,7 +45,13 @@ CSV files use UTF-8 with a byte-order mark for spreadsheet compatibility. SQLite
 
 ## Quality and scientific-use boundaries
 
-The normalization flags 1,399 evidence rows lacking page locators, 122 possible geometry-versus-wavelength context collisions, and four possible internal research documents containing 32 field records. All remain traceable. The view `literature_candidates_excluding_flagged_internal_docs` excludes flagged documents but does not certify the remaining data as independent experiments.
+The original normalization flagged 1,399 evidence rows lacking page locators. The current source-location overlay recovers unique, source-verified locations for **1,017** of these: **772 publisher-XML node spans and 245 PDF page spans**. XML articles without pagination receive node addresses, not invented page numbers. **382 remain unresolved.** The base missing-page flags stay unchanged for audit history.
+
+Across the union of missing-location and semantic-warning records, 1,496 records from 58 source identifiers were assessed; 1,092 have source-verified anchor locations, including 75 that already had page hints. DOI checks bind original documents to source metadata. Text matching locates an anchor, not a certified measurement.
+
+The current view withholds the **250 nm wavelength component in four records** after assistant inspection of Pucher et al.'s original PDF page 9 confirmed that this number describes fabricated line width. These are four extractions from one source, not four independent experiments. No replacement wavelength or new line-width label is created. Another **33 records** lack their literal scalar in the attached anchor; their numerical use is held pending value-to-anchor review, without declaring their reported values wrong. One original page hint lies outside the recovered anchor span and is retained alongside the new location. See the [traceability method and field dictionary](TRACEABILITY.md).
+
+The original 122 broad geometry/wavelength warnings remain available; the other 118 have not been cleared by this targeted check. Four possible internal research documents containing 32 field records remain excluded from external-evidence use in the current view. Neither exclusion nor recovered location certifies the remaining data as independent experiments.
 
 Accepted identity is not an accepted numerical measurement. A field value, context cluster, alias match and source-supported structure are different evidence objects. Numeric-looking candidates still require correct compound, endpoint, unit, condition and original-source ownership. Absorption cross section is not polymerization efficiency; a maximum in a measured wavelength window is not automatically a global maximum.
 
@@ -58,6 +66,9 @@ Validate with Python 3.11 or later:
 ```sh
 python scripts/test_normalize_literature_database.py
 python scripts/verify_normalized_database.py data/literature
+python scripts/test_literature_traceability.py
+python scripts/test_current_literature_view.py
+python scripts/open_literature_database.py
 python scripts/validate_release.py
 ```
 

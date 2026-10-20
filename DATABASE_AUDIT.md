@@ -1,5 +1,13 @@
 # Database normalization audit
 
+## Source-location follow-up: 2026-10-20
+
+The base snapshot below is unchanged. A new reversible overlay covers 1,496 targeted records from 58 source identifiers. It supplies source-verified locations for 1,017 of the 1,399 records originally lacking page hints (772 XML node spans and 245 PDF page spans), leaving 382 unresolved. Including records with prior hints, 1,092 anchor locations pass source verification. Fifty-six original source-file hashes and all target records passed the independent verifier.
+
+Four extractions from one Pucher source have their 250 nm wavelength component withheld after assistant source-image inspection identifies fabricated line width. Thirty-three literal scalar-to-anchor gaps are withheld from numerical reuse pending review; one original page hint is inconsistent with the recovered anchor location. Original values are not changed. The current read-only view retains 9,257 records and explicitly exposes these restrictions. Nine matching tests and seven view tests pass. See [TRACEABILITY.md](TRACEABILITY.md) for methods, limits and full counts.
+
+## Original normalization snapshot
+
 Audit date: 2026-10-15. Scope: existing literature corpus and the current public repository, with no model fitting or new source extraction.
 
 ## Reconciled record flow
