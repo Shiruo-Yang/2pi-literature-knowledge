@@ -11,6 +11,7 @@ from pathlib import Path
 
 from open_literature_database import connect
 from research_evidence_quality import add_audit_sources, append_quality_tables
+from literature_source_organization import apply_bibliography, append_source_tables
 
 
 def fingerprint(path):
@@ -130,6 +131,22 @@ def build(root, output, metadata=None):
     asset('source_audit_projection', audit_path)
     asset('evidence_use_policy', policy_path)
     asset('evidence_quality_builder', Path(__file__).with_name('research_evidence_quality.py'))
+    zotero_path = root / 'inputs/zotero_bibliography.json'
+    cleaned_path = root / 'inputs/zotero_metadata_cleaned.csv'
+    cleanup_path = root / 'inputs/openrefine_cleanup.json'
+    pilot_path = root / 'inputs/document_parser_pilot.json'
+    bindings_path = root / 'inputs/document_binding_checks.json'
+    zotero = json.loads(zotero_path.read_text(encoding='utf-8'))
+    cleanup = json.loads(cleanup_path.read_text(encoding='utf-8'))
+    parser_reports = json.loads(pilot_path.read_text(encoding='utf-8'))['records']
+    binding_checks = json.loads(bindings_path.read_text(encoding='utf-8'))['records']
+    if cleanup['input_sha256'] != fingerprint(zotero_path) or cleanup['output_sha256'] != fingerprint(cleaned_path):
+        raise ValueError('OpenRefine projection checksums do not match bibliography inputs.')
+    for label, path in (('zotero_bibliography', zotero_path), ('zotero_metadata_cleaned', cleaned_path),
+                        ('openrefine_cleanup', cleanup_path), ('document_parser_pilot', pilot_path),
+                        ('document_binding_checks', bindings_path),
+                        ('source_organization_builder', Path(__file__).with_name('literature_source_organization.py'))):
+        asset(label, path)
     metadata_by_doi = defaultdict(list)
     if metadata:
         asset('existing_literature_metadata', metadata)
@@ -159,6 +176,7 @@ def build(root, output, metadata=None):
                 conflicts.append({'source_key': paper['source_key'], 'field_name': field, 'base_value': paper[field], 'candidate_values': ';'.join(values), 'difference_type': 'formatting_variant' if formatting_only else 'unresolved_content_conflict', 'action': 'retain_base_spelling' if formatting_only else 'retain_base_and_flag_conflict'})
         papers.append(paper)
     added_audit_sources = add_audit_sources(papers, audit)
+    bibliography_updates, bibliography_differences = apply_bibliography(papers, rows(cleaned_path))
     entities = [dict(r) for r in source.execute('SELECT * FROM base.entities ORDER BY entity_id')]
     accepted = [dict(r) for r in source.execute('SELECT * FROM base.accepted_identities ORDER BY entity_id')]
     compounds, assignments, compound_by_entity = {}, [], {}
@@ -268,6 +286,7 @@ def build(root, output, metadata=None):
     table('metadata_conflicts', conflicts, ['source_key', 'field_name', 'base_value', 'candidate_values', 'difference_type', 'action'], 'FOREIGN KEY(source_key) REFERENCES papers(source_key)')
     table('input_assets', assets, constraints='PRIMARY KEY(asset_id)')
     quality_summary = append_quality_tables(db, table, papers, audit, policy)
+    organization_summary = append_source_tables(db, table, papers, zotero, bibliography_updates, bibliography_differences, parser_reports, binding_checks)
     db.executescript('''
     CREATE VIEW structural_priors AS SELECT * FROM knowledge_rules WHERE module_id='molecular_design';
     CREATE VIEW mechanism_rules AS SELECT * FROM knowledge_rules WHERE module_id='mechanism';
@@ -286,6 +305,7 @@ def build(root, output, metadata=None):
                'representation_rows_linked_without_duplication': len(members) - len(observations),
                'accepted_structure_identifiers': len(compounds), 'source_local_identity_assignments': len(assignments),
                'metadata_cells_filled_by_exact_doi': len({(r['source_key'], r['field_name']) for r in metadata_links}),
+               'metadata_cells_filled_by_exact_doi_total': len({(r['source_key'], r['field_name']) for r in metadata_links + bibliography_updates}),
                'missing_year_before': sum(not r['base_year'] for r in papers),
                'missing_year_after': sum(not r['year'] for r in papers),
                'missing_journal_before': sum(not r['base_journal'] for r in papers),
@@ -298,6 +318,7 @@ def build(root, output, metadata=None):
                'new_certified_measurements': 0, 'new_training_labels': 0,
                'existing_audit_sources_added': len(added_audit_sources),
                'evidence_quality': quality_summary,
+               'source_organization': organization_summary,
                'observation_definition': 'A source-anchored scalar candidate; compound ownership and experimental conditions may still be unresolved.',
                'foreign_key_check': [], 'integrity_check': 'ok'}
     (output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8', newline='\n')

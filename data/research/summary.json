@@ -17,7 +17,7 @@
     "field_dictionary": 98,
     "metadata_provenance": 449,
     "metadata_conflicts": 6,
-    "input_assets": 14,
+    "input_assets": 20,
     "evidence_readiness": 9257,
     "source_audits": 3,
     "source_structures": 5,
@@ -26,7 +26,14 @@
     "source_lineage": 3,
     "rule_readiness": 69,
     "paper_core": 80,
-    "quality_coverage": 56
+    "quality_coverage": 56,
+    "bibliography_updates": 674,
+    "bibliography_differences": 38,
+    "source_documents": 666,
+    "document_binding_checks": 518,
+    "document_reuse_groups": 45,
+    "source_dossiers": 626,
+    "document_parser_pilot": 20
   },
   "modules": [
     {
@@ -84,10 +91,11 @@
   "accepted_structure_identifiers": 26,
   "source_local_identity_assignments": 72,
   "metadata_cells_filled_by_exact_doi": 449,
+  "metadata_cells_filled_by_exact_doi_total": 1123,
   "missing_year_before": 581,
-  "missing_year_after": 356,
+  "missing_year_after": 15,
   "missing_journal_before": 581,
-  "missing_journal_after": 357,
+  "missing_journal_after": 24,
   "metadata_content_conflicts": 0,
   "metadata_format_variants_retained": 6,
   "numerical_use_holds_preserved": 33,
@@ -115,6 +123,28 @@
     "source_case_cross_source_comparison_ready": 0,
     "semantic_accuracy_evaluation": "not_measured_against_independent_reference_annotations",
     "core_definition": "Use-specific priors, endpoint definitions and source-audit cases; not a set of independently certified experiments."
+  },
+  "source_organization": {
+    "zotero_matched_sources": 471,
+    "bibliography_cells_filled": 674,
+    "bibliography_fills_by_field": {
+      "year": 341,
+      "journal": 333
+    },
+    "bibliography_content_differences_retained": 2,
+    "bibliography_format_variants_retained": 36,
+    "local_pdf_links": 518,
+    "unique_local_pdf_hashes": 425,
+    "same_source_duplicate_file_groups": 45,
+    "cross_source_shared_file_groups": 0,
+    "parser_attempts": 20,
+    "parser_successes": 20,
+    "docling_candidate_tables": 7,
+    "parser_attempts_with_runtime_observations": 1,
+    "first_page_binding_checks": 518,
+    "first_page_expected_doi_literal_found": 463,
+    "new_experiment_labels": 0,
+    "zotero_library_mutations": 0
   },
   "observation_definition": "A source-anchored scalar candidate; compound ownership and experimental conditions may still be unresolved.",
   "foreign_key_check": [],

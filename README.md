@@ -23,6 +23,8 @@ The current field inventory contains 9,257 records mapped from 98 original field
 | File | Scientific use |
 |---|---|
 | [papers.csv](data/research/papers.csv) | Literature identifiers and bibliography, with original and updated metadata |
+| [Source dossiers](data/research/source_dossiers.csv) | One entry per source, joining bibliography, research modules and local-document availability |
+| [Document inventory](data/research/source_documents.csv) / [binding checks](data/research/document_binding_checks.csv) | Attachment fingerprints and first-page DOI checks; private PDFs are not distributed |
 | [compounds.csv](data/research/compounds.csv) / [source assignments](data/research/compound_source_links.csv) | 26 recorded structure identifiers linked to 72 previously accepted source-local identities |
 | [knowledge_rules.csv](data/research/knowledge_rules.csv) / [citations](data/research/rule_sources.csv) | Molecular-design rules, mechanism requirements and synthesis-route precedent |
 | [six_task_profile.csv](data/research/six_task_profile.csv) / [rationale sources](data/research/profile_sources.csv) | The six fixed endpoint definitions, existing utility weights and literature-rationale links |
@@ -32,13 +34,23 @@ The current field inventory contains 9,257 records mapped from 98 original field
 | [field_dictionary.csv](data/research/field_dictionary.csv) | Original field names, canonical concepts, manuscript roles and interpretation requirements |
 | [research.sqlite](data/research/research.sqlite) | All scientific tables, relationships and the five module views |
 
-The source directory contains 626 source keys, of which 286 have field evidence. Five references from existing local source audits are now connected to the scientific database; they are not five newly mined papers. Those are coverage counts, not counts of fully extracted papers or complete experiments. Existing bibliography data filled 225 missing years and 224 missing journals, with row-level provenance.
+The source directory contains 626 source keys, of which 286 have field evidence. Five references from existing local source audits are connected to the scientific database; they are not five newly mined papers. Those are coverage counts, not counts of fully extracted papers or complete experiments.
+
+## Source organisation
+
+A read-only Zotero inventory matched 471 existing sources by exact DOI. It supplied 341 missing years and 333 missing journal names, in addition to the 449 previously filled bibliography cells. Across the current inventory, 15 sources lack a year and 24 lack a journal. [Updates](data/research/bibliography_updates.csv) and [differences](data/research/bibliography_differences.csv) preserve input-row provenance; two content differences remain unadjudicated and existing values are retained.
+
+The document inventory contains 666 attachment links, including 518 locally available PDF links representing 425 distinct file hashes. Forty-five [duplicate-file groups](data/research/document_reuse_groups.csv) occur within the same source; no identical-file group crosses source keys in this snapshot. All attachment links are retained, and duplicate files do not count as independent originals. This check does not detect different files containing the same experiment.
+
+First-page text checks found the expected DOI on 463 PDF attachment links; 55 remain unresolved by this check. A literal DOI match is evidence of association, not unique source-identity certification. Main-paper/supporting-information roles inferred from filenames remain candidates.
+
+OpenRefine ran reproducible whitespace/DOI cleanup on a metadata copy, with no row deletion or chemical-entity merging; the selected values were already clean. LiteParse and Docling each parsed selected pages from ten sources. Docling produced seven candidate tables and reported one unmatched PDF text cell dropped from one table. [Pilot records](data/research/document_parser_pilot.csv) retain parser status, page selection, hashes and the warning. These are parsing results, not an accuracy benchmark or newly accepted numerical measurements.
 
 ## Paper-supporting evidence and permitted use
 
 The [paper evidence index](data/research/paper_core.csv) brings together 69 source-linked priors, six fixed endpoint definitions, two previously source-checked optical table records and three structure-identity conflict cases. These 80 entries are different kinds of support, **not 80 validated measurements**. Each entry states its permitted use, current assessment status and prohibited interpretations.
 
-| Current addition | What can be inspected |
+| Record | What can be inspected |
 |---|---|
 | [Field readiness](data/research/evidence_readiness.csv) | A use-specific assessment for all 9,257 field candidates, including unresolved ownership, units, location and inherited holds |
 | [Rule readiness](data/research/rule_readiness.csv) | Citation coverage and recorded scope for all 69 priors; primary-experiment support and counterevidence remain explicitly unassessed |
@@ -72,9 +84,13 @@ python scripts/query_research_database.py --module mechanism --kind rules --limi
 python scripts/query_research_database.py --module mechanism --kind core --query coinitiator --limit 3
 python scripts/query_research_database.py --kind source-measurements --limit 2
 python scripts/query_research_database.py --kind coverage --module property_profile
+python scripts/query_research_database.py --kind sources --module property_profile --limit 3
+python scripts/query_research_database.py --kind document-bindings --query requires_binding_review --limit 3
+python scripts/query_research_database.py --kind metadata-differences --query content_difference --limit 3
 python scripts/build_research_database.py --output new_research_staging
 python scripts/verify_research_database.py --directory new_research_staging --metadata inputs/bibliographic_metadata.csv
 python scripts/verify_evidence_quality.py --directory new_research_staging
+python scripts/verify_source_organization.py --directory new_research_staging
 python scripts/validate_release.py
 ```
 

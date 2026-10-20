@@ -23,7 +23,11 @@ if __name__ == '__main__':
               'quantities': 'observations', 'profile': 'six_task_profile', 'core': 'paper_core',
               'readiness': 'evidence_readiness', 'rule-readiness': 'rule_readiness',
               'source-measurements': 'source_optical_cases', 'structures': 'source_structures',
-              'lineage': 'source_lineage', 'coverage': 'quality_coverage'}
+              'lineage': 'source_lineage', 'coverage': 'quality_coverage',
+              'sources': 'source_dossiers', 'documents': 'source_documents',
+              'document-bindings': 'document_binding_checks', 'document-reuse': 'document_reuse_groups',
+              'metadata-updates': 'bibliography_updates', 'metadata-differences': 'bibliography_differences',
+              'parser-pilot': 'document_parser_pilot'}
     p.add_argument('--kind', choices=list(tables), default='overview')
     p.add_argument('--query', help='Case-insensitive substring search in textual columns; does not change record status.')
     p.add_argument('--directory', type=Path, help='Optional checked research snapshot directory.')
@@ -36,10 +40,14 @@ if __name__ == '__main__':
     columns = [r[1] for r in db.execute('PRAGMA table_info(' + table + ')')]
     clauses, params = [], []
     if a.module:
-        if 'module_id' not in columns:
+        if 'module_id' in columns:
+            clauses.append('module_id=?')
+            params.append(a.module)
+        elif 'research_modules' in columns:
+            clauses.append("instr(';' || research_modules || ';', ';' || ? || ';')>0")
+            params.append(a.module)
+        else:
             p.error('This record kind has no module column; omit --module.')
-        clauses.append('module_id=?')
-        params.append(a.module)
     if a.query:
         # Column names come from this checked SQLite schema, never user input.
         clauses.append('(' + ' OR '.join('instr(lower("' + col + '"),lower(?))>0' for col in columns) + ')')

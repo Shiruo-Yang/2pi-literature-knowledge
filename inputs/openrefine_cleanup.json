@@ -1,0 +1,77 @@
+{
+  "tool": "OpenRefine",
+  "distribution_release": "3.10.1",
+  "distribution_sha256": "6155b20a8103244a26a8f21d41698ee52251538a838e3d5f2d5af507c8b6f3c8",
+  "distribution_digest_verified_against_official_release": true,
+  "version_note": "Official release package; the runtime API self-reports 3.10-SNAPSHOT. Both identifiers are retained rather than equated.",
+  "tool_version": {
+    "version": "3.10-SNAPSHOT",
+    "revision": "TRUNK",
+    "full_version": "3.10-SNAPSHOT [TRUNK]",
+    "full_name": "OpenRefine 3.10-SNAPSHOT [TRUNK]",
+    "java_vm_name": "OpenJDK 64-Bit Server VM",
+    "java_vm_version": "11.0.30+7",
+    "java_runtime_name": "OpenJDK Runtime Environment",
+    "java_runtime_version": "11.0.30+7",
+    "display_new_version_notice": "true",
+    "module_names": [
+      "core",
+      "database",
+      "jython",
+      "pc-axis",
+      "wikidata"
+    ]
+  },
+  "operations": [
+    {
+      "op": "core/column-addition",
+      "description": "Retain original and add cleaned title",
+      "engineConfig": {
+        "mode": "row-based",
+        "facets": []
+      },
+      "newColumnName": "title_clean",
+      "columnInsertIndex": 7,
+      "baseColumnName": "title",
+      "expression": "grel:if(isBlank(value),\"\",value.replace(/\\s+/,\" \").trim())",
+      "onError": "keep-original"
+    },
+    {
+      "op": "core/column-addition",
+      "description": "Retain original and add cleaned journal",
+      "engineConfig": {
+        "mode": "row-based",
+        "facets": []
+      },
+      "newColumnName": "journal_clean",
+      "columnInsertIndex": 8,
+      "baseColumnName": "journal",
+      "expression": "grel:if(isBlank(value),\"\",value.replace(/\\s+/,\" \").trim())",
+      "onError": "keep-original"
+    },
+    {
+      "op": "core/column-addition",
+      "description": "Retain original and add cleaned doi",
+      "engineConfig": {
+        "mode": "row-based",
+        "facets": []
+      },
+      "newColumnName": "doi_clean",
+      "columnInsertIndex": 9,
+      "baseColumnName": "doi",
+      "expression": "grel:value.toLowercase().trim()",
+      "onError": "keep-original"
+    }
+  ],
+  "input_sha256": "7baa628feb1eeb5285e5a6fb6362730ccfc864dc269f5904071087291bdc7386",
+  "output_sha256": "895a2aaffd590874d783bc1e8cce40ad715839046da102336d7d3711e0fef30f",
+  "rows": 471,
+  "changed_cells_by_column": {
+    "title": 0,
+    "journal": 0,
+    "doi": 0
+  },
+  "original_columns_preserved": true,
+  "semantic_reconciliation_performed": false,
+  "chemical_entities_merged": 0
+}

@@ -23,6 +23,11 @@ The modules follow the manuscript's literature-knowledge role. They do not freez
 | Table | Record unit |
 |---|---|
 | `papers` | One DOI-first or unresolved-alias source key; includes current bibliographic fields and original year/journal |
+| `source_dossiers` | One source entry joining current bibliography, manuscript modules and attachment availability |
+| `source_documents`, `document_binding_checks` | One attachment link and, where a local PDF exists, its first-page DOI-literal check |
+| `document_reuse_groups` | One repeated PDF hash, preserving all attachment links rather than counting duplicate files as independent originals |
+| `bibliography_updates`, `bibliography_differences` | Exact-DOI empty-field fills and retained differences from the read-only Zotero projection |
+| `document_parser_pilot` | One source-page/parser attempt, with status, output fingerprint and observed runtime warnings |
 | `compounds` | One distinct recorded InChIKey from the previously accepted source-local identity assignments |
 | `compound_source_links` | One source-local identity assignment, preserving its original entity ID, location and confidence |
 | `observations` | One source-anchored scalar candidate with a canonical property, value, explicit unit and use status |
@@ -36,7 +41,7 @@ The modules follow the manuscript's literature-knowledge role. They do not freez
 | `metadata_provenance`, `metadata_conflicts` | Bibliographic fills or differences linked to the input metadata row |
 | `research_modules`, `input_assets` | Module definitions, exact record counts and input fingerprints |
 
-All tables are available as UTF-8-with-BOM CSV files alongside the queryable SQLite database. `summary.json` reports the actual build counts. `manifest.json` checks every export. The five research modules are the browsing structure; 26 relational tables implement the scientific records, source audits and use assessments.
+All tables are available as UTF-8-with-BOM CSV files alongside the queryable SQLite database. `summary.json` reports the actual build counts. `manifest.json` checks every export. The five research modules remain the browsing structure; 33 relational tables implement scientific records, source audits, use assessments and document provenance. Document inventories are supporting infrastructure, not a sixth scientific module.
 
 ### Paper-supporting evidence and quality assessments
 
@@ -91,7 +96,23 @@ Only recognized, explicit unit scales are converted: for example W to mW, mm/s t
 
 ## Metadata and quality
 
-Existing bibliography data supplied 225 missing years and 224 missing journals through exact DOI matches. All 449 fills have input-row provenance. Six journal-name differences are formatting variants involving case or punctuation; the established spelling is retained. Missing values and any future substantive conflicts remain explicit. Publication type and original-experiment source status are not inferred from title keywords.
+The existing bibliography projection supplied 225 missing years and 224 missing journals by exact DOI, with 449 input-row provenance records. A separate read-only Zotero projection matched 471 of the current sources and supplied another 341 years and 333 journals. The combined 1,123 empty-cell fills leave 15 missing years and 24 missing journals across 626 source keys. `metadata_provenance` retains the first projection; `bibliography_updates` retains the Zotero fills. Summary fields distinguish these inputs from the combined total.
+
+Six prior journal-format differences remain unchanged. The Zotero comparison records another 36 formatting variants and two content differences without overwriting existing values: a 2015/2016 publication-year discrepancy for DOI `10.1021/acs.macromol.5b02336`, and a title spelling discrepancy for `10.1021/acs.macromol.5b00201`. These remain unadjudicated; neither is silently declared a factual error. Publication type and original-experiment source status are not inferred from titles.
+
+### Document inventory and bounded parser pilot
+
+`source_dossiers` is the common source entry point across the five research modules. Module membership is inherited from linked evidence, priors, endpoint citations and source-audit cases, not inferred from a PDF filename. It distinguishes bibliography coverage from field-evidence coverage and local-document availability.
+
+`source_documents` preserves 666 attachment links, including 518 local PDF links with 425 distinct content hashes. Forty-five repeated-file groups are confined to one source key each. No cross-source identical-file group was detected; different PDF versions, reused experiments and review-to-primary dependencies are not excluded by this result. Duplicate attachments remain linked and were not deleted from Zotero or disk. Filename-based supporting-information suggestions are explicitly provisional; the parent-item DOI is not treated as verified attachment identity.
+
+`document_binding_checks` covers all 518 PDF links using the first page of each distinct file, with OCR disabled. The expected DOI appears literally for 463 links; 55 require further binding checks. Absence is not proof of a wrong attachment, and presence is not unique source certification. Page-output hashes support local recomputation without distributing source text.
+
+OpenRefine was run on a copy of the 471-row bibliography projection. Original columns and row count were retained; added columns normalise whitespace and DOI case. These selected values were already clean, so changed-cell counts are zero. No fuzzy reconciliation or chemical merging was used. The official 3.10.1 Windows package digest was checked; its API self-reported `3.10-SNAPSHOT [TRUNK]`, so both identifiers are disclosed in `inputs/openrefine_cleanup.json`.
+
+The ten-source parser pilot selected papers with existing quality gaps and table-related keywords, one distinct original file per source. It did not use prediction errors, model targets or sealed test data. LiteParse 2.0.0 read the first page and a selected target page; Docling 2.140.0 read the target page with table structure enabled. All 20 attempts produced output, with seven Docling candidate tables across six papers. This selected native-text sample does not establish performance on scanned papers or the whole corpus. One Docling warning reported 1 of 214 PDF cells dropped from a 16-by-12 table grid for DOI `10.1088/2631-7990/ae289e`, PDF page 12. It remains visible in the pilot table, with no certified numeric import.
+
+Original PDF text, table CSVs and page coordinates remain in the private archive. Public pilot rows contain only tool versions, document/output fingerprints, target pages, counts and the observed warning. Neither a successful parse, agreement between parsers nor a table count is an extraction-accuracy estimate. MinerU.Chem remains available for targeted chemical-structure candidates; it was not rerun for this bibliography/document batch. GROBID was not deployed because this bounded batch did not require new reference-list extraction. No competing database or new training-label layer was created.
 
 The current use restrictions are carried into every affected evidence record and scalar candidate: 33 scalar-to-anchor review holds, four 250 nm wavelength-component holds and 32 internal-document external-evidence exclusions. Records remain queryable with these flags. Location recovery is inherited from the previously verified traceability overlay.
 
@@ -101,7 +122,7 @@ The current use restrictions are carried into every affected evidence record and
 README.md                    Study argument, five modules and main download links
 data/research/               Current scientific tables and research.sqlite
 data/literature/             Preserved base evidence and traceability maintenance layer
-inputs/                     Public bibliography and path-free source-audit fact projections
+inputs/                     Public bibliography, document fingerprints, parser status and source-audit projections
 configs/                    Controlled scientific dictionary and field-use decisions
 docs/                       Scientific data guide and maintenance documentation
 study_context/              Previous manuscript map, model/weight/screening/QM registries
@@ -119,15 +140,20 @@ The current scientific export rebuilds from public files with Python 3.11 or lat
 python scripts/build_research_database.py --output new_research_staging
 python scripts/verify_research_database.py --directory new_research_staging --metadata inputs/bibliographic_metadata.csv
 python scripts/verify_evidence_quality.py --directory new_research_staging
+python scripts/verify_source_organization.py --directory new_research_staging
 python scripts/test_research_database.py
 python scripts/test_evidence_quality.py
+python scripts/test_source_organization.py
 python scripts/query_research_database.py --module mechanism --kind rules --limit 3
 python scripts/query_research_database.py --module mechanism --kind core --query coinitiator --limit 3
 python scripts/query_research_database.py --kind source-measurements --limit 2
+python scripts/query_research_database.py --kind sources --module property_profile --limit 3
+python scripts/query_research_database.py --kind document-reuse --limit 3
+python scripts/query_research_database.py --kind parser-pilot --query docling --limit 3
 ```
 
-The independent verifiers check all 26 relational tables, CSV/SQLite agreement, every original evidence ID, controlled-field assignments, identity/source links, explicit unit arithmetic, unchanged task weights, use restrictions, metadata row provenance and the source-audit projection. The preserved base and current snapshot hashes are also checked by the release validation tools. These checks establish reproducible organization and conservative transformations; source-level extraction precision remains a separate evaluation task.
+The independent verifiers check all 33 relational tables, CSV/SQLite agreement, every original evidence ID, controlled-field assignments, identity/source links, explicit unit arithmetic, unchanged task weights, use restrictions, metadata row provenance, document groups, parser status and the source-audit projection. The optional `verify_source_organization_private.py` independently re-reads the retained Zotero facts, rehashes all original PDFs and parser outputs, and recomputes DOI-literal checks from saved page text. The preserved base and current snapshot hashes are also checked by the release validation tools. These checks establish reproducible organization and conservative transformations; source-level extraction precision remains a separate evaluation task.
 
-The bibliography projection contains only the 247 previously acquired paper identifiers, DOIs, titles, years and journals, in original row order. Its provenance file fingerprints the original private path-bearing input. Original full text and images remain in the local evidence archive, while public scientific tables retain their identifiers and checksums.
+The original bibliography projection contains 247 previously acquired paper identifiers, DOIs, titles, years and journals in original row order. The additional Zotero projection contains 471 matched parent items and their document metadata. Neither projection includes notes, annotations, source full text or private paths. Original full text and images remain in the local evidence archive; public scientific tables retain identifiers and checksums.
 
 The schema design follows the compound/property/condition linkage described in [Su et al.](https://doi.org/10.1002/advs.202204902), [Joung et al.](https://doi.org/10.1038/s41597-020-00634-8), the [ChemDataExtractor thermoelectric database](https://doi.org/10.1038/s41597-022-01752-1) and the [Open Reaction Database schema](https://docs.open-reaction-database.org/en/stable/schema.html). These are design precedents; their data or reported accuracies are not added to this release.
